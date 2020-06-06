@@ -53,7 +53,7 @@ module.exports = [
     title: "Anyone able to help with a proofreading job?",
     body:
       "Hi all I have finally written the first draft of my phd. It would be brilliant if someone could proofread the first draft. Charitable donation given in exchange!",
-    skills_required: "roofer",
+    skills_required: "proofreading",
     username: "hstrowan2m",
     created_at: "", //do i put anything in here or does it create something by default,
   },
@@ -66,16 +66,15 @@ module.exports = [
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
-    title: "dripping tap",
+    title: "Dripping tap - help!",
     body:
       "Hi there, I've got a dripping tap if anyone has the tools to fix it!",
     skills_required: "plumbing",
     username: "fsokale34",
-    username: "",
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
-    title: "lightbulb needs changing",
+    title: "Lightbulb needs changing",
     body:
       "Hi all, I need a lightbulb changing but I have done my back in recently and can't do it. Can anyone help!",
     skills_required: "electrician",
@@ -83,7 +82,7 @@ module.exports = [
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
-    title: "computer issues",
+    title: "Computer issues",
     body:
       "Hi guys, I think I've got a virus on my computer. The screen has gone red and is not responding, would anyone be able to give their opinion?",
     skills_required: "IT advice",
