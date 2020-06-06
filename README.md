@@ -8,12 +8,29 @@ This is where you will set up the schema for each table in your database.
 
 You should have separate tables for `skills`, `charities`, `jobs`, `users` and `comments`. You will need to think carefully about the order in which you create your migrations. You should think carefully about whether you require any constraints on your table columns (e.g. 'NOT NULL')
 
+//Charity should come first, because users table and comments table needs to refer to it
+Each charity should have:
+
+- `charity_id` which is the primary key
+- `charity_name` string
+- `charity_logo` not sure how this would work
+- `charity_url`
+- `charity_description` string limit characters
+
+//Skill should come second as users table, jobs table and comments table need to refer to it
+
+Each skill should have:
+
+- `skill_id` which is the primary key
+- `skill_name` string limt on characters
+
 Each user should have:
 
 - `username` which is the primary key & unique - may not need this if we are signing in through facebook/google?
+- `password` may not need mix of char and numbers
 - `first_name` string limit on characters
 - `last_name` string limit on characters
-- `phone_number` ?
+- `number` ?
 - `email` ?
   //need some method of communicating with each other - they can communicate in comments section, but people would not want to give out their contact details on a comment. Would they be happy giving their email address and phone number on profile page..I guess so. Ideally we could implement some private chat functionality but not MVP.
 - `avatar_url`
@@ -21,6 +38,7 @@ Each user should have:
 - `location` are we doing location eg Chorlton or Postcode eg M21 ??
 - `bio` limit amount of characters
 - `charity_id` which references the charity table
+- `charity_name` which references the charity table
 - `charity_logo` which references the charity table
 - `justgiving_link` for demo purposes may have to do a fake charity link and not actually use justgiving...something silly like ju5tgiving
 
@@ -30,31 +48,20 @@ Each job should have:
 - `title` string limit characters
 - `body` string limit characters
 - `skills_required` not sure how to do this ???
-- `author` field that references a user's primary key (username)
+- `username` field that references a user's primary key (username)
 - `created_at` defaults to the current timestamp
 
 Each comment should have:
 
 - `comment_id` which is the primary key
-- `author` field that references a user's primary key (username)
+- `username` field that references a user's primary key (username)
 - `job_id` field that references an job's primary key
+- `charity_id` - ?? dont know if we need this as well as charity name would need a junction table needs to reference charity from user table
+- `charity_name` needs to reference charity from user table
 - `created_at` defaults to the current timestamp
 - `body` string - limit characters
 
-Each charity should have:
-
-- `charity_id` which is the primary key
-- `charity_name` field that references a user's primary key (username)
-- `charity_logo` not sure how this would work
-- `charity_url`
-- `charity_description` string limit characters
-
-Each skill should have:
-
-- `skill_id` which is the primary key
-- `skill_name` string limt on characters
-
-- **NOTE:** psql expects `Timestamp` types to be in a specific date format - **not a unix timestamp** as they are in our data! However, you can easily **re-format a unix timestamp into something compatible with our database using JS - you will be doing this in your utility function**... [JavaScript Date object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+* **NOTE:** psql expects `Timestamp` types to be in a specific date format - **not a unix timestamp** as they are in our data! However, you can easily **re-format a unix timestamp into something compatible with our database using JS - you will be doing this in your utility function**... [JavaScript Date object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
 
 ### Routes
 
@@ -130,14 +137,16 @@ GET /api/users/:username
   - `username`
   - `first_name`
   - `last_name`
+  - `number`
+  - `email`
   - `avatar_url`
-  - `name` dunno if we need name and username
+  - `skills`
   - `location` tbc if eg Chorlton or M21
   - `bio`
-  - `skills`
-  - `chosen_charity` which is charity_name from charity table
-  - `charity_id` not sure if we need this as well
+- `charity_id`
+- `charity_name`
 - `charity_logo` from charity table
+- `justgivingurl`
 
 ---
 
@@ -148,10 +157,11 @@ GET /api/jobs
 #### Responds with
 
 - an `jobs` array of job objects, each of which should have the following properties:
-  - `username`
-  - `name` not sure if needed
   - `title`
+  - `body`
   - `skills_required`
+  - `username`
+  - `avatar_url`
   - `location` tbc if eg Chorlton or M21
   - `job_id`
   - `created_at`
@@ -188,13 +198,15 @@ GET /api/jobs/:job_id
 
 - an job object, which should have the following properties:
 
-  - `author` which is the `username` from the users table
-  - `title`
-  - `job_id`
-  - `body`
-  - `skills_required`
-  - `created_at`
-  - `comment_count` which is the total count of all the comments with this job_id - you should make use of knex queries in order to achieve this
+* `title`
+* `job_id`
+* `body`
+* `skills_required`
+* `username` from the users table
+* `avatar_url`
+* `location`
+* `created_at`
+* `comment_count` which is the total count of all the comments with this job_id - you should make use of knex queries in order to achieve this
 
 ---
 
@@ -210,7 +222,7 @@ POST /api/jobs/:job_id/comments
 
 #### Responds with
 
-- the posted comment including comment_id and created_at - can we also get it to display user location, user avatar_url and user charity by default when they post a comment? Without them having to manually enter that into an input box.
+- the posted comment including comment_id and created_at - can we also get it to display user location, user avatar_url and user charity name by default when they post a comment? Without them having to manually enter that into an input box.
 
 ---
 
@@ -228,7 +240,7 @@ GET /api/jobs/:job_id/comments
   - `username` front end would includes hyperlink that takes you to /api/users/:user_id
   - `avatar_url`
   - `location`
-  - `chosen_charity` from charity table
+  - `charity_name` from charity table
   - `charity_id` not sure if we need this
   - `charity_logo` from charity table
   - `body`

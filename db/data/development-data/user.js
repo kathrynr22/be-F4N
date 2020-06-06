@@ -12,6 +12,7 @@ module.exports = [
     bio:
       "Hi I am Audrie, I am a gardener and am happy to help if anyone needs a hand with their garden.",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -28,6 +29,7 @@ module.exports = [
     bio:
       "Hi I am Frederica, I work at a garden centre and am an expert on plants.",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -43,6 +45,7 @@ module.exports = [
     location: "tbc",
     bio: "Hey there, my name is Gabrielle and I am a qualified accountant.",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -59,6 +62,7 @@ module.exports = [
     bio:
       "Hey there, I am Shane and I work in IT. I would be happy to offer advice if anyone is having computer problems.",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -75,6 +79,7 @@ module.exports = [
     bio:
       "Hiya, I'm Vince and I've been a plumber for nearly 30 years. Happy to pop round if my neighbours need some help with plumbing issues.",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -90,6 +95,7 @@ module.exports = [
     location: "tbc",
     bio: "Howdy, I'm Liam and I'm a qualified electrician.",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -106,6 +112,7 @@ module.exports = [
     bio:
       "Hi I'm Orin and I'm a part-time painter and decorator. I also teach drawing classes at the community centre and am studying for a phd in art history.",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -122,6 +129,7 @@ module.exports = [
     bio:
       "Hi I'm Marianne, I'm a painter and decorator and would be happy to share my skills and raise money for my chosen charity.",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -137,6 +145,7 @@ module.exports = [
     location: "tbc",
     bio: "Hey there, I'm Carl and I'm a carpenter and Ikea flat-pack expert!",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -153,6 +162,7 @@ module.exports = [
     bio:
       "Hi I'm Stanley, I am a retired carpenter and am happy to share my skills.",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -169,6 +179,7 @@ module.exports = [
     bio:
       "Hi I'm Jason and I am a qualified roofer. Got a tile missing? Give me a shout!",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -185,6 +196,7 @@ module.exports = [
     bio:
       "Hello I'm Steve and I'm an accountant. Happy to offer advice on taxes and the like!",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -201,6 +213,7 @@ module.exports = [
     bio:
       "Hi I am Jack and I'm a plumber. I am happy to help if I can, and raise money for a great cause!",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -217,6 +230,7 @@ module.exports = [
     bio:
       "Hi I'm Gretna, I'm a landscaper. I love to be in the outdoors and would be happy to lend a green finger to any neighbour!",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -233,6 +247,7 @@ module.exports = [
     bio:
       "Hey I am Orelee and I work as a tree surgeon. I am happy to work for free if people donate to my chosen charity!",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -249,6 +264,7 @@ module.exports = [
     bio:
       "Hey there I'm Val, I am a plumber. Looking to raise money for my chosen charity, while helping out my neighbours at the same time!",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -264,6 +280,7 @@ module.exports = [
     location: "tbc",
     bio: "Hi there I am Elbertine and I'm a qualified proofreader.",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -280,6 +297,7 @@ module.exports = [
     bio:
       "Hi I'm Sammie! I'm a secretary and touch-typist. Happy to type up documents for you in order to raise money for my chosen charity!",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -296,6 +314,7 @@ module.exports = [
     bio:
       "Hi I'm Madelene, I'm a professional cleaner. If your house needs a clean, give me a shout and we can raise money for a good cause!",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -312,6 +331,7 @@ module.exports = [
     bio:
       "Hi I'm Tim, I fix computers for a living. Let me know if your PC or Mac is playing up and I'm happy to take a look!",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -328,6 +348,7 @@ module.exports = [
     bio:
       "Hi I'm Eyde, I work in a computer repair shop. I am happy to help a neighbour in need!",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -344,6 +365,7 @@ module.exports = [
     bio:
       "Hi I'm Codi, I'm an expert at reparing macbooks. I'd love to give my time for a good cause.",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -360,6 +382,7 @@ module.exports = [
     bio:
       "Hey there, I'm Minnie and I work with computers. If you need help with anything IT related I am happy to take a look.",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -376,6 +399,7 @@ module.exports = [
     bio:
       "Hey there, I'm David, I work for HMRC - if anyone wants their accounts looking over, happy to offer my advice for free in order to raise money for an important cause.",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -392,6 +416,7 @@ module.exports = [
     bio:
       "Hello I'm Seymour, I am a qualified electrician. Looking to raise money for a fantastic charity and to help my community.",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -408,6 +433,7 @@ module.exports = [
     bio:
       "Hi there I am Madalyn, I am an electrician and happy to volunteer my time for a worthwhile cause. Give me a buzz (pun intended!)",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -424,6 +450,7 @@ module.exports = [
     bio:
       "Hi there my name is Kylila. I work as a painter and decorator, my specialism is wallpapering!",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -439,6 +466,7 @@ module.exports = [
     location: "tbc",
     bio: "Hi I am Kareem and I'm a roofer!",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -455,6 +483,7 @@ module.exports = [
     bio:
       "Hello I'm Christiano, I work as a roofer and I'm happy to help out anyone who has issues with their roof in order to raise money for a charity that's close to my heart.",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -471,6 +500,7 @@ module.exports = [
     bio:
       "Hi there, I'm Evelina. I love to clean (strange I know!) but I would love to raise money for my chosen charity while also helping out a neighbour!",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
@@ -487,6 +517,7 @@ module.exports = [
     bio:
       "Hi there, I'm George, retired plumber. Happy to help a neighbour in need!",
     charity_id: "tbc",
+    charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
   },
