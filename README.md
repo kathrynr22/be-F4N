@@ -13,7 +13,7 @@ Each user should have:
 - `username` which is the primary key & unique - may not need this if we are signing in through facebook/google?
 - `first_name` string limit on characters
 - `last_name` string limit on characters
-- `phone number` ?
+- `phone_number` ?
 - `email` ?
   //need some method of communicating with each other - they can communicate in comments section, but people would not want to give out their contact details on a comment. Would they be happy giving their email address and phone number on profile page..I guess so. Ideally we could implement some private chat functionality but not MVP.
 - `avatar_url`
