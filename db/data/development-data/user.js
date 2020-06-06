@@ -406,7 +406,7 @@ module.exports = [
     skills: "tbc",
     location: "tbc",
     bio:
-      "Hi there I am Madalyn, I am an electrician and happy to volunteer my time for a worthwhile cause.",
+      "Hi there I am Madalyn, I am an electrician and happy to volunteer my time for a worthwhile cause. Give me a buzz (pun intended!)",
     charity_id: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
