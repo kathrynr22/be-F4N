@@ -9,8 +9,7 @@ module.exports = [
     charity_name: "Greenpeace",
     charity_logo: "tbc",
     charity_url: "tbc",
-    charity_description:
-      "This charity works to improve the mental health of cats.",
+    charity_description: "",
   },
   {
     charity_name: "Cancer research",
@@ -28,8 +27,7 @@ module.exports = [
     charity_name: "RSPCA",
     charity_logo: "tbc",
     charity_url: "tbc",
-    charity_description:
-      "This charity is actually the worst funded charity in the whole of the UK. Let's get them to the £1 mark!",
+    charity_description: "",
   },
   {
     charity_name: "Friends of the Earth",
