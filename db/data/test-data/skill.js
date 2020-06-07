@@ -1,6 +1,9 @@
 module.exports = [
   {
-    skill_name: "hair stylist",
+    skill_name: "hair styling",
+  },
+  {
+    skill_name: "chimney sweep",
   },
   {
     skill_name: "car mechanics",
@@ -13,5 +16,8 @@ module.exports = [
   },
   {
     skill_name: "translating",
+  },
+  {
+    skill_name: "DIY",
   },
 ];

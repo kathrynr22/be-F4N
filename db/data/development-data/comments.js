@@ -44,8 +44,8 @@ module.exports = [
     username: "gsher2g",
     avatar_url: "tbc",
     charity_name: "",
-    charity_id: "",
     charity_logo: "",
     created_at: "", //do we need to fill this in
+    // how does it work with comments table how much info needs to be in the table and how much comes from a join?
   },
 ];

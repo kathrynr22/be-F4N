@@ -6,48 +6,48 @@
 
 This is where you will set up the schema for each table in your database.
 
-You should have separate tables for `skills`, `charities`, `jobs`, `users` and `comments`. You will need to think carefully about the order in which you create your migrations. You should think carefully about whether you require any constraints on your table columns (e.g. 'NOT NULL')
+You should have separate tables for `charities`, `skills`, `users` `jobs`, and `comments`.
 
-//Charity should come first, because users table and comments table needs to refer to it
+//Charity should come first, because the users table and the comments table needs to refer to it
+
 Each charity should have:
 
 - `charity_name` which is a unique string that acts as the table's primary key
-- `charity_logo` not sure how this would work
+- `charity_logo`
 - `charity_url`
 - `charity_description` string limit characters
 
-//Skill should come second as users table, jobs table and comments table need to refer to it
+//Skill should come second as the users table, jobs table and comments table need to refer to it
 
 Each skill should have:
 
 - `skill_name` field which is a unique string that acts as the table's primary key
 
-//Username should come third as jobs reference usernames
+//Username should come third as the jobs and comments tables reference usernames
 
 Each user should have:
 
-- `username` which is the primary key & unique - may not need this if we are signing in through facebook/google?
-- `password` may not need mix of char and numbers
+- `username` which is the primary key & unique
+- `password` may not need? dont want it to come back in a GET request! mix of char and numbers
 - `first_name` string limit on characters
 - `last_name` string limit on characters
 - `number` ?
 - `email` ?
-  //need some method of communicating with each other - they can communicate in comments section, but people would not want to give out their contact details on a comment. Would they be happy giving their email address and phone number on profile page..I guess so. Ideally we could implement some private chat functionality but not MVP.
+  //they need some method of communicating with each other - they can communicate in comments section, but people would not want to give out their contact details on a comment. Would they be happy giving their email address and phone number on profile page..I guess so. Ideally we could implement some private chat functionality but not MVP.
 - `avatar_url`
-- `skill_name`
+- `skill_name` - can have more than one skill. But can also just have one skill?
 - `location` are we doing location eg Chorlton or Postcode eg M21 ??
 - `bio` limit amount of characters
-- `charity_id` which references the charity table
 - `charity_name` which references the charity table
 - `charity_logo` which references the charity table
-- `justgiving_link` for demo purposes may have to do a fake charity link and not actually use justgiving...something silly like ju5tgiving
+- `justgiving_link` ?
 
 Each job should have:
 
 - `job_id` which is the primary key
 - `title` string limit characters
 - `body` string limit characters
-- `skills_required` not sure how to do this ???
+- `skills_required` the test data is currently just one skill...I could adapt so sometimes people want more than one skill?
 - `username` field that references a user's primary key (username)
 - `created_at` defaults to the current timestamp
 
@@ -58,8 +58,7 @@ Each comment should have:
 - `comment_id` which is the primary key
 - `username` field that references a user's primary key (username)
 - `job_id` field that references an job's primary key
-- `charity_id` - ?? dont know if we need this as well as charity name would need a junction table needs to reference charity from user table
-- `charity_name` needs to reference charity from user table
+- `charity_name` needs to reference charity name from user table ie what the person commenting/volunteering's chosen charity is
 - `created_at` defaults to the current timestamp
 - `body` string - limit characters
 
@@ -68,7 +67,7 @@ Each comment should have:
 ### Routes
 
 ```http
-GET /api/
+GET /api/ shows all end points etc - useful for developing front end
 
 GET /api/skills
 
@@ -103,15 +102,18 @@ _**All of your endpoints should send the below responses in an object, with a ke
 {
   "user": [
     {
-      "username": "JoeBlogs99",
-      "avatar_url": "some url?",
-      "name": "Joe Blogs",
-      "location": "Chorlton" OR "M21"
-      "skills": {"skill1": "gardening", "skill2" :"plumbing"},
-      "chosen_charity": "Oxfam",
-      "charity_id": 430 (may not need this),
-      "charity_logo": "some url?"
-
+      "username": "fsokale34",
+      "first_name": "Finn",
+      "last_name": "Sokale",
+      "number": "07945365450",
+      "email": "fsokale34@salon.com",
+      "avatar_url": "tbc",
+      "location": "tbc",
+      "bio": "Hello I am a graphic designer. Reach out if you need a favour and help me raise some funds for a charity in need. I am also great at DIY.",
+      "charity_name": "tbc",
+      "charity_logo": "tbc",
+      "justgiving_url": "tbc"
+      //skill_name: "graphic design", "DIY" do we put skill here or do some kind of join
     }
   ]
 }

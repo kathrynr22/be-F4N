@@ -1,13 +1,3 @@
-// - `job_id` which is the primary key
-//   - `title` string limit characters
-//     - `body` string limit characters
-//       - `skills_required`
-//         - `username`  that references a user's primary key (username)
-//           - `created_at` defaults to the current timestamp
-
-//               username:
-//                 username: "aduncklee32",
-
 module.exports = [
   {
     title: "Hair stylist for an important party",
