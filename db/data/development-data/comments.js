@@ -1,6 +1,7 @@
 // - `comment_id` which is the primary key
 // - `username` field that references a user's primary key (username)
 // - `job_id` field that references an job's primary key
+// - `charity_name` needs to reference charity name from user table ie what the person commenting/volunteering's chosen charity is
 // - `created_at` defaults to the current timestamp
 // - `body` string - limit characters
 

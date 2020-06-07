@@ -76,7 +76,7 @@ module.exports = [
     avatar_url: "tbc",
     location: "tbc",
     bio:
-      "Hey there I'm Dawn, I am a retired secretary. I speak three languages: French, Spanish and Italian so would be happy to help with translating. I am also pretty good with all kinds of DIY! Happy to help out with typing or proofreading!",
+      "Hey there I'm Dawn, I am a retired secretary. I speak three languages: French, German and Italian so would be happy to help with translating. I am also pretty good with all kinds of DIY! Happy to help out with typing or proofreading!",
 
     charity_name: "tbc",
     //charity_logo: do we put in charity logo etc here or do some kind of join with charity table?

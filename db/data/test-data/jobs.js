@@ -40,7 +40,7 @@ module.exports = [
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
-    title: "Any graphic designs free next week?",
+    title: "Any graphic designers free next week?",
     body:
       "Hi guys, I am trying to design my own website for my new business but design is not my strong suit. I'd love to have some expert advice and it would be great to raise money for a good cause at the same time!.",
     skills_required: "graphic design",
