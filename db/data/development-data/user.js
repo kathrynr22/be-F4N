@@ -7,14 +7,13 @@ module.exports = [
     number: "07624374426",
     email: "afawdry0@ox.ac.uk",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
-      "Hi I am Audrie, I am a gardener and am happy to help if anyone needs a hand with their garden.",
-    charity_id: "tbc",
+      "Hi I am Audrie, I am a gardener and am happy to help if anyone needs a hand with their garden. I am also a keen baker.",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_names: "gardening", "baking" - do we put them in here or do some kind of join
   },
   {
     username: "fvanlint1",
@@ -27,11 +26,12 @@ module.exports = [
     skills: "tbc",
     location: "tbc",
     bio:
-      "Hi I am Frederica, I work at a garden centre and am an expert on plants.",
+      "Hi I am Frederica, I work at a garden centre and am an expert on plants. I am also a keen photographer.",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_names: "gardening", "photography" -  do we put them in here or do some kind of join
   },
   {
     username: "ghanvey2",
@@ -41,13 +41,14 @@ module.exports = [
     number: "07879936358",
     email: "ghanvey2@discovery.com",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
-    bio: "Hey there, my name is Gabrielle and I am a qualified accountant.",
+    bio:
+      "Hey there, my name is Gabrielle and I am a qualified accountant. I also do caligraphy in my spare time.",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_names: "accounts", "caligraphy" -  do we put them in here or do some kind of join
   },
   {
     username: "swhordley3",
@@ -57,14 +58,14 @@ module.exports = [
     number: "077442709032	",
     email: "swhordley3@elpais.com",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
-      "Hey there, I am Shane and I work in IT. I would be happy to offer advice if anyone is having computer problems.",
+      "Hey there, I am Shane and I work in IT. I would be happy to offer advice if anyone is having computer problems. I also work as a videographer part time.",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_names: "computers", "videography" -  do we put them in here or do some kind of join
   },
   {
     username: "vrylett5",
@@ -74,14 +75,14 @@ module.exports = [
     number: "07794796001",
     email: "vrylett5@vistaprint.com",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
-      "Hiya, I'm Vince and I've been a plumber for nearly 30 years. Happy to pop round if my neighbours need some help with plumbing issues.",
+      "Hiya, I'm Vince and I've been a plumber for nearly 30 years. Happy to pop round if my neighbours need some help with plumbing issues. I also have experience as a roofer.",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_names: "plumbing", "roofing" -  do we put them in here or do some kind of join
   },
   {
     username: "lwilliams7",
@@ -91,13 +92,13 @@ module.exports = [
     number: "07283511316",
     email: "lwilliams7@miitbeian.gov.cn",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio: "Howdy, I'm Liam and I'm a qualified electrician.",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_names: "electrics" ONE ONLY SKILL IS THAT OK  do we put them in here or do some kind of join
   },
   {
     username: "ogreenhall8",
@@ -107,7 +108,6 @@ module.exports = [
     number: "077458864919",
     email: "ogreenhall8@tinyurl.com",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
       "Hi I'm Orin and I'm a part-time painter and decorator. I also teach drawing classes at the community centre and am studying for a phd in art history.",
@@ -115,6 +115,7 @@ module.exports = [
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_names: "painting and decorating", ONLY ONE SKILL IS THAT OK-  do we put them in here or do some kind of join
   },
   {
     username: "mtiremana",
@@ -124,14 +125,14 @@ module.exports = [
     number: "07337725394",
     email: "mtiremana@hotmail.com",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
-      "Hi I'm Marianne, I'm a painter and decorator and would be happy to share my skills and raise money for my chosen charity.",
+      "Hi I'm Marianne, I'm a painter and decorator and I also love to bake in my spare time. I would be happy to share my skills and raise money for my chosen charity.",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_names: "painting and decorating", "baking"-  do we put them in here or do some kind of join
   },
   {
     username: "csimmons22",
@@ -141,13 +142,13 @@ module.exports = [
     number: "07117998928",
     email: "csimmons@disqus.com",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio: "Hey there, I'm Carl and I'm a carpenter and Ikea flat-pack expert!",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_names: "flat pack", ONLY ONE SKILL IS THAT OK-  do we put them in here or do some kind of join
   },
   {
     username: "sfantonec",
@@ -157,14 +158,14 @@ module.exports = [
     number: "07863721114",
     email: "sfantonec@mlb.com",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
-      "Hi I'm Stanley, I am a retired carpenter and am happy to share my skills.",
+      "Hi I'm Stanley, I am a retired carpenter. I now enjoy photography and am happy to share my skills.",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "flat pack", "photography" do we put them in here or do some kind of join
   },
   {
     username: "jbugbirdy",
@@ -174,7 +175,6 @@ module.exports = [
     number: "07877325309",
     email: "jbugbirdy@chronoengine.com",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
       "Hi I'm Jason and I am a qualified roofer. Got a tile missing? Give me a shout!",
@@ -182,6 +182,7 @@ module.exports = [
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "roofing", ONLY ONE SKILL IS THAT OK-  do we put them in here or do some kind of join
   },
   {
     username: "stevesmith33",
@@ -191,14 +192,14 @@ module.exports = [
     number: "07554443211",
     email: "stevesmith33@gmail.com",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
-      "Hello I'm Steve and I'm an accountant. Happy to offer advice on taxes and the like!",
+      "Hello I'm Steve and I'm an accountant. Happy to offer advice on taxes and the like! I am also a bit of a computer geek.",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "accounts", "computers" -  do we put them in here or do some kind of join
   },
   {
     username: "jackthelad",
@@ -208,7 +209,6 @@ module.exports = [
     number: "07717948473",
     email: "jackj232@dmoz.org",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
       "Hi I am Jack and I'm a plumber. I am happy to help if I can, and raise money for a great cause!",
@@ -216,6 +216,7 @@ module.exports = [
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "plumbing", ONLY ONE SKILL IS THAT OK-  do we put them in here or do some kind of join
   },
   {
     username: "gcornelius17",
@@ -225,14 +226,14 @@ module.exports = [
     number: "07653852694",
     email: "gcornelius17@illinois.edu",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
-      "Hi I'm Gretna, I'm a landscaper. I love to be in the outdoors and would be happy to lend a green finger to any neighbour!",
+      "Hi I'm Gretna, I'm a landscaper. I love to be in the outdoors and would be happy to lend a green finger to any neighbour! I also used to be a secretary so am happy to share those skills.",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "gardening", "secretarial", "typing", "proofreading"   do we put them in here or do some kind of join
   },
   {
     username: "okerley19",
@@ -242,7 +243,6 @@ module.exports = [
     number: "07090503224",
     email: "okerley19@gmail",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
       "Hey I am Orelee and I work as a tree surgeon. I am happy to work for free if people donate to my chosen charity!",
@@ -250,6 +250,7 @@ module.exports = [
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "gardening", do we put them in here or do some kind of join
   },
   {
     username: "vkausche1a",
@@ -259,14 +260,14 @@ module.exports = [
     number: "07982259569",
     email: "vkausche1a@gmail.com",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
-      "Hey there I'm Val, I am a plumber. Looking to raise money for my chosen charity, while helping out my neighbours at the same time!",
+      "Hey there I'm Val, I am a plumber. Looking to raise money for my chosen charity, while helping out my neighbours at the same time! I am also a dab hand at flat pack.",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "plumbing", "flat pack" do we put them in here or do some kind of join
   },
   {
     username: "egillie1b",
@@ -276,13 +277,14 @@ module.exports = [
     number: "07299021574",
     email: "egillie1b@t-online.de",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
-    bio: "Hi there I am Elbertine and I'm a qualified proofreader.",
+    bio:
+      "Hi there I am Elbertine and I'm a qualified proofreader. I also love to bake in my spare time.",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "proofreading", "typing", "baking" do we put them in here or do some kind of join
   },
   {
     username: "salsina1c",
@@ -292,7 +294,6 @@ module.exports = [
     number: "07781959349",
     email: "salsina1c@tumblr.com",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
       "Hi I'm Sammie! I'm a secretary and touch-typist. Happy to type up documents for you in order to raise money for my chosen charity!",
@@ -300,6 +301,7 @@ module.exports = [
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "secretarial", "typing" ONLY ONE SKILL IS THAT OK-  do we put them in here or do some kind of join
   },
   {
     username: "mbouch1d",
@@ -309,14 +311,14 @@ module.exports = [
     number: "07058421018",
     email: "mbouch1d@tumblr.com",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
-      "Hi I'm Madelene, I'm a professional cleaner. If your house needs a clean, give me a shout and we can raise money for a good cause!",
+      "Hi I'm Madelene, I'm a professional cleaner. If your house needs a clean, give me a shout and we can raise money for a good cause! I also love spending time outdoors and in the garden.",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "cleaning", "gardening" do we put them in here or do some kind of join
   },
   {
     username: "tsnowsill1h",
@@ -326,7 +328,6 @@ module.exports = [
     number: "07742732760",
     email: "tsnowsill1h@infoseek.co.jp",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
       "Hi I'm Tim, I fix computers for a living. Let me know if your PC or Mac is playing up and I'm happy to take a look!",
@@ -334,6 +335,7 @@ module.exports = [
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "computers", ONLY ONE SKILL IS THAT OK-  do we put them in here or do some kind of join
   },
   {
     username: "ematkovic1j",
@@ -343,14 +345,14 @@ module.exports = [
     number: "07123117700",
     email: "ematkovic1j@jugem.jp",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
-      "Hi I'm Eyde, I work in a computer repair shop. I am happy to help a neighbour in need!",
+      "Hi I'm Eyde, I work in a computer repair shop. I am happy to help a neighbour in need! I also love to spend time gardening and would be happy to help with any gardening jobs.",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_names: "computers", "gardening"-  do we put them in here or do some kind of join
   },
   {
     username: "cocurrigan1t",
@@ -360,14 +362,14 @@ module.exports = [
     number: "07047960341",
     email: "cocurrigan1t@time.com",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
-      "Hi I'm Codi, I'm an expert at reparing macbooks. I'd love to give my time for a good cause.",
+      "Hi I'm Codi, I'm an expert at reparing macbooks. I'd love to give my time for a good cause. In my spare time I am a photographer, I am hoping to do this professionally one day. I am also pretty good at putting together flat pack furniture!",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "computers", "flat pack", "photography"-  do we put them in here or do some kind of join
   },
   {
     username: "mfreeberne1u",
@@ -377,7 +379,6 @@ module.exports = [
     number: "07326677546",
     email: "mfreeberne1u@skype.com",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
       "Hey there, I'm Minnie and I work with computers. If you need help with anything IT related I am happy to take a look.",
@@ -385,6 +386,7 @@ module.exports = [
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "computers", do we put them in here or do some kind of join
   },
   {
     username: "dmacnish1v",
@@ -394,7 +396,6 @@ module.exports = [
     number: "07268483115",
     email: "dmacnish1v@jigsy.com",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
       "Hey there, I'm David, I work for HMRC - if anyone wants their accounts looking over, happy to offer my advice for free in order to raise money for an important cause.",
@@ -402,6 +403,7 @@ module.exports = [
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "accounts", ONLY ONE SKILL IS THAT OK-  do we put them in here or do some kind of join
   },
   {
     username: "sstraun1w",
@@ -411,7 +413,6 @@ module.exports = [
     number: "07452364804",
     email: "sstraun1w@mashable.com",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
       "Hello I'm Seymour, I am a qualified electrician. Looking to raise money for a fantastic charity and to help my community.",
@@ -419,6 +420,7 @@ module.exports = [
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "electrics", ONLY ONE SKILL IS THAT OK-  do we put them in here or do some kind of join
   },
   {
     username: "mneagle1x",
@@ -428,7 +430,6 @@ module.exports = [
     number: "07408812912",
     email: "mneagle1x@cbsnews.com",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
       "Hi there I am Madalyn, I am an electrician and happy to volunteer my time for a worthwhile cause. Give me a buzz (pun intended!)",
@@ -436,6 +437,7 @@ module.exports = [
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "electrics",do we put them in here or do some kind of join
   },
   {
     username: "kparnall1y",
@@ -445,14 +447,14 @@ module.exports = [
     number: "07458877580",
     email: "kparnall1y@infoseek.co.jp",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
-      "Hi there my name is Kylila. I work as a painter and decorator, my specialism is wallpapering!",
+      "Hi there my name is Kylila. I work as a painter and decorator, my specialism is wallpapering! I also love sewing and baking.",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "painting and decorating", "sewing", "baking" do we put them in here or do some kind of join
   },
   {
     username: "kheasly20",
@@ -462,13 +464,14 @@ module.exports = [
     number: "07277724638",
     email: "kheasly20@oaic.gov.au",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
-    bio: "Hi I am Kareem and I'm a roofer!",
+    bio:
+      "Hi I am Kareem and I'm a roofer! I am also good at other kinds of tiles such as bathroom tiling.",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "roofing", "tiling" ONLY ONE SKILL IS THAT OK-  do we put them in here or do some kind of join
   },
   {
     username: "cpevie21",
@@ -478,7 +481,6 @@ module.exports = [
     number: "07561863733",
     email: "cpevie21@tuttocitta.it",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
       "Hello I'm Christiano, I work as a roofer and I'm happy to help out anyone who has issues with their roof in order to raise money for a charity that's close to my heart.",
@@ -486,6 +488,7 @@ module.exports = [
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_names: "roofing", ONLY ONE SKILL IS THAT OK-  do we put them in here or do some kind of join
   },
   {
     username: "ebarkworth23",
@@ -495,14 +498,14 @@ module.exports = [
     number: "07718624610",
     email: "ebarkworth23@vkontakte.ru",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
-      "Hi there, I'm Evelina. I love to clean (strange I know!) but I would love to raise money for my chosen charity while also helping out a neighbour!",
+      "Hi there, I'm Evelina. I love to clean (strange I know!) but I would love to raise money for my chosen charity while also helping out a neighbour! I am also a qualified make up artist.",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "cleaning", "make up artist"
   },
   {
     username: "gsher2g",
@@ -512,13 +515,13 @@ module.exports = [
     number: "07677595376",
     email: "gsher2g@desdev.cn",
     avatar_url: "tbc",
-    skills: "tbc",
     location: "tbc",
     bio:
-      "Hi there, I'm George, retired plumber. Happy to help a neighbour in need!",
+      "Hi there, I'm George, retired plumber. I have also done the tiles in my own bathroom and kitchen and in many friends' houses. Happy to help a neighbour in need!",
     charity_id: "tbc",
     charity_name: "tbc",
     charity_logo: "tbc",
     justgiving_url: "tbc",
+    // skill_name: "plumbing", "tiling" ONLY ONE SKILL IS THAT OK-  do we put them in here or do some kind of join
   },
 ];

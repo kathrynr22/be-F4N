@@ -11,8 +11,7 @@ You should have separate tables for `skills`, `charities`, `jobs`, `users` and `
 //Charity should come first, because users table and comments table needs to refer to it
 Each charity should have:
 
-- `charity_id` which is the primary key
-- `charity_name` string
+- `charity_name` which is a unique string that acts as the table's primary key
 - `charity_logo` not sure how this would work
 - `charity_url`
 - `charity_description` string limit characters
@@ -21,8 +20,9 @@ Each charity should have:
 
 Each skill should have:
 
-- `skill_id` which is the primary key
-- `skill_name` string limt on characters
+- `skill_name` field which is a unique string that acts as the table's primary key
+
+//Username should come third as jobs reference usernames
 
 Each user should have:
 
@@ -34,7 +34,7 @@ Each user should have:
 - `email` ?
   //need some method of communicating with each other - they can communicate in comments section, but people would not want to give out their contact details on a comment. Would they be happy giving their email address and phone number on profile page..I guess so. Ideally we could implement some private chat functionality but not MVP.
 - `avatar_url`
-- `skills` how can we allow for more than one skill?
+- `skill_name`
 - `location` are we doing location eg Chorlton or Postcode eg M21 ??
 - `bio` limit amount of characters
 - `charity_id` which references the charity table
@@ -50,6 +50,8 @@ Each job should have:
 - `skills_required` not sure how to do this ???
 - `username` field that references a user's primary key (username)
 - `created_at` defaults to the current timestamp
+
+//comments should come last as they reference job id, usernames, and charity info.
 
 Each comment should have:
 

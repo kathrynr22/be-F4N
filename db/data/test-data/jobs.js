@@ -1,8 +1,8 @@
 // - `job_id` which is the primary key
 //   - `title` string limit characters
 //     - `body` string limit characters
-//       - `skills_required` not sure how to do this ???
-//         - `author` field that references a user's primary key (username)
+//       - `skills_required`
+//         - `username`  that references a user's primary key (username)
 //           - `created_at` defaults to the current timestamp
 
 //               username:
@@ -10,101 +10,51 @@
 
 module.exports = [
   {
-    title: "Gardening assistance required please!",
+    title: "Hair stylist for an important party",
     body:
-      "Hi all, I've been really busy with work and my garden has got out of control. Would anyone be willing to help me out for a few hours and I'll happily donate to your chosen charity!",
-    skills_required: "gardening",
+      "Hi all, it is my daughter's graduation next week and I would love to look my best. But none of the hairdressers are open. Would anyone be willing to come round and fix my hair. I would love to donate to a good cause at the same time!",
+    skills_required: "hair stylist",
     username: "gdurdane",
     avatar_url: "tbc",
     location: "tbc",
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
-    title: "Any accountants willing to help?",
+    title: "Car battery gone",
     body:
-      "Hi all, I am putting together my first tax return and I'm a little lost. Would anyone with the relevant skills have an hour to spare to help me?",
-    skills_required: "accountancy",
+      "Hi guys my car battery has gone caput. I have ordered a new battery but I would not feel confident fitting it myself. Would anyone be able to lend a hand?",
+    skills_required: "car mechanic",
     username: "twebleyf",
     avatar_url: "tbc",
     location: "tbc",
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
-    title: "Flat pack experts neeeded",
+    title: "Window cleaner needed",
     body:
-      "Hi all, I have just moved house and went a bit made in Ikea. Would anyone have any spare time to lend a hand?",
-    skills_required: "furniture-assembly",
+      "Hi guys, are there any window cleaners free next week to come and do my windows.",
+    skills_required: "window cleaning",
     username: "jhumbell",
     avatar_url: "tbc",
     location: "tbc",
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
-    title: "Cleaning assistance needed",
+    title: "Any German speakers?",
     body:
-      "Hi guys, I have been visiting my mum in hospital the past few weeks and the cleaning has really got on top of me. I would so appreciate some help with that if possible.",
-    skills_required: "cleaning",
+      "Hey guys, I found some old letters in my Grandad's attic from when he served in world war two. A number of them are written in German. I'd love to get a translation if anyone has the time to help.",
+    skills_required: "translating",
     username: "cmarchbankj",
     avatar_url: "tbc",
     location: "tbc",
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
-    title: "Missing roof tile!",
+    title: "Any graphic designs free next week?",
     body:
-      "Hi all I noticed a tile had fallen off my roof. Would be very grateful if someone could take a look.",
-    skills_required: "roofer",
+      "Hi guys, I am trying to design my own website for my new business but design is not my strong suit. I'd love to have some expert advice and it would be great to raise money for a good cause at the same time!.",
+    skills_required: "graphic design",
     username: "dfoxl",
-    avatar_url: "tbc",
-    location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
-  },
-  {
-    title: "Anyone able to help with a proofreading job?",
-    body:
-      "Hi all I have finally written the first draft of my phd. It would be brilliant if someone could proofread the first draft. Charitable donation given in exchange!",
-    skills_required: "proofreading",
-    username: "hstrowan2m",
-    avatar_url: "tbc",
-    location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
-  },
-  {
-    title: "Wallpapering is driving me mad!",
-    body:
-      "Hey guys, if anyone is free to help me with some wallpapering, I would be eternally grateful!",
-    skills_required: "painting and decorating",
-    username: "wstallebrass2r",
-    avatar_url: "tbc",
-    location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
-  },
-  {
-    title: "Dripping tap - help!",
-    body:
-      "Hi there, I've got a dripping tap if anyone has the tools to fix it!",
-    skills_required: "plumbing",
-    username: "fsokale34",
-    avatar_url: "tbc",
-    location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
-  },
-  {
-    title: "Lightbulb needs changing",
-    body:
-      "Hi all, I need a lightbulb changing but I have done my back in recently and can't do it. Can anyone help!",
-    skills_required: "electrician",
-    username: "cgibberd2x",
-    avatar_url: "tbc",
-    location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
-  },
-  {
-    title: "Computer issues",
-    body:
-      "Hi guys, I think I've got a virus on my computer. The screen has gone red and is not responding, would anyone be able to give their opinion?",
-    skills_required: "IT advice",
-    username: "wstallebrass2r",
     avatar_url: "tbc",
     location: "tbc",
     created_at: "", //do i put anything in here or does it create something by default,

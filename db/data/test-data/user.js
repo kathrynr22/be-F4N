@@ -7,7 +7,7 @@ module.exports = [
     number: "07089310852",
     email: "gdurdane@drupal.org",
     avatar_url: "tbc",
-    skills: "tbc",
+    skill_name: "tbc",
     location: "tbc",
     bio: "Hello I'm Godfrey and I'm an accountant.",
     charity_id: "tbc",
