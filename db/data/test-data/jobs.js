@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: "Hair stylist for an important party",
+    title: "Hair stylist for an important event",
     body:
       "Hi all, it is my daughter's graduation next week and I would love to look my best. But none of the hairdressers are open. Would anyone be willing to come round and fix my hair. I would love to donate to a good cause at the same time!",
     skills_required: "hair stylist",
