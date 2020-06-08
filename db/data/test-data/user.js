@@ -52,7 +52,7 @@ module.exports = [
     avatar_url: "https://randomuser.me/api/portraits/women/87.jpg",
     location: "M5",
     bio:
-      "Hey there I'm Dawn, I am a retired secretary. I speak three languages: French, German and Italian so would be happy to help with translating. I am also pretty good with all kinds of DIY! Happy to help out with typing or proofreading!",
+      "Hey there I'm Dawn, I am a retired secretary. I speak three languages: French, German and Italian so would be happy to help with translating. I am also pretty good with all kinds of DIY!",
     charity_name: "RSPCA",
   },
   {
@@ -85,7 +85,7 @@ module.exports = [
     avatar_url: "https://randomuser.me/api/portraits/women/54.jpg",
     location: "M8",
     bio:
-      "Hi I'm Catherine and I'm a chimney sweep. If your chimney is in need of a sweep and you want to raise money for charity at the same time, get in touch! I also speak fluent Spanish. I'd be happy to volunteer my time if anyone needs cleaning assistance.",
+      "Hi I'm Catherine and I'm a chimney sweep. If your chimney is in need of a sweep and you want to raise money for charity at the same time, get in touch! I also speak fluent Spanish. ",
     charity_name: "Cancer research",
   },
   {
