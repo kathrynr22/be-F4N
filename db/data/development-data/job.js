@@ -7,7 +7,7 @@ module.exports = [
       "Hi all, I have a privet hedge that is out of control and is taking over the path. Would anyone be willing to help me tackle it?",
     username: "ebarkworth23",
     location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
+    created_at: "2020-06-05T11:23:00.000Z",
   },
   {
     //job_id 2 generated automatically by db
@@ -17,7 +17,7 @@ module.exports = [
       "Hi all, I am trying to do my first tax return and I'm a little lost. Would anyone with the relevant knowledge have an hour to spare to help me?",
     username: "cpevie21",
     location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
+    created_at: "2020-06-02T11:33:00.000Z",
   },
   {
     //job_id 3 generated automatically by db
@@ -27,17 +27,17 @@ module.exports = [
     skills_required: "furniture-assembly",
     username: "kheasly20",
     location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
+    created_at: "2020-06-04T16:10:00.000Z",
   },
   {
     //job_id 4 generated automatically by db
     title: "Cleaning help please",
     body:
-      "Hi guys, I have been visiting my dad in hospital the past few weeks and the cleaning has really got on top of me. I would so appreciate some help with that if possible.",
+      "Hi guys, I have been visiting my dad in hospital the past few weeks and the cleaning has really got on top of me. I would so appreciate some help with that if possible. Happy to donate to a good cause too!",
     skills_required: "cleaning",
     username: "mneagle1x",
     location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
+    created_at: "2020-06-04T09:11:00.000Z",
   },
   {
     //job_id 5 generated automatically by db
@@ -47,17 +47,17 @@ module.exports = [
     skills_required: "roofer",
     username: "dmacnish1v",
     location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
+    created_at: "2020-06-04T10:09:02.000Z",
   },
   {
     //job_id 6 generated automatically by db
     title: "Anyone good at proofreading?",
     body:
-      "Hi all would anyone be willing to proofread the first draft of my phd. It needs a fresh pair of eyes!",
+      "Hi all would anyone be willing to proofread the first draft of my phd. It needs a fresh pair of eyes! There's no massive rush just in the next month or so would be great.",
     skills_required: "proofreading",
     username: "ogreenhall8",
     location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
+    created_at: "2020-06-03T11:11:00.000Z",
   },
   {
     //job_id 7 generated automatically by db
@@ -67,7 +67,7 @@ module.exports = [
     skills_required: "painting and decorating",
     username: "swhordley3",
     location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
+    created_at: "2020-06-06T11:12:00.000Z",
   },
   {
     //job_id 8 generated automatically by db
@@ -77,7 +77,7 @@ module.exports = [
     skills_required: "plumbing",
     username: "csimmons22",
     location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
+    created_at: "2020-06-05T07:11:00.000Z",
   },
   {
     //job_id 9 generated automatically by db
@@ -87,7 +87,7 @@ module.exports = [
     skills_required: "electrician",
     username: "sfantonec",
     location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
+    created_at: "2020-06-05T08:11:00.000Z",
   },
   {
     //job_id 10 generated automatically by db
@@ -96,7 +96,7 @@ module.exports = [
       "Hi guys, I think I've got a virus on my computer. The screen has gone blank and is not responding, would anyone be able to give their opinion?",
     username: "jbugbirdy",
     location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
+    created_at: "2020-06-08T08:11:00.000Z",
   },
   {
     //job_id 11 generated automatically by db
@@ -104,16 +104,16 @@ module.exports = [
     body: "Seetitle",
     username: "stevesmith33",
     location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
+    created_at: "2020-06-06T14:11:00.000Z",
   },
   {
     //job_id 12 generated automatically by db
     title: "Computer won't turn on",
     body:
-      "Hi guys, my computer is refusing to turn itself on today. If anyone who knows about these things would be able to give it a once over that would be tremendously helpful.",
+      "Hi guys, my MacBook Air is refusing to turn itself on today. It's plugged into a charger and is only a few years old. If anyone who knows about these things would be able to give it a once over that would be tremendously helpful.",
     username: "gcornelius17",
     location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
+    created_at: "2020-06-05T09:08:00.000Z",
   },
   {
     //job_id 13 generated automatically by db
@@ -123,6 +123,6 @@ module.exports = [
       "Hey all, are they any macbook experts who may be able to pop round and help me set up a wireless headset. I need it for a zoom call next week. Thanks in advance!.",
     username: "vkausche1a",
     location: "tbc",
-    created_at: "", //do i put anything in here or does it create something by default,
+    created_at: "2020-06-05T09:11:00.000Z",
   },
 ];
