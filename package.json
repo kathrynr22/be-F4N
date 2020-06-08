@@ -4,7 +4,9 @@
   "description": "# Favour4aNeighbour API",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "knex": "^0.21.1",
+    "postgres": "^1.0.2"
   },
   "devDependencies": {},
   "scripts": {
