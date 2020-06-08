@@ -93,7 +93,7 @@ module.exports = [
     //job_id 10 generated automatically by db
     title: "Computer says no",
     body:
-      "Hi guys, I think I've got a virus on my computer. The screen has gone red and is not responding, would anyone be able to give their opinion?",
+      "Hi guys, I think I've got a virus on my computer. The screen has gone blank and is not responding, would anyone be able to give their opinion?",
     username: "jbugbirdy",
     location: "tbc",
     created_at: "", //do i put anything in here or does it create something by default,
