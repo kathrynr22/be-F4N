@@ -6,7 +6,6 @@ module.exports = [
     body:
       "Hi all, I have a privet hedge that is out of control and is taking over the path. Would anyone be willing to help me tackle it?",
     username: "ebarkworth23",
-    location: "tbc",
     created_at: "2020-06-05T11:23:00.000Z",
   },
   {
@@ -16,7 +15,6 @@ module.exports = [
     body:
       "Hi all, I am trying to do my first tax return and I'm a little lost. Would anyone with the relevant knowledge have an hour to spare to help me?",
     username: "cpevie21",
-    location: "tbc",
     created_at: "2020-06-02T11:33:00.000Z",
   },
   {
@@ -26,7 +24,6 @@ module.exports = [
       "Hi all, I have just moved house and went a bit made in Ikea. Would anyone have any spare time to lend a hand with the flat-pack?",
     skills_required: "furniture-assembly",
     username: "kheasly20",
-    location: "tbc",
     created_at: "2020-06-04T16:10:00.000Z",
   },
   {
@@ -36,7 +33,6 @@ module.exports = [
       "Hi guys, I have been visiting my dad in hospital the past few weeks and the cleaning has really got on top of me. I would so appreciate some help with that if possible. Happy to donate to a good cause too!",
     skills_required: "cleaning",
     username: "mneagle1x",
-    location: "tbc",
     created_at: "2020-06-04T09:11:00.000Z",
   },
   {
@@ -46,7 +42,6 @@ module.exports = [
       "Hi all I noticed a tile had fallen off my roof. Would be very grateful if someone could take a look.",
     skills_required: "roofer",
     username: "dmacnish1v",
-    location: "tbc",
     created_at: "2020-06-04T10:09:02.000Z",
   },
   {
@@ -56,7 +51,6 @@ module.exports = [
       "Hi all would anyone be willing to proofread the first draft of my phd. It needs a fresh pair of eyes! There's no massive rush just in the next month or so would be great.",
     skills_required: "proofreading",
     username: "ogreenhall8",
-    location: "tbc",
     created_at: "2020-06-03T11:11:00.000Z",
   },
   {
@@ -66,7 +60,6 @@ module.exports = [
       "Hey guys, if anyone is free to help me with some wallpapering, I would be eternally grateful!",
     skills_required: "painting and decorating",
     username: "swhordley3",
-    location: "tbc",
     created_at: "2020-06-06T11:12:00.000Z",
   },
   {
@@ -76,7 +69,6 @@ module.exports = [
       "Hi there, I've got a dripping tap if anyone has the tools to fix it! It's driving me nuts!",
     skills_required: "plumbing",
     username: "csimmons22",
-    location: "tbc",
     created_at: "2020-06-05T07:11:00.000Z",
   },
   {
@@ -86,7 +78,6 @@ module.exports = [
       "Hi all, I need a lightbulb changing but I have done my back in recently and can't do it. Can anyone help!",
     skills_required: "electrician",
     username: "sfantonec",
-    location: "tbc",
     created_at: "2020-06-05T08:11:00.000Z",
   },
   {
@@ -95,7 +86,6 @@ module.exports = [
     body:
       "Hi guys, I think I've got a virus on my computer. The screen has gone blank and is not responding, would anyone be able to give their opinion?",
     username: "jbugbirdy",
-    location: "tbc",
     created_at: "2020-06-08T08:11:00.000Z",
   },
   {
@@ -103,7 +93,6 @@ module.exports = [
     title: "Computerspacebarisstuck",
     body: "Seetitle",
     username: "stevesmith33",
-    location: "tbc",
     created_at: "2020-06-06T14:11:00.000Z",
   },
   {
@@ -112,7 +101,6 @@ module.exports = [
     body:
       "Hi guys, my MacBook Air is refusing to turn itself on today. It's plugged into a charger and is only a few years old. If anyone who knows about these things would be able to give it a once over that would be tremendously helpful.",
     username: "gcornelius17",
-    location: "tbc",
     created_at: "2020-06-05T09:08:00.000Z",
   },
   {
@@ -122,7 +110,6 @@ module.exports = [
     body:
       "Hey all, are they any macbook experts who may be able to pop round and help me set up a wireless headset. I need it for a zoom call next week. Thanks in advance!.",
     username: "vkausche1a",
-    location: "tbc",
     created_at: "2020-06-05T09:11:00.000Z",
   },
 ];
