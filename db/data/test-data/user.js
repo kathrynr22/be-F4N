@@ -1,10 +1,8 @@
 module.exports = [
   {
     username: "gdurdane",
-
     first_name: "Godfrey",
     last_name: "Durdan",
-
     email: "gdurdane@drupal.org",
     avatar_url: "https://randomuser.me/api/portraits/men/72.jpg",
     location: "M1",
