@@ -1,6 +1,7 @@
 module.exports = [
   {
-    //job_id generated automatically by db
+    //job_id 1 generated automatically by db
+    // NB earliest comment is "2020-06-05T13:53:00.000Z" so created at needs to be before then!
     title: "Hedge trimming help?",
     body:
       "Hi all, I have a privet hedge that is out of control and is taking over the path. Would anyone be willing to help me tackle it?",
@@ -9,6 +10,8 @@ module.exports = [
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
+    //job_id 2 generated automatically by db
+    // NB earliest comment is "2020-06-02T14:53:00.000Z" so created at needs to be before then
     title: "Tax return hell!",
     body:
       "Hi all, I am trying to do my first tax return and I'm a little lost. Would anyone with the relevant knowledge have an hour to spare to help me?",
@@ -17,6 +20,7 @@ module.exports = [
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
+    //job_id 3 generated automatically by db
     title: "Flat pack fans?",
     body:
       "Hi all, I have just moved house and went a bit made in Ikea. Would anyone have any spare time to lend a hand with the flat-pack?",
@@ -26,6 +30,7 @@ module.exports = [
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
+    //job_id 4 generated automatically by db
     title: "Cleaning help please",
     body:
       "Hi guys, I have been visiting my dad in hospital the past few weeks and the cleaning has really got on top of me. I would so appreciate some help with that if possible.",
@@ -35,6 +40,7 @@ module.exports = [
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
+    //job_id 5 generated automatically by db
     title: "Missing roof tile after the storm!",
     body:
       "Hi all I noticed a tile had fallen off my roof. Would be very grateful if someone could take a look.",
@@ -44,6 +50,7 @@ module.exports = [
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
+    //job_id 6 generated automatically by db
     title: "Anyone good at proofreading?",
     body:
       "Hi all would anyone be willing to proofread the first draft of my phd. It needs a fresh pair of eyes!",
@@ -53,6 +60,7 @@ module.exports = [
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
+    //job_id 7 generated automatically by db
     title: "Tired of wallpaper bubbles - please help!",
     body:
       "Hey guys, if anyone is free to help me with some wallpapering, I would be eternally grateful!",
@@ -62,6 +70,7 @@ module.exports = [
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
+    //job_id 8 generated automatically by db
     title: "Dripping tap driving me mad - help!",
     body:
       "Hi there, I've got a dripping tap if anyone has the tools to fix it! It's driving me nuts!",
@@ -71,6 +80,7 @@ module.exports = [
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
+    //job_id 9 generated automatically by db
     title: "Lightbulb gone - and so has my back!",
     body:
       "Hi all, I need a lightbulb changing but I have done my back in recently and can't do it. Can anyone help!",
@@ -80,6 +90,7 @@ module.exports = [
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
+    //job_id 10 generated automatically by db
     title: "Computer says no",
     body:
       "Hi guys, I think I've got a virus on my computer. The screen has gone red and is not responding, would anyone be able to give their opinion?",
@@ -88,6 +99,7 @@ module.exports = [
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
+    //job_id 11 generated automatically by db
     title: "Computerspacebarisstuck",
     body: "Seetitle",
     username: "stevesmith33",
@@ -95,6 +107,7 @@ module.exports = [
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
+    //job_id 12 generated automatically by db
     title: "Computer won't turn on",
     body:
       "Hi guys, my computer is refusing to turn itself on today. If anyone who knows about these things would be able to give it a once over that would be tremendously helpful.",
@@ -103,6 +116,7 @@ module.exports = [
     created_at: "", //do i put anything in here or does it create something by default,
   },
   {
+    //job_id 13 generated automatically by db
     title:
       "Bought a new wireless headset for my macbook, but I cannot get it to connect - can anyone help please",
     body:
