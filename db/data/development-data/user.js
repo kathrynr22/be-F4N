@@ -66,7 +66,6 @@ module.exports = [
     avatar_url: "https://randomuser.me/api/portraits/men/26.jpg",
     location: "M6",
     bio: "Howdy, I'm Liam and I'm a qualified electrician.",
-
     charity_name: "Friends of the Earth",
   },
   {
@@ -111,7 +110,7 @@ module.exports = [
     avatar_url: "https://randomuser.me/api/portraits/men/23.jpg",
     location: "M11",
     bio:
-      "Hi I'm Stanley, I am a retired carpenter. I now enjoy photography and am happy to share my skills.",
+      "Hi I'm Stanley, I am a retired carpenter and flat pack expert! I now enjoy photography and am happy to share my skills.",
 
     charity_name: "Age UK",
   },
@@ -124,7 +123,6 @@ module.exports = [
     location: "M12",
     bio:
       "Hi I'm Jason and I am a qualified roofer. Got a tile missing? Give me a shout!",
-
     charity_name: "RNLI",
   },
   {
@@ -171,7 +169,7 @@ module.exports = [
     avatar_url: "https://randomuser.me/api/portraits/lego/0.jpg",
     location: "M16",
     bio:
-      "Hey I am Orelee and I work as a tree surgeon. I am happy to work for free if people donate to my chosen charity!",
+      "Hey I am Orelee and I work as a tree surgeon and I love gardening generally. I am happy to work for free if people donate to my chosen charity!",
 
     charity_name: "Dogs Trust",
   },
@@ -327,7 +325,7 @@ module.exports = [
     avatar_url: "https://randomuser.me/api/portraits/men/38.jpg",
     location: "M4",
     bio:
-      "Hi I am Kareem and I'm a roofer! I am also good at other kinds of tiles such as bathroom tiling.",
+      "Hi I am Kareem and I'm a roofer! I am also good with other kinds of tiles such as kitchen and bathroom tiles!",
 
     charity_name: "Oxfam",
   },

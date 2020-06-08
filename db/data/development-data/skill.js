@@ -13,7 +13,7 @@ module.exports = [
     skill_name: "proofreading",
   },
   {
-    skill_name: "electrics",
+    skill_name: "electrics", //5
   },
   {
     skill_name: "roofing",
@@ -29,7 +29,7 @@ module.exports = [
     skill_name: "painting and decorating",
   },
   {
-    skill_name: "computers",
+    skill_name: "computers", // 10
   },
   {
     skill_name: "gardening",
@@ -44,7 +44,7 @@ module.exports = [
     skill_name: "videography",
   },
   {
-    skill_name: "sewing",
+    skill_name: "sewing", //15
   },
   {
     skill_name: "baking",
