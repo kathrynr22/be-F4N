@@ -15,41 +15,48 @@ Each charity should have:
 - `charity_name` which is a unique string that acts as the table's primary key
 - `charity_logo`
 - `charity_url`
-- `charity_description` string limit characters
+- `charity_description` string limit characters.
+- `justgiving_link` https://www.justgiving.com/oxfam
 
 //Skill should come second as the users table, jobs table and comments table need to refer to it
 
 Each skill should have:
 
-- `skill_name` field which is a unique string that acts as the table's primary key
+- `skill_id` primary key
+- `skill_name` string
 
 //Username should come third as the jobs and comments tables reference usernames
 
 Each user should have:
 
 - `username` which is the primary key & unique
-- `password` may not need? dont want it to come back in a GET request! mix of char and numbers
 - `first_name` string limit on characters
 - `last_name` string limit on characters
-- `number` ?
 - `email` ?
   //they need some method of communicating with each other - they can communicate in comments section, but people would not want to give out their contact details on a comment. Would they be happy giving their email address and phone number on profile page..I guess so. Ideally we could implement some private chat functionality but not MVP.
 - `avatar_url`
-- `skill_name` - can have more than one skill. But can also just have one skill?
-- `location` are we doing location eg Chorlton or Postcode eg M21 ??
+- `location` Postcode eg M21 ??
 - `bio` limit amount of characters
 - `charity_name` which references the charity table
-- `charity_logo` which references the charity table
-- `justgiving_link` ?
+
+user-skills junction table:
+
+- `skill_id`
+- `username`
 
 Each job should have:
 
 - `job_id` which is the primary key
 - `title` string limit characters
 - `body` string limit characters
-- `skills_required` the test data is currently just one skill...I could adapt so sometimes people want more than one skill?
+- `location` eg M21
 - `username` field that references a user's primary key (username)
 - `created_at` defaults to the current timestamp
+
+job-skills junction table:
+
+- `skill_id`
+- `job_id`
 
 //comments should come last as they reference job id, usernames, and charity info.
 
@@ -58,7 +65,6 @@ Each comment should have:
 - `comment_id` which is the primary key
 - `username` field that references a user's primary key (username)
 - `job_id` field that references an job's primary key
-- `charity_name` needs to reference charity name from user table ie what the person commenting/volunteering's chosen charity is
 - `created_at` defaults to the current timestamp
 - `body` string - limit characters
 
