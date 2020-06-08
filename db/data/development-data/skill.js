@@ -1,4 +1,5 @@
 module.exports = [
+  //skill_id added by db
   {
     skill_name: "accounts",
   },

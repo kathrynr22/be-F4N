@@ -39,14 +39,11 @@
 
 module.exports = [
   {
+    //comment_id added automatically by database
+    username: "gsher2g",
+    job_id: "tbc",
+    created_at: "", //do we need to fill this in
     body:
       "Hi there, I am happy to pop round and take a look at your leaking tap. I am free anytime this weekend. Phone number and email in bio. Just get in touch!",
-    job_id: "", //in nc news the data had a belongs_to which was title of article and then somehow with a util function it ended up being article id cant remember how it worked...
-    username: "gsher2g",
-    avatar_url: "tbc",
-    charity_name: "",
-    charity_logo: "",
-    created_at: "", //do we need to fill this in
-    // how does it work with comments table how much info needs to be in the table and how much comes from a join?
   },
 ];

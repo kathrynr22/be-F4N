@@ -1,4 +1,5 @@
 module.exports = [
+  // skill_id added automaticlaly from db
   {
     skill_name: "hair styling",
   },
