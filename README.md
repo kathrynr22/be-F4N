@@ -14,7 +14,6 @@ Each charity should have:
 
 - `charity_name` which is a unique string that acts as the table's primary key
 - `charity_logo`
-- `charity_url`
 - `charity_description` string limit characters.
 - `justgiving_link` https://www.justgiving.com/oxfam
 
