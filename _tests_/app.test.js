@@ -101,9 +101,92 @@ describe("/jobs", () => {
         });
     });
   });
+  describe("POST", () => {
+    it("status 201: responds with a job object", () => {
+      return request(app)
+        .post("/api/jobs")
+        .send({
+          username: "gdurdane",
+          title: "Test Job",
+          body: "Test job for testing purposes",
+          skill_name: "graphic design",
+        })
+        .expect(201)
+        .then(({ body: { job } }) => {
+          expect(job).toHaveProperty("title", "Test Job");
+          expect(job).toHaveProperty("body", "Test job for testing purposes");
+          expect(job).toHaveProperty("skill_name", "graphic design");
+          expect(job).toHaveProperty("username", "gdurdane");
+          expect(job).toHaveProperty(
+            "avatar_url",
+            "https://randomuser.me/api/portraits/men/72.jpg"
+          );
+          expect(job).toHaveProperty("location", "M1");
+          expect(job).toHaveProperty("job_id");
+          expect(job).toHaveProperty("created_at");
+          expect(job).toHaveProperty("comment_count");
+        });
+    });
+    it("status 201: responds with a job_id", () => {
+      return request(app)
+        .post("/api/jobs")
+        .send({
+          username: "gdurdane",
+          title: "Test Job",
+          body: "Test job for testing purposes",
+          skill_name: "graphic design",
+        })
+        .expect(201)
+        .then(({ body: { job } }) => {
+          expect(job).toHaveProperty("job_id", 6);
+        });
+    });
+    it("status 201: responds with a comment_count defaulted to 0", () => {
+      return request(app)
+        .post("/api/jobs")
+        .send({
+          username: "gdurdane",
+          title: "Test Job",
+          body: "Test job for testing purposes",
+          skill_name: "graphic design",
+        })
+        .expect(201)
+        .then(({ body: { job } }) => {
+          expect(job).toHaveProperty("comment_count", "0");
+        });
+    });
+    it("status 201: responds with a created_at not set to null", () => {
+      return request(app)
+        .post("/api/jobs")
+        .send({
+          username: "gdurdane",
+          title: "Test Job",
+          body: "Test job for testing purposes",
+          skill_name: "graphic design",
+        })
+        .expect(201)
+        .then(({ body: { job } }) => {
+          expect(job.created_at).toBeTruthy;
+        });
+    });
+    it("status 400: responds with bad request when passed invalid body", () => {
+      return request(app)
+        .post("/api/jobs")
+        .send({
+          username: "gdurdane",
+          title: "Test Job",
+          body: "Test job for testing purposes",
+          missing_skill_name: "not a skill",
+        })
+        .expect(400)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe("bad request");
+        });
+    });
+  });
   describe("unsupported methods", () => {
     test("status: 405 - responds with method not allowed", () => {
-      const methods = ["post", "put", "delete", "patch"];
+      const methods = ["put", "delete", "patch"];
 
       const requestPromises = methods.map((method) => {
         return request(app)
