@@ -71,7 +71,7 @@ GET /api/ shows all end points etc - useful for developing front end
 
 GET /api/skills - JO
 
-GET /api/users/:username - KR
+GET /api/users/:username - KR - done
 POST /api/users - KR
 
 GET /api/jobs - DONE
@@ -100,20 +100,18 @@ _**All of your endpoints should send the below responses in an object, with a ke
 
 ```json
 {
-  "user": [
+  "userObject": [
     {
       "username": "fsokale34",
       "first_name": "Finn",
       "last_name": "Sokale",
-      "number": "07945365450",
       "email": "fsokale34@salon.com",
       "avatar_url": "tbc",
-      "location": "tbc",
+      "location": "M1",
       "bio": "Hello I am a graphic designer. Reach out if you need a favour and help me raise some funds for a charity in need. I am also great at DIY.",
-      "charity_name": "tbc",
-      "charity_logo": "tbc",
-      "justgiving_url": "tbc"
-      //skill_name: "graphic design", "DIY" do we put skill here or do some kind of join
+      "charity_name": "Oxfam",
+      "charity_logo": "https://images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200",
+      "skill_name": "graphic design"
     }
   ]
 }
