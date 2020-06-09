@@ -118,3 +118,49 @@ describe("/jobs", () => {
     });
   });
 });
+describe("/users", () => {
+  // test("status 405: invalid methods", () => {
+  //   const invalidMethods = ["patch", "delete"];
+  //   const requests = invalidMethods.map((method) => {
+  //     return request(app)
+  //       [method]("/api/users/lurker")
+  //       .expect(405)
+  //       .then(({ body: { msg } }) => {
+  //         expect(msg).toBe("method not allowed");
+  //       });
+  //   });
+  //   return Promise.all(requests);
+  // });
+
+  describe("/:username", () => {
+    describe("GET", () => {
+      test.only("status 200: responds with the requested username object", () => {
+        return request(app)
+          .get("/api/users/gdurdane")
+          .expect(200)
+          .then(({ body: { userObject } }) => {
+            expect(userObject).toEqual({
+              username: "gdurdane",
+              first_name: "Godfrey",
+              last_name: "Durdan",
+              email: "gdurdane@drupal.org",
+              avatar_url: "https://randomuser.me/api/portraits/men/72.jpg",
+              location: "M1",
+              bio:
+                "Hello I'm Godfrey and I work at B&Q and love all things DIY!",
+              charity_name: "Oxfam",
+              skill_name: "DIY",
+            });
+          });
+      });
+      test("status 404: non-existent username", () => {
+        return request(app)
+          .get("/api/users/kathryn")
+          .expect(404)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe("username not found");
+          });
+      });
+    });
+  });
+});
