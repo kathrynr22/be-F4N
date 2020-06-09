@@ -35,3 +35,49 @@ exports.selectJobs = (sort_by, order, skill_name, location) => {
       else if (location) query.where({ location });
     });
 };
+
+exports.insertJob = (username, title, body, skill_name) => {
+  if (!username || !title || !body || !skill_name) {
+    return Promise.reject({
+      status: 400,
+      msg: "bad request",
+    });
+  }
+
+  return knex("inserted_job")
+    .with(
+      "inserted_job",
+      knex("jobs")
+        .insert({
+          username,
+          title,
+          body,
+          skill_id: knex("skills").select("skill_id").where({ skill_name }),
+        })
+        .returning("*")
+    )
+    .select(
+      "inserted_job.title",
+      "inserted_job.body",
+      "inserted_job.username",
+      "inserted_job.job_id",
+      "inserted_job.created_at",
+      "skill_name",
+      "avatar_url",
+      "location"
+    )
+    .join("skills", "inserted_job.skill_id", "=", "skills.skill_id")
+    .join("users", "inserted_job.username", "=", "users.username")
+    .leftJoin("comments", "inserted_job.job_id", "=", "comments.job_id")
+    .count("comments.job_id AS comment_count")
+    .groupBy(
+      "inserted_job.title",
+      "inserted_job.body",
+      "inserted_job.username",
+      "inserted_job.job_id",
+      "inserted_job.created_at",
+      "skills.skill_name",
+      "users.avatar_url",
+      "users.location"
+    );
+};

@@ -121,7 +121,7 @@ GET /api/skills
 
 #### Responds with
 
-- an array of skill objects, each of which should have the following properties:
+- an array of skill objects, ordered by `skill_id` each of which should have the following properties:
   - `skill_id`
   - `skill_name`
 
@@ -190,13 +190,12 @@ On front end when posting user should be able to select certain skills from eith
 - an object with the following properties:
   - `username`
   - `title`
-  - `skills_required`
+  - `skills_name`
   - `body`
-  - `location` tbc if eg Chorlton or M21
 
 #### Responds with
 
-- the posted job including job_id and created_at which would be added automatically (I think)
+- the posted job including job_id and created_at
 
 ```http
 GET /api/jobs/:job_id
