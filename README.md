@@ -69,19 +69,19 @@ Each comment should have:
 ```http
 GET /api/ shows all end points etc - useful for developing front end
 
-GET /api/skills
+GET /api/skills - JO
 
-GET /api/users/:username
-POST /api/users
+GET /api/users/:username - KR
+POST /api/users - KR
 
-GET /api/jobs
-POST /api/jobs
+GET /api/jobs - DONE
+POST /api/jobs - JO
 
-GET /api/jobs/:job_id
-DELETE /api/jobs: job_id
+GET /api/jobs/:job_id - JO
+DELETE /api/jobs: job_id - JO
 
-GET /api/jobs/:job_id/comments
-POST /api/jobs/:job_id/comments
+GET /api/jobs/:job_id/comments - KR
+POST /api/jobs/:job_id/comments - KR
 
 OTHER nice to haves - if time
 
@@ -166,7 +166,7 @@ GET /api/jobs
   - `skill_name`
   - `username`
   - `avatar_url`
-  - `location` tbc if eg Chorlton or M21
+  - `location`
   - `job_id`
   - `created_at`
   - `comment_count` which is the total count of all the comments with this job_id - you should make use of knex queries in order to achieve this
