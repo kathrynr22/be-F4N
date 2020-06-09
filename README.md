@@ -105,15 +105,13 @@ _**All of your endpoints should send the below responses in an object, with a ke
       "username": "fsokale34",
       "first_name": "Finn",
       "last_name": "Sokale",
-      "number": "07945365450",
       "email": "fsokale34@salon.com",
       "avatar_url": "tbc",
-      "location": "tbc",
+      "location": "M1",
       "bio": "Hello I am a graphic designer. Reach out if you need a favour and help me raise some funds for a charity in need. I am also great at DIY.",
       "charity_name": "tbc",
       "charity_logo": "tbc",
-      "justgiving_url": "tbc"
-      //skill_name: "graphic design", "DIY" do we put skill here or do some kind of join
+      "skill_name": "graphic design"
     }
   ]
 }

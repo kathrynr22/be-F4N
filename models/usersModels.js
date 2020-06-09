@@ -11,7 +11,8 @@ exports.selectUsername = (username) => {
       "avatar_url",
       "location",
       "bio",
-      "charity_name",
+      "charities.charity_name",
+      "charities.charity_logo",
       "skill_name"
     )
     .where("users.username", username)
@@ -22,6 +23,7 @@ exports.selectUsername = (username) => {
       "users_skills_junction.username"
     )
     .join("skills", "skills.skill_id", "=", "users_skills_junction.skill_id")
+    .join("charities", "charities.charity_name", "=", "users.charity_name")
 
     .then((user) => {
       if (user.length === 0)

@@ -149,6 +149,8 @@ describe("/users", () => {
               bio:
                 "Hello I'm Godfrey and I work at B&Q and love all things DIY!",
               charity_name: "Oxfam",
+              charity_logo:
+                "https://images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200",
               skill_name: "DIY",
             });
           });
