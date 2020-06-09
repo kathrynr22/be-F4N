@@ -202,7 +202,6 @@ describe("/jobs", () => {
   });
 });
 
-
 describe("/skills", () => {
   describe("GET", () => {
     test("status 200: responds with an array of skills objects", () => {
@@ -247,6 +246,9 @@ describe("/skills", () => {
       });
 
       return Promise.all(requestPromises);
+    });
+  });
+});
 
 describe("/users", () => {
   // test("status 405: invalid methods", () => {
@@ -293,7 +295,6 @@ describe("/users", () => {
             expect(msg).toBe("username not found");
           });
       });
-
     });
   });
 });
