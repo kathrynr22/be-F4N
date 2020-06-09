@@ -24,6 +24,10 @@ exports.selectUsername = (username) => {
     .join("skills", "skills.skill_id", "=", "users_skills_junction.skill_id")
 
     .then((user) => {
-      return user[0];
+      if (user.length === 0)
+        return Promise.reject({ status: 404, msg: "username not found" });
+      else {
+        return user[0];
+      }
     });
 };

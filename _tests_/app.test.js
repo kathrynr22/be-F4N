@@ -134,7 +134,7 @@ describe("/users", () => {
 
   describe("/:username", () => {
     describe("GET", () => {
-      test.only("status 200: responds with the requested username object", () => {
+      test("status 200: responds with the requested username object", () => {
         return request(app)
           .get("/api/users/gdurdane")
           .expect(200)
