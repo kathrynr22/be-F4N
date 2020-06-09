@@ -118,3 +118,22 @@ describe("/jobs", () => {
     });
   });
 });
+
+describe("/skills", () => {
+  describe("unsupported methods", () => {
+    test("status: 405 - responds with method not allowed", () => {
+      const methods = ["post", "put", "delete", "patch"];
+
+      const requestPromises = methods.map((method) => {
+        return request(app)
+          [method]("/api/skills")
+          .expect(405)
+          .then(({ body }) => {
+            expect(body.msg).toBe("method not allowed");
+          });
+      });
+
+      return Promise.all(requestPromises);
+    });
+  });
+});
