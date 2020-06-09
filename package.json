@@ -2,7 +2,7 @@
   "name": "be-F4N",
   "version": "1.0.0",
   "description": "# Favour4aNeighbour API",
-  "main": "index.js",
+  "main": "app.js",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -20,7 +20,11 @@
     "migrate-db-latest": "knex migrate:latest",
     "migrate-db-rollback": "knex migrate:rollback",
     "seed-dev": "npm run create-db && knex seed:run",
-    "test": "jest"
+    "seed:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex seed:run",
+    "migrate-latest:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex migrate:latest",
+    "migrate-rollback:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex migrate:rollback",
+    "test": "jest",
+    "start": "node listen.js"
   },
   "repository": {
     "type": "git",

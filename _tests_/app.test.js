@@ -76,7 +76,7 @@ describe("/jobs", () => {
           expect(allJobs).toHaveLength(0);
         });
     });
-    test.only("status 200: returns an empty array if location does not exist", () => {
+    test("status 200: returns an empty array if location does not exist", () => {
       return request(app)
         .get("/api/jobs?location=ZZ99")
         .expect(200)
