@@ -17,6 +17,7 @@
     "create-db-migration": "knex migrate:make",
     "migrate-db-latest": "knex migrate:latest",
     "migrate-db-rollback": "knex migrate:rollback",
+    "seed-dev": "npm run create-db && knex seed:run",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
