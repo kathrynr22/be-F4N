@@ -123,7 +123,7 @@ GET /api/skills
 
 #### Responds with
 
-- an array of skill objects, each of which should have the following properties:
+- an array of skill objects, ordered by `skill_id` each of which should have the following properties:
   - `skill_id`
   - `skill_name`
 
