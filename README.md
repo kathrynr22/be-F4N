@@ -175,7 +175,11 @@ GET /api/jobs
 
 - `sort_by`, which sorts the jobs by location or skills (defaults to date)
 
-- `skill_name`, whichc filters the jobs by skill
+- `order`, which sets the `sort_by` order (defaults to descending)
+
+- `skill_name`, which filters the jobs by skill
+
+- `location`, which filters the jobs by location
 
 ```http
 POST /api/jobs/
@@ -253,7 +257,7 @@ GET /api/jobs/:job_id/comments
 
 #### Should accept queries
 
-- `sort_by`, which sorts the comments by charity or location (defaults to date)
+- filter which sorts the comments by charity or location (defaults to date)
 
 ```http
 DELETE /api/jobs/:job_id

@@ -1,6 +1,12 @@
 const knex = require("../db/connection");
 
-exports.selectJobs = (sort_by, order) => {
+exports.selectJobs = (sort_by, order, skill_name, location) => {
+  if (order !== undefined && order !== "asc" && order !== "desc") {
+    return Promise.reject({
+      status: 400,
+      msg: "bad request",
+    });
+  }
   return knex("jobs")
     .select(
       "title",
@@ -22,5 +28,10 @@ exports.selectJobs = (sort_by, order) => {
       "users.avatar_url",
       "users.location"
     )
-    .orderBy(sort_by || "created_at", order || "desc");
+    .orderBy(sort_by || "created_at", order || "desc")
+    .modify((query) => {
+      if (skill_name && location) query.where({ skill_name, location });
+      else if (skill_name) query.where({ skill_name });
+      else if (location) query.where({ location });
+    });
 };
