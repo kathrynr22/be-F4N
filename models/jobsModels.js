@@ -1,6 +1,6 @@
 const knex = require("../db/connection");
 
-exports.selectJobs = () => {
+exports.selectJobs = (sort_by, order) => {
   return knex("jobs")
     .select(
       "title",
@@ -21,5 +21,6 @@ exports.selectJobs = () => {
       "skills.skill_name",
       "users.avatar_url",
       "users.location"
-    );
+    )
+    .orderBy(sort_by || "created_at", order || "desc");
 };

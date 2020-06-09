@@ -163,7 +163,7 @@ GET /api/jobs
 - an `jobs` array of job objects, each of which should have the following properties:
   - `title`
   - `body`
-  - `skills_required`
+  - `skill_name`
   - `username`
   - `avatar_url`
   - `location` tbc if eg Chorlton or M21
@@ -174,6 +174,8 @@ GET /api/jobs
 #### Should accept queries
 
 - `sort_by`, which sorts the jobs by location or skills (defaults to date)
+
+- `skill_name`, whichc filters the jobs by skill
 
 ```http
 POST /api/jobs/
