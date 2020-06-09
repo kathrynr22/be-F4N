@@ -8,7 +8,10 @@
     "knex": "^0.21.1",
     "pg": "^8.2.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^26.0.1",
+    "supertest": "^4.0.2"
+  },
   "scripts": {
     "create-db": "psql -f ./db/setup.sql",
     "create-db-migration": "knex migrate:make",
