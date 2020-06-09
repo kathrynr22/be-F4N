@@ -24,7 +24,7 @@ Each skill should have:
 - `skill_id` primary key
 - `skill_name` string
 
-//Username should come third as the jobs and comments tables reference usernames
+//Users should come third as the jobs and comments tables reference usernames
 
 Each user should have:
 
@@ -38,7 +38,7 @@ Each user should have:
 - `bio` limit amount of characters
 - `charity_name` which references the charity table
 
-user-skills junction table:
+users-skills junction table:
 
 - `skill_id`
 - `username`
@@ -51,11 +51,6 @@ Each job should have:
 - `location` eg M21
 - `username` field that references a user's primary key (username)
 - `created_at` defaults to the current timestamp
-
-job-skills junction table:
-
-- `skill_id`
-- `job_id`
 
 //comments should come last as they reference job id, usernames, and charity info.
 

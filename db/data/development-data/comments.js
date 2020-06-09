@@ -166,7 +166,7 @@ module.exports = [
   },
   {
     //comment_id added automatically by database
-    username: "sswhordley3",
+    username: "swhordley3",
     job_id: 12, //Computer won't turn on
     created_at: "2020-06-06T11:53:00.000Z",
     body:

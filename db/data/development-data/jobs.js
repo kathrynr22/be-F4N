@@ -24,7 +24,6 @@ module.exports = [
     title: "Flat pack fans?",
     body:
       "Hi all, I have just moved house and went a bit made in Ikea. Would anyone have any spare time to lend a hand with the flat-pack?",
-    skills_required: "furniture-assembly",
     username: "kheasly20",
     created_at: "2020-06-04T16:10:00.000Z",
     skill_id: 12,
@@ -34,7 +33,6 @@ module.exports = [
     title: "Cleaning help please",
     body:
       "Hi guys, I have been visiting my dad in hospital the past few weeks and the cleaning has really got on top of me. I would so appreciate some help with that if possible. Happy to donate to a good cause too!",
-    skills_required: "cleaning",
     username: "mneagle1x",
     created_at: "2020-06-04T09:11:00.000Z",
     skill_id: 7,
@@ -44,7 +42,6 @@ module.exports = [
     title: "Missing roof tile after the storm!",
     body:
       "Hi all I noticed a tile had fallen off my roof. Would be very grateful if someone could take a look.",
-    skills_required: "roofer",
     username: "dmacnish1v",
     created_at: "2020-06-04T10:09:02.000Z",
     skill_id: 6,
@@ -54,7 +51,6 @@ module.exports = [
     title: "Anyone good at proofreading?",
     body:
       "Hi all would anyone be willing to proofread the first draft of my phd. It needs a fresh pair of eyes! There's no massive rush just in the next month or so would be great.",
-    skills_required: "proofreading",
     username: "ogreenhall8",
     created_at: "2020-06-03T11:11:00.000Z",
     skill_id: 4,
@@ -64,7 +60,6 @@ module.exports = [
     title: "Tired of wallpaper bubbles - please help!",
     body:
       "Hey guys, if anyone is free to help me with some wallpapering, I would be eternally grateful!",
-    skills_required: "painting and decorating",
     username: "swhordley3",
     created_at: "2020-06-06T11:12:00.000Z",
     skill_id: 9,
@@ -74,7 +69,6 @@ module.exports = [
     title: "Dripping tap driving me mad - help!",
     body:
       "Hi there, I've got a dripping tap if anyone has the tools to fix it! It's driving me nuts!",
-    skills_required: "plumbing",
     username: "csimmons22",
     created_at: "2020-06-05T07:11:00.000Z",
     skill_id: 8,
@@ -84,7 +78,6 @@ module.exports = [
     title: "Lightbulb gone - and so has my back!",
     body:
       "Hi all, I need a lightbulb changing but I have done my back in recently and can't do it. Can anyone help!",
-    skills_required: "electrician",
     username: "sfantonec",
     created_at: "2020-06-05T08:11:00.000Z",
     skill_id: 5,
