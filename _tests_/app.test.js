@@ -68,6 +68,22 @@ describe("/jobs", () => {
           expect(allJobs).toHaveLength(1);
         });
     });
+    test("status 200: returns an empty array if skill name does not exist", () => {
+      return request(app)
+        .get("/api/jobs?skill_name=cat%20handling")
+        .expect(200)
+        .then(({ body: { allJobs } }) => {
+          expect(allJobs).toHaveLength(0);
+        });
+    });
+    test.only("status 200: returns an empty array if location does not exist", () => {
+      return request(app)
+        .get("/api/jobs?location=ZZ99")
+        .expect(200)
+        .then(({ body: { allJobs } }) => {
+          expect(allJobs).toHaveLength(0);
+        });
+    });
     test("status 400: trying to sort jobs based on a non-existent column", () => {
       return request(app)
         .get("/api/jobs?sort_by=not_a_column")
@@ -76,7 +92,7 @@ describe("/jobs", () => {
           expect(msg).toBe("bad request");
         });
     });
-    test.only("status 400: trying to order jobs by invalid order type", () => {
+    test("status 400: trying to order jobs by invalid order type", () => {
       return request(app)
         .get("/api/jobs?order=cats")
         .expect(400)
