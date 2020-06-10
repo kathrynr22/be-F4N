@@ -85,9 +85,54 @@
       ]
     }
   },
+
+  "GET /api/users/:username": {
+    "description": "serves an object for an user for the specified username",
+    "exampleResponse": {
+      "user": {
+        "username": "jbugbirdy",
+        "first_name": "Jason",
+        "last_name": "Bugbird",
+        "email": "jbugbirdy@chronoengine.com",
+        "avatar_url": "https://randomuser.me/api/portraits/men/5.jpg",
+        "location": "M12",
+        "bio": "Hi I'm Jason and I am a qualified roofer. Got a tile missing? Give me a shout!",
+        "charity_name": "RNLI",
+        "charity_logo": "https://images.justgiving.com/image/de255e5b-22ec-4c5a-ba44-63c007db9a31.png?template=size200x200",
+        "skill_name": ["roofing"]
+      }
+    }
+  },
+  "POST /api/users": {
+    "description": "serves an object for the posted user",
+    "body": {
+      "username": "madeupusername",
+      "first_name": "bill",
+      "last_name": "mcbilly",
+      "email": "fakeemail@hotmail.co.uk",
+      "avatar_url": "https://randomuser.me/api/portraits/men/84.jpg",
+      "location": "M21",
+      "bio": "hello, I am Bill.",
+      "charity_name": "Oxfam",
+      "skill_name": ["translating", "DIY"]
+    },
+    "exampleResponse": {
+      "user": {
+        "username": "madeupusername",
+        "first_name": "bill",
+        "last_name": "mcbilly",
+        "email": "fakeemail@hotmail.co.uk",
+        "avatar_url": "https://randomuser.me/api/portraits/men/84.jpg",
+        "location": "M21",
+        "bio": "hello, I am Bill.",
+        "charity_name": "Oxfam",
+        "skill_name": ["translating", "DIY"]
+      }
+    }
+  },
   "GET /api/jobs": {
     "description": "serves an array of all jobs",
-    "queries": ["sort_by", "order"],
+    "queries": ["skill_name", "location", "order"],
     "exampleResponse": {
       "jobs": [
         {
@@ -236,55 +281,6 @@
       ]
     }
   },
-  "DELETE /api/jobs/:job_id": {
-    "description": "deletes the given job by job id and responds with 204",
-    "queries": [],
-    "exampleResponse": {}
-  },
-  "GET /api/users/:username": {
-    "description": "serves an object for an user for the specified username",
-    "exampleResponse": {
-      "user": {
-        "username": "jbugbirdy",
-        "first_name": "Jason",
-        "last_name": "Bugbird",
-        "email": "jbugbirdy@chronoengine.com",
-        "avatar_url": "https://randomuser.me/api/portraits/men/5.jpg",
-        "location": "M12",
-        "bio": "Hi I'm Jason and I am a qualified roofer. Got a tile missing? Give me a shout!",
-        "charity_name": "RNLI",
-        "charity_logo": "https://images.justgiving.com/image/de255e5b-22ec-4c5a-ba44-63c007db9a31.png?template=size200x200",
-        "skill_name": ["roofing"]
-      }
-    }
-  },
-  "POST /api/users": {
-    "description": "serves an object for the posted user",
-    "body": {
-      "username": "madeupusername",
-      "first_name": "bill",
-      "last_name": "mcbilly",
-      "email": "fakeemail@hotmail.co.uk",
-      "avatar_url": "https://randomuser.me/api/portraits/men/84.jpg",
-      "location": "M21",
-      "bio": "hello, I am Bill.",
-      "charity_name": "Oxfam",
-      "skill_name": ["translating", "DIY"]
-    },
-    "exampleResponse": {
-      "user": {
-        "username": "madeupusername",
-        "first_name": "bill",
-        "last_name": "mcbilly",
-        "email": "fakeemail@hotmail.co.uk",
-        "avatar_url": "https://randomuser.me/api/portraits/men/84.jpg",
-        "location": "M21",
-        "bio": "hello, I am Bill.",
-        "charity_name": "Oxfam",
-        "skill_name": ["translating", "DIY"]
-      }
-    }
-  },
   "GET /api/jobs/:job_id": {
     "description": "serves a job object for the specified job_id",
     "exampleResponse": {
@@ -300,6 +296,11 @@
         "comment_count": "4"
       }
     }
+  },
+  "DELETE /api/jobs/:job_id": {
+    "description": "deletes the given job by job id and responds with 204",
+    "queries": [],
+    "exampleResponse": {}
   },
   "POST /api/jobs/:job_id/comments": {
     "description": "serves an object of the posted comment for the specified job_id",
@@ -321,7 +322,7 @@
   },
   "GET /api/jobs/:job_id/comments": {
     "description": "serves an array of comments for the specified article_id",
-    "queries": ["sort_by", "order", "location", "charity_name"],
+    "queries": ["skill_name", "location", "order"],
     "exampleResponse": {
       "comments": [
         {

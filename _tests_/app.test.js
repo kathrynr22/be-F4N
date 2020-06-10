@@ -52,6 +52,14 @@ describe("/jobs", () => {
           expect(jobs).toBeSortedBy("created_at", { ascending: true });
         });
     });
+    test("status 200: accepts an order by query that sorts the jobs by descending order", () => {
+      return request(app)
+        .get("/api/jobs?order=desc")
+        .expect(200)
+        .then(({ body: { jobs } }) => {
+          expect(jobs).toBeSortedBy("created_at", { descending: true });
+        });
+    });
     test("status 200: accepts a skill_name query that filters the jobs by skill_name", () => {
       return request(app)
         .get("/api/jobs?skill_name=translating")
@@ -322,7 +330,6 @@ describe("/skills", () => {
         .get("/api/skills")
         .expect(200)
         .then(({ body: { skills } }) => {
-          console.log(skills);
           expect(Array.isArray(skills)).toBe(true);
         });
     });
@@ -369,7 +376,7 @@ describe("/users", () => {
     const invalidMethods = ["patch", "delete"];
     const requests = invalidMethods.map((method) => {
       return request(app)
-        [method]("/api/users/lurker")
+        [method]("/api/users/gdurdane")
         .expect(405)
         .then(({ body: { msg } }) => {
           expect(msg).toBe("method not allowed");
