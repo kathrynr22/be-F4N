@@ -77,8 +77,8 @@ POST /api/users - KR DONE
 GET /api/jobs - DONE
 POST /api/jobs - DONE
 
-GET /api/jobs/:job_id -  DONE - Provide a string as job_id
-DELETE /api/jobs: job_id - DONE - Provide a string as job_id
+GET /api/jobs/:job_id -  DONE
+DELETE /api/jobs: job_id - DONE
 
 GET /api/jobs/:job_id/comments - KR DONE
 POST /api/jobs/:job_id/comments - KR
@@ -87,6 +87,7 @@ OTHER nice to haves - if time
 
 DELETE /api/jobs/:job_id/comments
 PATCH /api/users
+POST users - tests for invalid location
 
 
 

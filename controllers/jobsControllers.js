@@ -53,11 +53,9 @@ exports.delJob = (req, res, next) => {
 
 exports.getCommentsByJobId = (req, res, next) => {
   const { job_id } = req.params;
-  const { sort_by, order } = req.query;
-  selectCommentsByJobId(job_id, sort_by, order)
+  const { sort_by, order, location, charity_name } = req.query;
+  selectCommentsByJobId(job_id, sort_by, order, location, charity_name)
     .then((comments) => {
-      console.log("inside controllers");
-      console.log(comments);
       res.status(200).send({ comments });
     })
     .catch((err) => {

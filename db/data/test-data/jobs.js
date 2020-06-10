@@ -44,4 +44,13 @@ module.exports = [
     created_at: "2020-06-01T14:14:00.000Z",
     skill_id: 4,
   },
+  {
+    // job_id 6
+    title: "I need help with my garden",
+    body:
+      "I've been struggling to do my garden since my fall. Is anyone able to help me?",
+    username: "dfoxl",
+    created_at: "2020-04-01T14:14:00.000Z",
+    skill_id: 7,
+  },
 ];

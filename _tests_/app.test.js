@@ -138,7 +138,7 @@ describe("/jobs", () => {
         })
         .expect(201)
         .then(({ body: { job } }) => {
-          expect(job).toHaveProperty("job_id", 6);
+          expect(job).toHaveProperty("job_id", 7);
         });
     });
     test("status 201: responds with a comment_count defaulted to 0", () => {
@@ -258,6 +258,14 @@ describe("/jobs", () => {
             expect(job).toHaveProperty("comment_count", "1");
           });
       });
+      test("status 400: responds with bad request when job_id is invalid", () => {
+        return request(app)
+          .get("/api/jobs/cats")
+          .expect(400)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe("bad request");
+          });
+      });
       test("status 404: responds with job not found when job_id does not exist", () => {
         return request(app)
           .get("/api/jobs/999")
@@ -270,6 +278,14 @@ describe("/jobs", () => {
     describe("DELETE", () => {
       test("status 204: responds with no context on successful delete ", () => {
         return request(app).del("/api/jobs/1").expect(204);
+      });
+      test("status 400: responds with bad request when job_id is invalid", () => {
+        return request(app)
+          .delete("/api/jobs/cats")
+          .expect(400)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe("bad request");
+          });
       });
       test("status 404: responds with job not found when job_id does not exist", () => {
         return request(app)
@@ -507,20 +523,41 @@ describe("/:job_id/comments", () => {
             expect(comment).toHaveProperty("username");
             expect(comment).toHaveProperty("created_at");
             expect(comment).toHaveProperty("body");
+            expect(comment).toHaveProperty("location");
+            expect(comment).toHaveProperty("charity_name");
           });
         });
     });
-    // cant to do this as we dont have any jobs that dont have any comments
-    //test.only("status 200: responds with empty array when an job exists but has no comments", () => {
-    //   return request(app)
-    //     .get("/api/jobs/2/comments")
-    //     .expect(200)
-    //     .then(({ body: { comments } }) => {
-    //       expect(Array.isArray(comments)).toBe(true);
-    //       expect(comments.length).toBe(0);
-    //       expect(comments).toEqual([]);
-    //     });
-    // });
+
+    test("status 200: responds with empty array when an job exists but has no comments", () => {
+      return request(app)
+        .get("/api/jobs/6/comments")
+        .expect(200)
+        .then(({ body: { comments } }) => {
+          expect(Array.isArray(comments)).toBe(true);
+          expect(comments.length).toBe(0);
+          expect(comments).toEqual([]);
+        });
+    });
+    test("status 200: accepts a location query that filters comments by location", () => {
+      return request(app)
+        .get("/api/jobs/1/comments?location=M6")
+        .expect(200)
+        .then(({ body: { comments } }) => {
+          expect(comments).toHaveLength(1);
+          expect(comments[0].location).toBe("M6");
+        });
+    });
+    test("status 200: accepts a charity query that filters comments by charity name", () => {
+      return request(app)
+        .get("/api/jobs/5/comments?charity_name=RSPCA")
+        .expect(200)
+        .then(({ body: { comments } }) => {
+          console.log(comments);
+          expect(comments).toHaveLength(1);
+          expect(comments[0].charity_name).toBe("RSPCA");
+        });
+    });
     test("status 404: trying to get comments for a non-existent job_id", () => {
       return request(app)
         .get("/api/jobs/76655/comments")

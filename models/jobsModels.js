@@ -122,10 +122,16 @@ exports.deleteJob = (job_id) => {
       return affectedRows === 0
         ? Promise.reject({ status: 404, msg: "job not found" })
         : Promise.resolve();
-  })
-}
+    });
+};
 
-exports.selectCommentsByJobId = (job_id, sort_by, order) => {
+exports.selectCommentsByJobId = (
+  job_id,
+  sort_by,
+  order,
+  location,
+  charity_name
+) => {
   if (order !== undefined && order !== "asc" && order !== "desc") {
     return Promise.reject({
       status: 400,
@@ -133,10 +139,23 @@ exports.selectCommentsByJobId = (job_id, sort_by, order) => {
     });
   }
   return knex
-    .select("comment_id", "created_at", "username", "body")
+    .select(
+      "comment_id",
+      "created_at",
+      "users.username",
+      "body",
+      "charity_name",
+      "location"
+    )
     .from("comments")
+    .join("users", "comments.username", "=", "users.username")
     .where("job_id", job_id)
     .orderBy(sort_by || "created_at", order || "desc")
+    .modify((query) => {
+      if (charity_name && location) query.where({ charity_name, location });
+      else if (charity_name) query.where({ charity_name });
+      else if (location) query.where({ location });
+    })
     .then((comments) => {
       if (comments.length === 0) {
         return knex
@@ -154,6 +173,5 @@ exports.selectCommentsByJobId = (job_id, sort_by, order) => {
           });
       }
       return comments;
-
     });
 };
