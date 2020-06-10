@@ -390,11 +390,13 @@ describe("/users", () => {
           location: "M21",
           bio: "hello, I am Bill.",
           charity_name: "Oxfam",
+          // charity_logo:
+          //   "https://images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200",
           skill_name: ["translating", "DIY"],
         })
         .expect(201)
         .then(({ body: { user } }) => {
-          console.log(user);
+          // console.log(user);
           expect(user).toHaveProperty("username", "madeupusername");
           expect(user).toHaveProperty("first_name", "bill");
           expect(user).toHaveProperty("last_name", "mcbilly");
@@ -406,6 +408,10 @@ describe("/users", () => {
           expect(user).toHaveProperty("location", "M21");
           expect(user).toHaveProperty("bio", "hello, I am Bill.");
           expect(user).toHaveProperty("charity_name", "Oxfam");
+          // expect(user).toHaveProperty(
+          //   "charity_logo",
+          //   "https://images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200"
+          // );
           expect(user).toHaveProperty("skill_name", ["translating", "DIY"]);
         });
     });
@@ -510,7 +516,6 @@ describe("/:job_id/comments", () => {
         .get("/api/jobs/1/comments")
         .expect(200)
         .then(({ body: { comments } }) => {
-          console.log(comments);
           expect(Array.isArray(comments)).toBe(true);
         });
     });
@@ -556,7 +561,6 @@ describe("/:job_id/comments", () => {
         .get("/api/jobs/5/comments?charity_name=RSPCA")
         .expect(200)
         .then(({ body: { comments } }) => {
-          console.log(comments);
           expect(comments).toHaveLength(1);
           expect(comments[0].charity_name).toBe("RSPCA");
         });
@@ -645,7 +649,6 @@ describe("/:job_id/comments", () => {
         })
         .expect(201)
         .then(({ body: { comment } }) => {
-          console.log(comment);
           expect(comment).toHaveProperty("comment_id", 9);
           expect(comment).toHaveProperty("username", "hstrowan2m");
           expect(comment).toHaveProperty("job_id", 1);
