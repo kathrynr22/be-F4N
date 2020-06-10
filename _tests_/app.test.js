@@ -292,9 +292,9 @@ describe("/users", () => {
   //   return Promise.all(requests);
   // });
 
-  describe("/:username", () => {
+  describe("users/:username", () => {
     describe("GET", () => {
-      test("status 200: responds with the requested username object", () => {
+      test("status 200: responds with the requested username object - user with only one skill", () => {
         return request(app)
           .get("/api/users/gdurdane")
           .expect(200)
@@ -311,7 +311,28 @@ describe("/users", () => {
               charity_name: "Oxfam",
               charity_logo:
                 "https://images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200",
-              skill_name: "DIY",
+              skill_name: ["DIY"],
+            });
+          });
+      });
+      test.only("status 200: responds with the requested username object - user with more than one skill", () => {
+        return request(app)
+          .get("/api/users/twebleyf")
+          .expect(200)
+          .then(({ body: { userObject } }) => {
+            expect(userObject).toEqual({
+              username: "twebleyf",
+              first_name: "Terrie",
+              last_name: "Webley",
+              email: "twebleyf@dmoz.org",
+              avatar_url: "https://randomuser.me/api/portraits/women/39.jpg",
+              location: "M2",
+              bio:
+                "Hi I am Terrie and I work in graphic design. I also speak and read fluent German if anyone needs a hand with that.",
+              charity_name: "Greenpeace",
+              charity_logo:
+                "https://images.justgiving.com/image/greenpeace_logo2.gif?template=size200x200",
+              skill_name: ["graphic design", "translating"],
             });
           });
       });
@@ -321,6 +342,41 @@ describe("/users", () => {
           .expect(404)
           .then(({ body: { msg } }) => {
             expect(msg).toBe("username not found");
+          });
+      });
+    });
+  });
+  describe("/users", () => {
+    describe("POST", () => {
+      test("status 201: responds with a user object", () => {
+        return request(app)
+          .post("/api/users")
+          .send({
+            username: "madeupusername",
+            first_name: "bill",
+            last_name: "mcbilly",
+            email: "fakeemail@hotmail.co.uk",
+            avatar_url: "https://randomuser.me/api/portraits/men/84.jpg",
+            location: "M21",
+            bio: "hello, I am Bill.",
+            charity_name: "Oxfam",
+            skill_name: ["translating", "DIY"],
+          })
+          .expect(201)
+          .then(({ body: { user } }) => {
+            expect(user).toHaveProperty("username", "madeupusername");
+            expect(user).toHaveProperty("first_name", "bill");
+            expect(user).toHaveProperty("last_name", "mcbill");
+            expect(user).toHaveProperty("email", "fakeemail@hotmail.co.uk");
+            expect(user).toHaveProperty(
+              "avatar_url",
+              "https://randomuser.me/api/portraits/men/74.jpg"
+            );
+            expect(user).toHaveProperty("location", "M21");
+            expect(user).toHaveProperty("bio");
+            expect(user).toHaveProperty("hello, I am Bill.");
+            expect(user).toHaveProperty("charity_name", "Oxfam");
+            expect(user).toHaveProperty("skill_name", "translating");
           });
       });
     });
