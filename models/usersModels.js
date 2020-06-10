@@ -45,6 +45,22 @@ exports.insertUser = (
   charity_name,
   skill_name
 ) => {
+  if (
+    !username ||
+    !first_name ||
+    !last_name ||
+    !email ||
+    !avatar_url ||
+    !location ||
+    !bio ||
+    !charity_name ||
+    !skill_name
+  ) {
+    return Promise.reject({
+      status: 400,
+      msg: "bad request",
+    });
+  }
   return knex("users")
     .insert({
       username,

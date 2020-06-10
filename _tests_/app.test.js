@@ -348,18 +348,88 @@ describe("/skills", () => {
 });
 
 describe("/users", () => {
-  // test("status 405: invalid methods", () => {
-  //   const invalidMethods = ["patch", "delete"];
-  //   const requests = invalidMethods.map((method) => {
-  //     return request(app)
-  //       [method]("/api/users/lurker")
-  //       .expect(405)
-  //       .then(({ body: { msg } }) => {
-  //         expect(msg).toBe("method not allowed");
-  //       });
-  //   });
-  //   return Promise.all(requests);
-  // });
+  test("status 405: invalid methods", () => {
+    const invalidMethods = ["patch", "delete"];
+    const requests = invalidMethods.map((method) => {
+      return request(app)
+        [method]("/api/users/lurker")
+        .expect(405)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe("method not allowed");
+        });
+    });
+    return Promise.all(requests);
+  });
+  describe("POST", () => {
+    test("status 201: responds with a user object", () => {
+      return request(app)
+        .post("/api/users")
+        .send({
+          username: "madeupusername",
+          first_name: "bill",
+          last_name: "mcbilly",
+          email: "fakeemail@hotmail.co.uk",
+          avatar_url: "https://randomuser.me/api/portraits/men/84.jpg",
+          location: "M21",
+          bio: "hello, I am Bill.",
+          charity_name: "Oxfam",
+          skill_name: ["translating", "DIY"],
+        })
+        .expect(201)
+        .then(({ body: { user } }) => {
+          expect(user).toHaveProperty("username", "madeupusername");
+          expect(user).toHaveProperty("first_name", "bill");
+          expect(user).toHaveProperty("last_name", "mcbilly");
+          expect(user).toHaveProperty("email", "fakeemail@hotmail.co.uk");
+          expect(user).toHaveProperty(
+            "avatar_url",
+            "https://randomuser.me/api/portraits/men/84.jpg"
+          );
+          expect(user).toHaveProperty("location", "M21");
+          expect(user).toHaveProperty("bio", "hello, I am Bill.");
+          expect(user).toHaveProperty("charity_name", "Oxfam");
+          expect(user).toHaveProperty("skill_name", ["translating", "DIY"]);
+        });
+    });
+    test("status 400: responds with bad request when passed invalid body", () => {
+      return request(app)
+        .post("/api/users")
+        .send({
+          username: "madeupusername",
+          first_name: "bill",
+          last_name: "mcbilly",
+          email: "fakeemail@hotmail.co.uk",
+          avatar_url: "https://randomuser.me/api/portraits/men/84.jpg",
+          location: "M21",
+          bio: "hello, I am Bill.",
+          charity_name: "Oxfam",
+          missing_skill_name: "not a skill",
+        })
+        .expect(400)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe("bad request");
+        });
+    });
+    test("status 404: responds with skill not found when posting a user with non-existent skill", () => {
+      return request(app)
+        .post("/api/users")
+        .send({
+          username: "madeupusername",
+          first_name: "bill",
+          last_name: "mcbilly",
+          email: "fakeemail@hotmail.co.uk",
+          avatar_url: "https://randomuser.me/api/portraits/men/84.jpg",
+          location: "M21",
+          bio: "hello, I am Bill.",
+          charity_name: "Oxfam",
+          skill_name: "not a skill",
+        })
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe("skill not found");
+        });
+    });
+  });
 
   describe("users/:username", () => {
     describe("GET", () => {
@@ -415,6 +485,7 @@ describe("/users", () => {
       });
     });
   });
+
   describe("/users", () => {
     describe("POST", () => {
       test("status 201: responds with a user object", () => {
@@ -445,8 +516,117 @@ describe("/users", () => {
             expect(user).toHaveProperty("bio", "hello, I am Bill.");
             expect(user).toHaveProperty("charity_name", "Oxfam");
             expect(user).toHaveProperty("skill_name", ["translating", "DIY"]);
+
+});
+
+describe("/:job_id/comments", () => {
+  describe("GET", () => {
+    test("status 200: responds with an array of comment objects", () => {
+      return request(app)
+        .get("/api/jobs/1/comments")
+        .expect(200)
+        .then(({ body: { comments } }) => {
+          console.log(comments);
+          expect(Array.isArray(comments)).toBe(true);
+        });
+    });
+
+    test("status 200: comment object contains certain properties", () => {
+      return request(app)
+        .get("/api/jobs/1/comments")
+        .expect(200)
+        .then(({ body: { comments } }) => {
+          comments.forEach((comment) => {
+            expect(comment).toHaveProperty("comment_id");
+            expect(comment).toHaveProperty("username");
+            expect(comment).toHaveProperty("created_at");
+            expect(comment).toHaveProperty("body");
+
           });
-      });
+        });
+    });
+    // cant to do this as we dont have any jobs that dont have any comments
+    //test.only("status 200: responds with empty array when an job exists but has no comments", () => {
+    //   return request(app)
+    //     .get("/api/jobs/2/comments")
+    //     .expect(200)
+    //     .then(({ body: { comments } }) => {
+    //       expect(Array.isArray(comments)).toBe(true);
+    //       expect(comments.length).toBe(0);
+    //       expect(comments).toEqual([]);
+    //     });
+    // });
+    test("status 404: trying to get comments for a non-existent job_id", () => {
+      return request(app)
+        .get("/api/jobs/76655/comments")
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe("job_id not found");
+        });
+    });
+    test("status 400: trying to get comments for an invalid job_id not a number", () => {
+      return request(app)
+        .get("/api/jobs/notAnInt/comments")
+        .expect(400)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe("bad request");
+        });
+    });
+    test("status 200: by default, sorts the comments by the created_at column and by descending order", () => {
+      return request(app)
+        .get("/api/jobs/5/comments")
+        .expect(200)
+        .then(({ body: { comments } }) => {
+          expect(comments).toBeSortedBy("created_at", {
+            descending: true,
+          });
+        });
+    });
+
+    test("status 200: accepts an order by query that orders the comments by descending order", () => {
+      return request(app)
+        .get("/api/jobs/5/comments?order=desc")
+        .expect(200)
+        .then(({ body: { comments } }) => {
+          expect(comments).toBeSortedBy("created_at", {
+            descending: true,
+          });
+        });
+    });
+    test("status 200: accepts an order by query that orders the comments by ascending order", () => {
+      return request(app)
+        .get("/api/jobs/5/comments?order=asc")
+        .expect(200)
+        .then(({ body: { comments } }) => {
+          expect(comments).toBeSortedBy("created_at", {
+            ascending: true,
+          });
+        });
+    });
+
+    test("status 404: trying to order comments for a non-existent job_id", () => {
+      return request(app)
+        .get("/api/jobs/76666666/comments?order=desc")
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe("job_id not found");
+        });
+    });
+    test("status 400: trying to order comments for an invalid job_id", () => {
+      return request(app)
+        .get("/api/jobs/notAnInt/comments?order=desc")
+        .expect(400)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe("bad request");
+        });
+    });
+    test("status 400: trying to order articles by an invalid method", () => {
+      return request(app)
+        .get("/api/jobs/1/comments?order=disc")
+        .expect(400)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe("bad request");
+        });
     });
   });
 });
