@@ -12,16 +12,16 @@ describe("/jobs", () => {
       return request(app)
         .get("/api/jobs/")
         .expect(200)
-        .then(({ body: { allJobs } }) => {
-          expect(Array.isArray(allJobs)).toBe(true);
+        .then(({ body: { jobs } }) => {
+          expect(Array.isArray(jobs)).toBe(true);
         });
     });
     test("status 200: each job object contains certain properties", () => {
       return request(app)
         .get("/api/jobs")
         .expect(200)
-        .then(({ body: { allJobs } }) => {
-          allJobs.forEach((job) => {
+        .then(({ body: { jobs } }) => {
+          jobs.forEach((job) => {
             expect(job).toHaveProperty("title");
             expect(job).toHaveProperty("body");
             expect(job).toHaveProperty("skill_name");
@@ -38,8 +38,8 @@ describe("/jobs", () => {
       return request(app)
         .get("/api/jobs")
         .expect(200)
-        .then(({ body: { allJobs } }) => {
-          expect(allJobs).toBeSortedBy("created_at", {
+        .then(({ body: { jobs } }) => {
+          expect(jobs).toBeSortedBy("created_at", {
             descending: true,
           });
         });
@@ -48,40 +48,40 @@ describe("/jobs", () => {
       return request(app)
         .get("/api/jobs?order=asc")
         .expect(200)
-        .then(({ body: { allJobs } }) => {
-          expect(allJobs).toBeSortedBy("created_at", { ascending: true });
+        .then(({ body: { jobs } }) => {
+          expect(jobs).toBeSortedBy("created_at", { ascending: true });
         });
     });
     test("status 200: accepts a skill_name query that filters the jobs by skill_name", () => {
       return request(app)
         .get("/api/jobs?skill_name=translating")
         .expect(200)
-        .then(({ body: { allJobs } }) => {
-          expect(allJobs).toHaveLength(1);
+        .then(({ body: { jobs } }) => {
+          expect(jobs).toHaveLength(1);
         });
     });
     test("status 200: accepts a location query that filters the jobs by location", () => {
       return request(app)
         .get("/api/jobs?location=M1")
         .expect(200)
-        .then(({ body: { allJobs } }) => {
-          expect(allJobs).toHaveLength(1);
+        .then(({ body: { jobs } }) => {
+          expect(jobs).toHaveLength(1);
         });
     });
     test("status 200: returns an empty array if skill name does not exist", () => {
       return request(app)
         .get("/api/jobs?skill_name=cat%20handling")
         .expect(200)
-        .then(({ body: { allJobs } }) => {
-          expect(allJobs).toHaveLength(0);
+        .then(({ body: { jobs } }) => {
+          expect(jobs).toHaveLength(0);
         });
     });
     test("status 200: returns an empty array if location does not exist", () => {
       return request(app)
         .get("/api/jobs?location=ZZ99")
         .expect(200)
-        .then(({ body: { allJobs } }) => {
-          expect(allJobs).toHaveLength(0);
+        .then(({ body: { jobs } }) => {
+          expect(jobs).toHaveLength(0);
         });
     });
     test("status 400: trying to sort jobs based on a non-existent column", () => {
@@ -321,16 +321,17 @@ describe("/skills", () => {
       return request(app)
         .get("/api/skills")
         .expect(200)
-        .then(({ body: { allSkills } }) => {
-          expect(Array.isArray(allSkills)).toBe(true);
+        .then(({ body: { skills } }) => {
+          console.log(skills);
+          expect(Array.isArray(skills)).toBe(true);
         });
     });
     test("status 200: each skill object contains certain properties", () => {
       return request(app)
         .get("/api/skills")
         .expect(200)
-        .then(({ body: { allSkills } }) => {
-          allSkills.forEach((skill) => {
+        .then(({ body: { skills } }) => {
+          skills.forEach((skill) => {
             expect(skill).toHaveProperty("skill_id");
             expect(skill).toHaveProperty("skill_name");
           });
@@ -340,8 +341,8 @@ describe("/skills", () => {
       return request(app)
         .get("/api/skills")
         .expect(200)
-        .then(({ body: { allSkills } }) => {
-          expect(allSkills).toBeSortedBy("skill_id");
+        .then(({ body: { skills } }) => {
+          expect(skills).toBeSortedBy("skill_id");
         });
     });
   });
@@ -393,6 +394,7 @@ describe("/users", () => {
         })
         .expect(201)
         .then(({ body: { user } }) => {
+          console.log(user);
           expect(user).toHaveProperty("username", "madeupusername");
           expect(user).toHaveProperty("first_name", "bill");
           expect(user).toHaveProperty("last_name", "mcbilly");
@@ -453,8 +455,8 @@ describe("users/:username", () => {
       return request(app)
         .get("/api/users/gdurdane")
         .expect(200)
-        .then(({ body: { userObject } }) => {
-          expect(userObject).toEqual({
+        .then(({ body: { user } }) => {
+          expect(user).toEqual({
             username: "gdurdane",
             first_name: "Godfrey",
             last_name: "Durdan",
@@ -473,8 +475,8 @@ describe("users/:username", () => {
       return request(app)
         .get("/api/users/twebleyf")
         .expect(200)
-        .then(({ body: { userObject } }) => {
-          expect(userObject).toEqual({
+        .then(({ body: { user } }) => {
+          expect(user).toEqual({
             username: "twebleyf",
             first_name: "Terrie",
             last_name: "Webley",
@@ -643,6 +645,7 @@ describe("/:job_id/comments", () => {
         })
         .expect(201)
         .then(({ body: { comment } }) => {
+          console.log(comment);
           expect(comment).toHaveProperty("comment_id", 9);
           expect(comment).toHaveProperty("username", "hstrowan2m");
           expect(comment).toHaveProperty("job_id", 1);

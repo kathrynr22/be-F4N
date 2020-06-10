@@ -12,8 +12,8 @@ const { selectSkills } = require("../models/skillsModels");
 exports.getJobs = (req, res, next) => {
   const { sort_by, order, skill_name, location } = req.query;
   selectJobs(sort_by, order, skill_name, location)
-    .then((allJobs) => {
-      res.send({ allJobs });
+    .then((jobs) => {
+      res.send({ jobs });
     })
     .catch(next);
 };

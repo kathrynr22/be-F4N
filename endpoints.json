@@ -1,0 +1,348 @@
+{
+  "GET /api": {
+    "description": "serves up a json representation of all the available endpoints of the api"
+  },
+  "GET /api/skills": {
+    "description": "serves an array of all skills",
+    "exampleResponse": {
+      "skills": [
+        {
+          "skill_id": 1,
+          "skill_name": "accounts"
+        },
+        {
+          "skill_id": 2,
+          "skill_name": "secretarial"
+        },
+        {
+          "skill_id": 3,
+          "skill_name": "typing"
+        },
+        {
+          "skill_id": 4,
+          "skill_name": "proofreading"
+        },
+        {
+          "skill_id": 5,
+          "skill_name": "electrics"
+        },
+        {
+          "skill_id": 6,
+          "skill_name": "roofing"
+        },
+        {
+          "skill_id": 7,
+          "skill_name": "cleaning"
+        },
+        {
+          "skill_id": 8,
+          "skill_name": "plumbing"
+        },
+        {
+          "skill_id": 9,
+          "skill_name": "painting and decorating"
+        },
+        {
+          "skill_id": 10,
+          "skill_name": "computers"
+        },
+        {
+          "skill_id": 11,
+          "skill_name": "gardening"
+        },
+        {
+          "skill_id": 12,
+          "skill_name": "flat pack"
+        },
+        {
+          "skill_id": 13,
+          "skill_name": "photography"
+        },
+        {
+          "skill_id": 14,
+          "skill_name": "videography"
+        },
+        {
+          "skill_id": 15,
+          "skill_name": "sewing"
+        },
+        {
+          "skill_id": 16,
+          "skill_name": "baking"
+        },
+        {
+          "skill_id": 17,
+          "skill_name": "caligraphy"
+        },
+        {
+          "skill_id": 18,
+          "skill_name": "tiling"
+        },
+        {
+          "skill_id": 19,
+          "skill_name": "make up artist"
+        }
+      ]
+    }
+  },
+  "GET /api/jobs": {
+    "description": "serves an array of all jobs",
+    "queries": ["sort_by", "order"],
+    "exampleResponse": {
+      "jobs": [
+        {
+          "title": "Computer says no",
+          "body": "Hi guys, I think I've got a virus on my computer. The screen has gone blank and is not responding, would anyone be able to give their opinion?",
+          "username": "jbugbirdy",
+          "job_id": 10,
+          "created_at": "2020-06-08T08:11:00.000Z",
+          "skill_name": "computers",
+          "avatar_url": "https://randomuser.me/api/portraits/men/5.jpg",
+          "location": "M12",
+          "comment_count": "0"
+        },
+        {
+          "title": "Computerspacebarisstuck",
+          "body": "Seetitle",
+          "username": "stevesmith33",
+          "job_id": 11,
+          "created_at": "2020-06-06T14:11:00.000Z",
+          "skill_name": "computers",
+          "avatar_url": "https://randomuser.me/api/portraits/men/40.jpg",
+          "location": "M13",
+          "comment_count": "0"
+        },
+        {
+          "title": "Tired of wallpaper bubbles - please help!",
+          "body": "Hey guys, if anyone is free to help me with some wallpapering, I would be eternally grateful!",
+          "username": "swhordley3",
+          "job_id": 7,
+          "created_at": "2020-06-06T11:12:00.000Z",
+          "skill_name": "painting and decorating",
+          "avatar_url": "https://randomuser.me/api/portraits/men/83.jpg",
+          "location": "M4",
+          "comment_count": "1"
+        },
+        {
+          "title": "Hedge trimming help?",
+          "body": "Hi all, I have a privet hedge that is out of control and is taking over the path. Would anyone be willing to help me tackle it?",
+          "username": "ebarkworth23",
+          "job_id": 1,
+          "created_at": "2020-06-05T11:23:00.000Z",
+          "skill_name": "gardening",
+          "avatar_url": "https://randomuser.me/api/portraits/women/11.jpg",
+          "location": "M6",
+          "comment_count": "4"
+        },
+        {
+          "title": "Bought a new wireless headset for my macbook, but I cannot get it to connect - can anyone help please",
+          "body": "Hey all, are they any macbook experts who may be able to pop round and help me set up a wireless headset. I need it for a zoom call next week. Thanks in advance!.",
+          "username": "vkausche1a",
+          "job_id": 13,
+          "created_at": "2020-06-05T09:11:00.000Z",
+          "skill_name": "computers",
+          "avatar_url": "https://randomuser.me/api/portraits/women/1.jpg",
+          "location": "M17",
+          "comment_count": "0"
+        },
+        {
+          "title": "Computer won't turn on",
+          "body": "Hi guys, my MacBook Air is refusing to turn itself on today. It's plugged into a charger and is only a few years old. If anyone who knows about these things would be able to give it a once over that would be tremendously helpful.",
+          "username": "gcornelius17",
+          "job_id": 12,
+          "created_at": "2020-06-05T09:08:00.000Z",
+          "skill_name": "computers",
+          "avatar_url": "https://randomuser.me/api/portraits/women/2.jpg",
+          "location": "M15",
+          "comment_count": "7"
+        },
+        {
+          "title": "Lightbulb gone - and so has my back!",
+          "body": "Hi all, I need a lightbulb changing but I have done my back in recently and can't do it. Can anyone help!",
+          "username": "sfantonec",
+          "job_id": 9,
+          "created_at": "2020-06-05T08:11:00.000Z",
+          "skill_name": "electrics",
+          "avatar_url": "https://randomuser.me/api/portraits/men/23.jpg",
+          "location": "M11",
+          "comment_count": "1"
+        },
+        {
+          "title": "Dripping tap driving me mad - help!",
+          "body": "Hi there, I've got a dripping tap if anyone has the tools to fix it! It's driving me nuts!",
+          "username": "csimmons22",
+          "job_id": 8,
+          "created_at": "2020-06-05T07:11:00.000Z",
+          "skill_name": "plumbing",
+          "avatar_url": "https://randomuser.me/api/portraits/men/61.jpg",
+          "location": "M10",
+          "comment_count": "1"
+        },
+        {
+          "title": "Flat pack fans?",
+          "body": "Hi all, I have just moved house and went a bit made in Ikea. Would anyone have any spare time to lend a hand with the flat-pack?",
+          "username": "kheasly20",
+          "job_id": 3,
+          "created_at": "2020-06-04T16:10:00.000Z",
+          "skill_name": "flat pack",
+          "avatar_url": "https://randomuser.me/api/portraits/men/38.jpg",
+          "location": "M4",
+          "comment_count": "1"
+        },
+        {
+          "title": "Missing roof tile after the storm!",
+          "body": "Hi all I noticed a tile had fallen off my roof. Would be very grateful if someone could take a look.",
+          "username": "dmacnish1v",
+          "job_id": 5,
+          "created_at": "2020-06-04T10:09:02.000Z",
+          "skill_name": "roofing",
+          "avatar_url": "https://randomuser.me/api/portraits/men/51.jpg",
+          "location": "M25",
+          "comment_count": "2"
+        },
+        {
+          "title": "Cleaning help please",
+          "body": "Hi guys, I have been visiting my dad in hospital the past few weeks and the cleaning has really got on top of me. I would so appreciate some help with that if possible. Happy to donate to a good cause too!",
+          "username": "mneagle1x",
+          "job_id": 4,
+          "created_at": "2020-06-04T09:11:00.000Z",
+          "skill_name": "cleaning",
+          "avatar_url": "https://randomuser.me/api/portraits/women/68.jpg",
+          "location": "M2",
+          "comment_count": "1"
+        },
+        {
+          "title": "Anyone good at proofreading?",
+          "body": "Hi all would anyone be willing to proofread the first draft of my phd. It needs a fresh pair of eyes! There's no massive rush just in the next month or so would be great.",
+          "username": "ogreenhall8",
+          "job_id": 6,
+          "created_at": "2020-06-03T11:11:00.000Z",
+          "skill_name": "proofreading",
+          "avatar_url": "https://randomuser.me/api/portraits/men/86.jpg",
+          "location": "M7",
+          "comment_count": "2"
+        },
+        {
+          "title": "Tax return hell!",
+          "body": "Hi all, I am trying to do my first tax return and I'm a little lost. Would anyone with the relevant knowledge have an hour to spare to help me?",
+          "username": "cpevie21",
+          "job_id": 2,
+          "created_at": "2020-06-02T11:33:00.000Z",
+          "skill_name": "accounts",
+          "avatar_url": "https://randomuser.me/api/portraits/men/63.jpg",
+          "location": "M5",
+          "comment_count": "2"
+        }
+      ]
+    }
+  },
+  "DELETE /api/jobs/:job_id": {
+    "description": "deletes the given job by job id and responds with 204",
+    "queries": [],
+    "exampleResponse": {}
+  },
+  "GET /api/users/:username": {
+    "description": "serves an object for an user for the specified username",
+    "exampleResponse": {
+      "user": {
+        "username": "jbugbirdy",
+        "first_name": "Jason",
+        "last_name": "Bugbird",
+        "email": "jbugbirdy@chronoengine.com",
+        "avatar_url": "https://randomuser.me/api/portraits/men/5.jpg",
+        "location": "M12",
+        "bio": "Hi I'm Jason and I am a qualified roofer. Got a tile missing? Give me a shout!",
+        "charity_name": "RNLI",
+        "charity_logo": "https://images.justgiving.com/image/de255e5b-22ec-4c5a-ba44-63c007db9a31.png?template=size200x200",
+        "skill_name": ["roofing"]
+      }
+    }
+  },
+  "POST /api/users": {
+    "description": "serves an object for the posted user",
+    "body": {
+      "username": "madeupusername",
+      "first_name": "bill",
+      "last_name": "mcbilly",
+      "email": "fakeemail@hotmail.co.uk",
+      "avatar_url": "https://randomuser.me/api/portraits/men/84.jpg",
+      "location": "M21",
+      "bio": "hello, I am Bill.",
+      "charity_name": "Oxfam",
+      "skill_name": ["translating", "DIY"]
+    },
+    "exampleResponse": {
+      "user": {
+        "username": "madeupusername",
+        "first_name": "bill",
+        "last_name": "mcbilly",
+        "email": "fakeemail@hotmail.co.uk",
+        "avatar_url": "https://randomuser.me/api/portraits/men/84.jpg",
+        "location": "M21",
+        "bio": "hello, I am Bill.",
+        "charity_name": "Oxfam",
+        "skill_name": ["translating", "DIY"]
+      }
+    }
+  },
+  "GET /api/jobs/:job_id": {
+    "description": "serves a job object for the specified job_id",
+    "exampleResponse": {
+      "job": {
+        "title": "Hedge trimming help?",
+        "body": "Hi all, I have a privet hedge that is out of control and is taking over the path. Would anyone be willing to help me tackle it?",
+        "username": "ebarkworth23",
+        "job_id": 1,
+        "created_at": "2020-06-05T11:23:00.000Z",
+        "skill_name": "gardening",
+        "avatar_url": "https://randomuser.me/api/portraits/women/11.jpg",
+        "location": "M6",
+        "comment_count": "4"
+      }
+    }
+  },
+  "POST /api/jobs/:job_id/comments": {
+    "description": "serves an object of the posted comment for the specified job_id",
+    "body": {
+      "username": "hstrowan2m",
+      "body": "Congratulations to your daughter on graduating. I'm free on friday evenings"
+    },
+    "exampleResponse": {
+      "comment": {
+        "comment_id": 9,
+        "created_at": "2020-06-10T15: 55: 46.225Z",
+        "username": "hstrowan2m",
+        "body": "Congratulations to your daughter on graduating. I'm free on friday evenings",
+        "charity_name": "Oxfam",
+        "location": "M6",
+        "job_id": 1
+      }
+    }
+  },
+  "GET /api/jobs/:job_id/comments": {
+    "description": "serves an array of comments for the specified article_id",
+    "queries": ["sort_by", "order", "location", "charity_name"],
+    "exampleResponse": {
+      "comments": [
+        {
+          "comment_id": 6,
+          "created_at": "2020-06-03T16:11:00.000Z",
+          "username": "stevesmith33",
+          "body": "Hello, I can pop round tomorrow evening if that suits.",
+          "charity_name": "British Heart Foundation",
+          "location": "M13",
+          "job_id": 2
+        },
+        {
+          "comment_id": 5,
+          "created_at": "2020-06-02T14:53:00.000Z",
+          "username": "ghanvey2",
+          "body": "Hi there, I am happy to come and take a look. Bit tied up with work until next weekend though.",
+          "charity_name": "Cancer research",
+          "location": "M3",
+          "job_id": 2
+        }
+      ]
+    }
+  }
+}

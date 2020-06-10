@@ -4,8 +4,8 @@ const { selectSkills } = require("../models/skillsModels");
 exports.getUsername = (req, res, next) => {
   const { username } = req.params;
   selectUsername(username)
-    .then((userObject) => {
-      res.status(200).send({ userObject });
+    .then((user) => {
+      res.status(200).send({ user });
     })
     .catch(next);
 };
