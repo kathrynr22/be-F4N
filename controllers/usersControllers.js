@@ -7,9 +7,7 @@ exports.getUsername = (req, res, next) => {
     .then((userObject) => {
       res.status(200).send({ userObject });
     })
-    .catch((err) => {
-      next(err);
-    });
+    .catch(next);
 };
 
 exports.postUser = (req, res, next) => {
