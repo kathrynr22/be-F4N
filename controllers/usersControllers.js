@@ -37,9 +37,11 @@ exports.postUser = (req, res, next) => {
     ),
   ];
 
-  skill_name.forEach((skill) => {
-    promiseArr.push(selectSkills(skill));
-  });
+  if (skill_name) {
+    skill_name.forEach((skill) => {
+      promiseArr.push(selectSkills(skill));
+    });
+  }
 
   Promise.all(promiseArr)
     .then(([user]) => {
