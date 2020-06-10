@@ -315,7 +315,7 @@ describe("/users", () => {
             });
           });
       });
-      test.only("status 200: responds with the requested username object - user with more than one skill", () => {
+      test("status 200: responds with the requested username object - user with more than one skill", () => {
         return request(app)
           .get("/api/users/twebleyf")
           .expect(200)
@@ -348,7 +348,7 @@ describe("/users", () => {
   });
   describe("/users", () => {
     describe("POST", () => {
-      test("status 201: responds with a user object", () => {
+      test.only("status 201: responds with a user object", () => {
         return request(app)
           .post("/api/users")
           .send({
@@ -366,17 +366,16 @@ describe("/users", () => {
           .then(({ body: { user } }) => {
             expect(user).toHaveProperty("username", "madeupusername");
             expect(user).toHaveProperty("first_name", "bill");
-            expect(user).toHaveProperty("last_name", "mcbill");
+            expect(user).toHaveProperty("last_name", "mcbilly");
             expect(user).toHaveProperty("email", "fakeemail@hotmail.co.uk");
             expect(user).toHaveProperty(
               "avatar_url",
-              "https://randomuser.me/api/portraits/men/74.jpg"
+              "https://randomuser.me/api/portraits/men/84.jpg"
             );
             expect(user).toHaveProperty("location", "M21");
-            expect(user).toHaveProperty("bio");
-            expect(user).toHaveProperty("hello, I am Bill.");
+            expect(user).toHaveProperty("bio", "hello, I am Bill.");
             expect(user).toHaveProperty("charity_name", "Oxfam");
-            expect(user).toHaveProperty("skill_name", "translating");
+            expect(user).toHaveProperty("skill_name", ["translating", "DIY"]);
           });
       });
     });

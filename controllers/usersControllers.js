@@ -1,4 +1,4 @@
-const { selectUsername } = require("../models/usersModels");
+const { selectUsername, insertUser } = require("../models/usersModels");
 
 exports.getUsername = (req, res, next) => {
   const { username } = req.params;
@@ -9,4 +9,34 @@ exports.getUsername = (req, res, next) => {
     .catch((err) => {
       next(err);
     });
+};
+
+exports.postUser = (req, res, next) => {
+  const {
+    username,
+    first_name,
+    last_name,
+    email,
+    avatar_url,
+    location,
+    bio,
+    charity_name,
+    skill_name,
+  } = req.body;
+
+  insertUser(
+    username,
+    first_name,
+    last_name,
+    email,
+    avatar_url,
+    location,
+    bio,
+    charity_name,
+    skill_name
+  )
+    .then((user) => {
+      res.status(201).send({ user });
+    })
+    .catch(next);
 };

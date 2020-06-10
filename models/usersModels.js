@@ -33,3 +33,45 @@ exports.selectUsername = (username) => {
       }
     });
 };
+
+exports.insertUser = (
+  username,
+  first_name,
+  last_name,
+  email,
+  avatar_url,
+  location,
+  bio,
+  charity_name,
+  skill_name
+) => {
+  return knex("users")
+    .insert({
+      username,
+      first_name,
+      last_name,
+      email,
+      avatar_url,
+      location,
+      bio,
+      charity_name,
+    })
+    .returning("*")
+    .then((user) => {
+      const usernameSkillObj = skill_name.map((skill) => {
+        return {
+          username,
+          skill_id: knex("skills")
+            .select("skill_id")
+            .where({ skill_name: skill }),
+        };
+      });
+
+      return knex("users_skills_junction")
+        .insert(usernameSkillObj)
+        .returning("*")
+        .then(() => {
+          return { ...user[0], skill_name };
+        });
+    });
+};
