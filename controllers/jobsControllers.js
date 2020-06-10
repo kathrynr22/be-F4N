@@ -1,4 +1,9 @@
-const { selectJobs, selectJob, insertJob } = require("../models/jobsModels");
+const {
+  selectJobs,
+  selectJob,
+  insertJob,
+  deleteJob,
+} = require("../models/jobsModels");
 const { selectUsername } = require("../models/usersModels");
 const { selectSkills } = require("../models/skillsModels");
 
@@ -33,6 +38,16 @@ exports.postJob = (req, res, next) => {
   Promise.all(promiseArr)
     .then(([[job]]) => {
       res.status(201).send({ job });
+    })
+    .catch(next);
+};
+
+exports.delJob = (req, res, next) => {
+  const { job_id } = req.params;
+
+  deleteJob(job_id)
+    .then(() => {
+      res.sendStatus(204);
     })
     .catch(next);
 };

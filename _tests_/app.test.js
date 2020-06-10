@@ -267,9 +267,22 @@ describe("/jobs", () => {
           });
       });
     });
+    describe("DELETE", () => {
+      test("status 204: responds with no context on successful delete ", () => {
+        return request(app).del("/api/jobs/1").expect(204);
+      });
+      test("status 404: responds with job not found when job_id does not exist", () => {
+        return request(app)
+          .del("/api/jobs/999")
+          .expect(404)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe("job not found");
+          });
+      });
+    });
     describe("unsupported methods", () => {
       test("status: 405 - responds with method not allowed", () => {
-        const methods = ["post", "put", "delete", "patch"];
+        const methods = ["post", "put", "patch"];
 
         const requestPromises = methods.map((method) => {
           return request(app)

@@ -113,3 +113,14 @@ exports.insertJob = (username, title, body, skill_name) => {
       "users.location"
     );
 };
+
+exports.deleteJob = (job_id) => {
+  return knex("jobs")
+    .del()
+    .where({ job_id })
+    .then((affectedRows) => {
+      return affectedRows === 0
+        ? Promise.reject({ status: 404, msg: "job not found" })
+        : Promise.resolve();
+    });
+};
