@@ -422,7 +422,7 @@ describe("/users", () => {
           location: "M21",
           bio: "hello, I am Bill.",
           charity_name: "Oxfam",
-          skill_name: "not a skill",
+          skill_name: ["not a skill"],
         })
         .expect(404)
         .then(({ body: { msg } }) => {
@@ -430,93 +430,59 @@ describe("/users", () => {
         });
     });
   });
-
-  describe("users/:username", () => {
-    describe("GET", () => {
-      test("status 200: responds with the requested username object - user with only one skill", () => {
-        return request(app)
-          .get("/api/users/gdurdane")
-          .expect(200)
-          .then(({ body: { userObject } }) => {
-            expect(userObject).toEqual({
-              username: "gdurdane",
-              first_name: "Godfrey",
-              last_name: "Durdan",
-              email: "gdurdane@drupal.org",
-              avatar_url: "https://randomuser.me/api/portraits/men/72.jpg",
-              location: "M1",
-              bio:
-                "Hello I'm Godfrey and I work at B&Q and love all things DIY!",
-              charity_name: "Oxfam",
-              charity_logo:
-                "https://images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200",
-              skill_name: ["DIY"],
-            });
+});
+describe("users/:username", () => {
+  describe("GET", () => {
+    test("status 200: responds with the requested username object - user with only one skill", () => {
+      return request(app)
+        .get("/api/users/gdurdane")
+        .expect(200)
+        .then(({ body: { userObject } }) => {
+          expect(userObject).toEqual({
+            username: "gdurdane",
+            first_name: "Godfrey",
+            last_name: "Durdan",
+            email: "gdurdane@drupal.org",
+            avatar_url: "https://randomuser.me/api/portraits/men/72.jpg",
+            location: "M1",
+            bio: "Hello I'm Godfrey and I work at B&Q and love all things DIY!",
+            charity_name: "Oxfam",
+            charity_logo:
+              "https://images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200",
+            skill_name: ["DIY"],
           });
-      });
-      test("status 200: responds with the requested username object - user with more than one skill", () => {
-        return request(app)
-          .get("/api/users/twebleyf")
-          .expect(200)
-          .then(({ body: { userObject } }) => {
-            expect(userObject).toEqual({
-              username: "twebleyf",
-              first_name: "Terrie",
-              last_name: "Webley",
-              email: "twebleyf@dmoz.org",
-              avatar_url: "https://randomuser.me/api/portraits/women/39.jpg",
-              location: "M2",
-              bio:
-                "Hi I am Terrie and I work in graphic design. I also speak and read fluent German if anyone needs a hand with that.",
-              charity_name: "Greenpeace",
-              charity_logo:
-                "https://images.justgiving.com/image/greenpeace_logo2.gif?template=size200x200",
-              skill_name: ["graphic design", "translating"],
-            });
+        });
+    });
+    test("status 200: responds with the requested username object - user with more than one skill", () => {
+      return request(app)
+        .get("/api/users/twebleyf")
+        .expect(200)
+        .then(({ body: { userObject } }) => {
+          expect(userObject).toEqual({
+            username: "twebleyf",
+            first_name: "Terrie",
+            last_name: "Webley",
+            email: "twebleyf@dmoz.org",
+            avatar_url: "https://randomuser.me/api/portraits/women/39.jpg",
+            location: "M2",
+            bio:
+              "Hi I am Terrie and I work in graphic design. I also speak and read fluent German if anyone needs a hand with that.",
+            charity_name: "Greenpeace",
+            charity_logo:
+              "https://images.justgiving.com/image/greenpeace_logo2.gif?template=size200x200",
+            skill_name: ["graphic design", "translating"],
           });
-      });
-      test("status 404: non-existent username", () => {
-        return request(app)
-          .get("/api/users/kathryn")
-          .expect(404)
-          .then(({ body: { msg } }) => {
-            expect(msg).toBe("username not found");
-          });
-      });
+        });
+    });
+    test("status 404: non-existent username", () => {
+      return request(app)
+        .get("/api/users/kathryn")
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe("username not found");
+        });
     });
   });
-
-  describe("/users", () => {
-    describe("POST", () => {
-      test("status 201: responds with a user object", () => {
-        return request(app)
-          .post("/api/users")
-          .send({
-            username: "madeupusername",
-            first_name: "bill",
-            last_name: "mcbilly",
-            email: "fakeemail@hotmail.co.uk",
-            avatar_url: "https://randomuser.me/api/portraits/men/84.jpg",
-            location: "M21",
-            bio: "hello, I am Bill.",
-            charity_name: "Oxfam",
-            skill_name: ["translating", "DIY"],
-          })
-          .expect(201)
-          .then(({ body: { user } }) => {
-            expect(user).toHaveProperty("username", "madeupusername");
-            expect(user).toHaveProperty("first_name", "bill");
-            expect(user).toHaveProperty("last_name", "mcbilly");
-            expect(user).toHaveProperty("email", "fakeemail@hotmail.co.uk");
-            expect(user).toHaveProperty(
-              "avatar_url",
-              "https://randomuser.me/api/portraits/men/84.jpg"
-            );
-            expect(user).toHaveProperty("location", "M21");
-            expect(user).toHaveProperty("bio", "hello, I am Bill.");
-            expect(user).toHaveProperty("charity_name", "Oxfam");
-            expect(user).toHaveProperty("skill_name", ["translating", "DIY"]);
-
 });
 
 describe("/:job_id/comments", () => {
@@ -541,7 +507,6 @@ describe("/:job_id/comments", () => {
             expect(comment).toHaveProperty("username");
             expect(comment).toHaveProperty("created_at");
             expect(comment).toHaveProperty("body");
-
           });
         });
     });

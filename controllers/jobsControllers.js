@@ -4,7 +4,6 @@ const {
   insertJob,
   deleteJob,
   selectCommentsByJobId,
-
 } = require("../models/jobsModels");
 const { selectUsername } = require("../models/usersModels");
 const { selectSkills } = require("../models/skillsModels");
@@ -43,7 +42,6 @@ exports.postJob = (req, res, next) => {
     .catch(next);
 };
 
-
 exports.delJob = (req, res, next) => {
   const { job_id } = req.params;
   deleteJob(job_id)
@@ -51,6 +49,7 @@ exports.delJob = (req, res, next) => {
       res.sendStatus(204);
     })
     .catch(next);
+};
 
 exports.getCommentsByJobId = (req, res, next) => {
   const { job_id } = req.params;

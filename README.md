@@ -72,15 +72,15 @@ GET /api/ shows all end points etc - useful for developing front end
 GET /api/skills - DONE
 
 GET /api/users/:username - KR - DONE
-POST /api/users - KR DONE except for error handling (KR)
+POST /api/users - KR DONE
 
 GET /api/jobs - DONE
 POST /api/jobs - DONE
 
-GET /api/jobs/:job_id - JO [PRIORITY]
-DELETE /api/jobs: job_id - JO
+GET /api/jobs/:job_id -  DONE - Provide a string as job_id
+DELETE /api/jobs: job_id - DONE - Provide a string as job_id
 
-GET /api/jobs/:job_id/comments - KR
+GET /api/jobs/:job_id/comments - KR DONE
 POST /api/jobs/:job_id/comments - KR
 
 OTHER nice to haves - if time

@@ -24,7 +24,6 @@ exports.postUser = (req, res, next) => {
   } = req.body;
 
   const promiseArr = [
-    selectSkills(skill_name),
     insertUser(
       username,
       first_name,
@@ -38,10 +37,12 @@ exports.postUser = (req, res, next) => {
     ),
   ];
 
+  skill_name.forEach((skill) => {
+    promiseArr.push(selectSkills(skill));
+  });
+
   Promise.all(promiseArr)
-    .then(([[user]]) => {
-      console.log("insider controller");
-      console.log(user);
+    .then(([user]) => {
       res.status(201).send({ user });
     })
     .catch(next);
