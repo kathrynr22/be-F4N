@@ -642,8 +642,8 @@ describe("/:job_id/comments", () => {
             "Congratulations to your daughter on graduating. I'm free on friday evenings",
         })
         .expect(201)
-        .then(({ body: { user } }) => {
-          expect(comment).toHaveProperty("comment_id", 10);
+        .then(({ body: { comment } }) => {
+          expect(comment).toHaveProperty("comment_id", 9);
           expect(comment).toHaveProperty("username", "hstrowan2m");
           expect(comment).toHaveProperty("job_id", 1);
           expect(comment).toHaveProperty("created_at");
@@ -653,6 +653,68 @@ describe("/:job_id/comments", () => {
           );
           expect(comment).toHaveProperty("location", "M6");
           expect(comment).toHaveProperty("charity_name", "Oxfam");
+        });
+    });
+    test("status 400: responds with bad request when passed no username", () => {
+      return request(app)
+        .post("/api/jobs/1/comments")
+        .send({
+          body:
+            "Congratulations to your daughter on graduating. I'm free on friday evenings",
+        })
+        .expect(400)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe("bad request");
+        });
+    });
+    test("status 400: responds with bad request when passed no body", () => {
+      return request(app)
+        .post("/api/jobs/1/comments")
+        .send({
+          username: "hstrowan2m",
+        })
+        .expect(400)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe("bad request");
+        });
+    });
+    test("status 400: responds with bad request when passed a string instead of integer", () => {
+      return request(app)
+        .post("/api/jobs/notainteger/comments")
+        .send({
+          username: "hstrowan2m",
+          body:
+            "Congratulations to your daughter on graduating. I'm free on friday evenings",
+        })
+        .expect(400)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe("bad request");
+        });
+    });
+    test("status 404: reponds with username not found when passed an non existent username", () => {
+      return request(app)
+        .post("/api/jobs/1/comments")
+        .send({
+          username: "not a user name",
+          body:
+            "Congratulations to your daughter on graduating. I'm free on friday evenings",
+        })
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe("username not found");
+        });
+    });
+    test("status 404: reponds with job not found when endpoint job_id is not existent", () => {
+      return request(app)
+        .post("/api/jobs/999/comments")
+        .send({
+          username: "hstrowan2m",
+          body:
+            "Congratulations to your daughter on graduating. I'm free on friday evenings",
+        })
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe("job not found");
         });
     });
   });

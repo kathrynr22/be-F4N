@@ -81,7 +81,7 @@ GET /api/jobs/:job_id -  DONE
 DELETE /api/jobs: job_id - DONE
 
 GET /api/jobs/:job_id/comments - KR DONE
-POST /api/jobs/:job_id/comments - KR
+POST /api/jobs/:job_id/comments - KR DONE
 
 OTHER nice to haves - if time
 

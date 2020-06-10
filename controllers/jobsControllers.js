@@ -4,6 +4,7 @@ const {
   insertJob,
   deleteJob,
   selectCommentsByJobId,
+  insertComment,
 } = require("../models/jobsModels");
 const { selectUsername } = require("../models/usersModels");
 const { selectSkills } = require("../models/skillsModels");
@@ -57,6 +58,25 @@ exports.getCommentsByJobId = (req, res, next) => {
   selectCommentsByJobId(job_id, sort_by, order, location, charity_name)
     .then((comments) => {
       res.status(200).send({ comments });
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+
+exports.postComment = (req, res, next) => {
+  const { body, username } = req.body;
+  const { job_id } = req.params;
+
+  const promiseArr = [
+    selectUsername(username),
+    selectJob(job_id),
+    insertComment(job_id, body, username),
+  ];
+
+  Promise.all(promiseArr)
+    .then(([user, job, comment]) => {
+      res.status(201).send({ comment });
     })
     .catch((err) => {
       next(err);

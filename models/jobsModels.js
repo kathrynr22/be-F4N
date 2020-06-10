@@ -176,3 +176,38 @@ exports.selectCommentsByJobId = (
       return comments;
     });
 };
+
+exports.insertComment = (job_id, body, username) => {
+  if (!body || !username) {
+    return Promise.reject({
+      status: 400,
+      msg: "bad request",
+    });
+  }
+
+  return knex("inserted_comment")
+    .with(
+      "inserted_comment",
+      knex("comments")
+        .insert({
+          username: username,
+          body: body,
+          job_id: job_id,
+        })
+        .returning("*")
+    )
+    .select(
+      "comment_id",
+      "created_at",
+      "users.username",
+      "body",
+      "charity_name",
+      "location",
+      "job_id"
+    )
+    .join("users", "inserted_comment.username", "=", "users.username")
+    .where("job_id", job_id)
+    .then((comment) => {
+      return comment[0];
+    });
+};
