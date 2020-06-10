@@ -81,3 +81,35 @@ exports.insertJob = (username, title, body, skill_name) => {
       "users.location"
     );
 };
+
+exports.selectCommentsByJobId = (job_id, sort_by, order) => {
+  if (order !== undefined && order !== "asc" && order !== "desc") {
+    return Promise.reject({
+      status: 400,
+      msg: "bad request",
+    });
+  }
+  return knex
+    .select("comment_id", "created_at", "username", "body")
+    .from("comments")
+    .where("job_id", job_id)
+    .orderBy(sort_by || "created_at", order || "desc")
+    .then((comments) => {
+      if (comments.length === 0) {
+        return knex
+          .select("*")
+          .from("jobs")
+          .where("job_id", job_id)
+          .then(([job]) => {
+            if (job === undefined) {
+              return Promise.reject({
+                status: 404,
+                msg: "job_id not found",
+              });
+            }
+            return [];
+          });
+      }
+      return comments;
+    });
+};

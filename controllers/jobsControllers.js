@@ -1,4 +1,8 @@
-const { selectJobs, insertJob } = require("../models/jobsModels");
+const {
+  selectJobs,
+  insertJob,
+  selectCommentsByJobId,
+} = require("../models/jobsModels");
 const { selectUsername } = require("../models/usersModels");
 const { selectSkills } = require("../models/skillsModels");
 
@@ -25,4 +29,19 @@ exports.postJob = (req, res, next) => {
       res.status(201).send({ job });
     })
     .catch(next);
+};
+
+exports.getCommentsByJobId = (req, res, next) => {
+  const { job_id } = req.params;
+  const { sort_by, order } = req.query;
+
+  selectCommentsByJobId(job_id, sort_by, order)
+    .then((comments) => {
+      console.log("inside controllers");
+      console.log(comments);
+      res.status(200).send({ comments });
+    })
+    .catch((err) => {
+      next(err);
+    });
 };
