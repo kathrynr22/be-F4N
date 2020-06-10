@@ -145,7 +145,8 @@ exports.selectCommentsByJobId = (
       "users.username",
       "body",
       "charity_name",
-      "location"
+      "location",
+      "job_id"
     )
     .from("comments")
     .join("users", "comments.username", "=", "users.username")

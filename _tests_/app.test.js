@@ -525,6 +525,7 @@ describe("/:job_id/comments", () => {
             expect(comment).toHaveProperty("body");
             expect(comment).toHaveProperty("location");
             expect(comment).toHaveProperty("charity_name");
+            expect(comment).toHaveProperty("job_id");
           });
         });
     });
@@ -628,6 +629,30 @@ describe("/:job_id/comments", () => {
         .expect(400)
         .then(({ body: { msg } }) => {
           expect(msg).toBe("bad request");
+        });
+    });
+  });
+  describe("POST", () => {
+    test("status 201: responds with a comment object", () => {
+      return request(app)
+        .post("/api/jobs/1/comments")
+        .send({
+          username: "hstrowan2m",
+          body:
+            "Congratulations to your daughter on graduating. I'm free on friday evenings",
+        })
+        .expect(201)
+        .then(({ body: { user } }) => {
+          expect(comment).toHaveProperty("comment_id", 10);
+          expect(comment).toHaveProperty("username", "hstrowan2m");
+          expect(comment).toHaveProperty("job_id", 1);
+          expect(comment).toHaveProperty("created_at");
+          expect(comment).toHaveProperty(
+            "body",
+            "Congratulations to your daughter on graduating. I'm free on friday evenings"
+          );
+          expect(comment).toHaveProperty("location", "M6");
+          expect(comment).toHaveProperty("charity_name", "Oxfam");
         });
     });
   });
