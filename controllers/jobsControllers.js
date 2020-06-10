@@ -14,9 +14,11 @@ exports.getJobs = (req, res, next) => {
 exports.getJob = (req, res, next) => {
   const { job_id } = req.params;
 
-  selectJob(job_id).then((job) => {
-    res.send({ job });
-  });
+  selectJob(job_id)
+    .then((job) => {
+      res.send({ job });
+    })
+    .catch(next);
 };
 
 exports.postJob = (req, res, next) => {

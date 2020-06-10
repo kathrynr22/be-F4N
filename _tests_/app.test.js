@@ -230,7 +230,7 @@ describe("/jobs", () => {
   });
   describe("/:job_id", () => {
     describe("GET", () => {
-      test("status 200: responds with a job object contains certain properties", () => {
+      test("status 200: responds with a job object which contains certain properties", () => {
         return request(app)
           .get("/api/jobs/1")
           .expect(200)
@@ -256,6 +256,14 @@ describe("/jobs", () => {
               "2020-05-02T11:15:00.000Z"
             );
             expect(job).toHaveProperty("comment_count", "1");
+          });
+      });
+      test("status 404: responds with job not found when job_id does not exist", () => {
+        return request(app)
+          .get("/api/jobs/999")
+          .expect(404)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe("job not found");
           });
       });
     });
