@@ -183,34 +183,34 @@ describe("/jobs", () => {
           expect(msg).toBe("bad request");
         });
     });
-  });
-  test("status 404: responds with username not found when posting a job with non-existent username", () => {
-    return request(app)
-      .post("/api/jobs")
-      .send({
-        username: "dontexist",
-        title: "Test Job",
-        body: "Test job for testing purposes",
-        skill_name: "graphic design",
-      })
-      .expect(404)
-      .then(({ body: { msg } }) => {
-        expect(msg).toBe("username not found");
-      });
-  });
-  test("status 404: responds with skill not found when posting a job with non-existent skill", () => {
-    return request(app)
-      .post("/api/jobs")
-      .send({
-        username: "gdurdane",
-        title: "Test Job",
-        body: "Test job for testing purposes",
-        skill_name: "not a skill",
-      })
-      .expect(404)
-      .then(({ body: { msg } }) => {
-        expect(msg).toBe("skill not found");
-      });
+    test("status 404: responds with username not found when posting a job with non-existent username", () => {
+      return request(app)
+        .post("/api/jobs")
+        .send({
+          username: "dontexist",
+          title: "Test Job",
+          body: "Test job for testing purposes",
+          skill_name: "graphic design",
+        })
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe("username not found");
+        });
+    });
+    test("status 404: responds with skill not found when posting a job with non-existent skill", () => {
+      return request(app)
+        .post("/api/jobs")
+        .send({
+          username: "gdurdane",
+          title: "Test Job",
+          body: "Test job for testing purposes",
+          skill_name: "not a skill",
+        })
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe("skill not found");
+        });
+    });
   });
   describe("unsupported methods", () => {
     test("status: 405 - responds with method not allowed", () => {
@@ -226,6 +226,54 @@ describe("/jobs", () => {
       });
 
       return Promise.all(requestPromises);
+    });
+  });
+  describe("/:job_id", () => {
+    describe("GET", () => {
+      test("status 200: responds with a job object contains certain properties", () => {
+        return request(app)
+          .get("/api/jobs/1")
+          .expect(200)
+          .then(({ body: { job } }) => {
+            expect(job).toHaveProperty(
+              "title",
+              "Hair stylist for an important event"
+            );
+            expect(job).toHaveProperty(
+              "body",
+              "Hi all, it is my daughter's graduation next week and I would love to look my best. But none of the hairdressers are open. Would anyone be willing to come round and fix my hair. I would love to donate to a good cause at the same time!"
+            );
+            expect(job).toHaveProperty("skill_name", "hair styling");
+            expect(job).toHaveProperty("username", "gdurdane");
+            expect(job).toHaveProperty(
+              "avatar_url",
+              "https://randomuser.me/api/portraits/men/72.jpg"
+            );
+            expect(job).toHaveProperty("location", "M1");
+            expect(job).toHaveProperty("job_id", 1);
+            expect(job).toHaveProperty(
+              "created_at",
+              "2020-05-02T11:15:00.000Z"
+            );
+            expect(job).toHaveProperty("comment_count", "1");
+          });
+      });
+    });
+    describe("unsupported methods", () => {
+      test("status: 405 - responds with method not allowed", () => {
+        const methods = ["post", "put", "delete", "patch"];
+
+        const requestPromises = methods.map((method) => {
+          return request(app)
+            [method]("/api/jobs/1")
+            .expect(405)
+            .then(({ body }) => {
+              expect(body.msg).toBe("method not allowed");
+            });
+        });
+
+        return Promise.all(requestPromises);
+      });
     });
   });
 });
@@ -348,7 +396,7 @@ describe("/users", () => {
   });
   describe("/users", () => {
     describe("POST", () => {
-      test.only("status 201: responds with a user object", () => {
+      test("status 201: responds with a user object", () => {
         return request(app)
           .post("/api/users")
           .send({

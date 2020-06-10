@@ -1,4 +1,4 @@
-const { selectJobs, insertJob } = require("../models/jobsModels");
+const { selectJobs, selectJob, insertJob } = require("../models/jobsModels");
 const { selectUsername } = require("../models/usersModels");
 const { selectSkills } = require("../models/skillsModels");
 
@@ -9,6 +9,14 @@ exports.getJobs = (req, res, next) => {
       res.send({ allJobs });
     })
     .catch(next);
+};
+
+exports.getJob = (req, res, next) => {
+  const { job_id } = req.params;
+
+  selectJob(job_id).then((job) => {
+    res.send({ job });
+  });
 };
 
 exports.postJob = (req, res, next) => {
