@@ -102,7 +102,7 @@ describe("/jobs", () => {
     });
   });
   describe("POST", () => {
-    it("status 201: responds with a job object", () => {
+    test("status 201: responds with a job object", () => {
       return request(app)
         .post("/api/jobs")
         .send({
@@ -127,7 +127,7 @@ describe("/jobs", () => {
           expect(job).toHaveProperty("comment_count");
         });
     });
-    it("status 201: responds with a job_id", () => {
+    test("status 201: responds with a job_id", () => {
       return request(app)
         .post("/api/jobs")
         .send({
@@ -141,7 +141,7 @@ describe("/jobs", () => {
           expect(job).toHaveProperty("job_id", 6);
         });
     });
-    it("status 201: responds with a comment_count defaulted to 0", () => {
+    test("status 201: responds with a comment_count defaulted to 0", () => {
       return request(app)
         .post("/api/jobs")
         .send({
@@ -155,7 +155,7 @@ describe("/jobs", () => {
           expect(job).toHaveProperty("comment_count", "0");
         });
     });
-    it("status 201: responds with a created_at not set to null", () => {
+    test("status 201: responds with a created_at not set to null", () => {
       return request(app)
         .post("/api/jobs")
         .send({
@@ -169,7 +169,7 @@ describe("/jobs", () => {
           expect(job.created_at).toBeTruthy;
         });
     });
-    it("status 400: responds with bad request when passed invalid body", () => {
+    test("status 400: responds with bad request when passed invalid body", () => {
       return request(app)
         .post("/api/jobs")
         .send({
@@ -183,6 +183,34 @@ describe("/jobs", () => {
           expect(msg).toBe("bad request");
         });
     });
+  });
+  test("status 404: responds with username not found when posting a job with non-existent username", () => {
+    return request(app)
+      .post("/api/jobs")
+      .send({
+        username: "dontexist",
+        title: "Test Job",
+        body: "Test job for testing purposes",
+        skill_name: "graphic design",
+      })
+      .expect(404)
+      .then(({ body: { msg } }) => {
+        expect(msg).toBe("username not found");
+      });
+  });
+  test("status 404: responds with skill not found when posting a job with non-existent skill", () => {
+    return request(app)
+      .post("/api/jobs")
+      .send({
+        username: "gdurdane",
+        title: "Test Job",
+        body: "Test job for testing purposes",
+        skill_name: "not a skill",
+      })
+      .expect(404)
+      .then(({ body: { msg } }) => {
+        expect(msg).toBe("skill not found");
+      });
   });
   describe("unsupported methods", () => {
     test("status: 405 - responds with method not allowed", () => {
