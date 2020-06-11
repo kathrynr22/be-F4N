@@ -515,7 +515,6 @@ describe("users/:username", () => {
     });
   });
 });
-
 describe("/:job_id/comments", () => {
   describe("GET", () => {
     test("status 200: responds with an array of comment objects", () => {
@@ -704,7 +703,7 @@ describe("/:job_id/comments", () => {
           expect(msg).toBe("bad request");
         });
     });
-    test("status 404: reponds with username not found when passed an non existent username", () => {
+    test("status 400: responds with bad request when passed an non existent username", () => {
       return request(app)
         .post("/api/jobs/1/comments")
         .send({
@@ -712,12 +711,12 @@ describe("/:job_id/comments", () => {
           body:
             "Congratulations to your daughter on graduating. I'm free on friday evenings",
         })
-        .expect(404)
+        .expect(400)
         .then(({ body: { msg } }) => {
-          expect(msg).toBe("username not found");
+          expect(msg).toBe("bad request");
         });
     });
-    test("status 404: reponds with job not found when endpoint job_id is not existent", () => {
+    test("status 400: responds with bad request when endpoint job_id is not existent", () => {
       return request(app)
         .post("/api/jobs/999/comments")
         .send({
@@ -725,9 +724,9 @@ describe("/:job_id/comments", () => {
           body:
             "Congratulations to your daughter on graduating. I'm free on friday evenings",
         })
-        .expect(404)
+        .expect(400)
         .then(({ body: { msg } }) => {
-          expect(msg).toBe("job not found");
+          expect(msg).toBe("bad request");
         });
     });
   });

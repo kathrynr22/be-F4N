@@ -69,16 +69,14 @@ exports.postComment = (req, res, next) => {
   const { job_id } = req.params;
 
   const promiseArr = [
+    insertComment(job_id, body, username),
     selectUsername(username),
     selectJob(job_id),
-    insertComment(job_id, body, username),
   ];
 
   Promise.all(promiseArr)
-    .then(([user, job, comment]) => {
+    .then(([comment]) => {
       res.status(201).send({ comment });
     })
-    .catch((err) => {
-      next(err);
-    });
+    .catch(next);
 };
