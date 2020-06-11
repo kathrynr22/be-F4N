@@ -73,7 +73,7 @@ describe('/jobs', () => {
         .get('/api/jobs?location=M1')
         .expect(200)
         .then(({ body: { jobs } }) => {
-          expect(jobs).toHaveLength(1);
+          expect(jobs).toHaveLength(2);
         });
     });
     test('status 200: returns an empty array if skill name does not exist', () => {
@@ -118,6 +118,7 @@ describe('/jobs', () => {
           title: 'Test Job',
           body: 'Test job for testing purposes',
           skill_name: 'graphic design',
+          location: 'M2',
         })
         .expect(201)
         .then(({ body: { job } }) => {
@@ -129,7 +130,7 @@ describe('/jobs', () => {
             'avatar_url',
             'https://randomuser.me/api/portraits/men/72.jpg'
           );
-          expect(job).toHaveProperty('location', 'M1');
+          expect(job).toHaveProperty('location', 'M2');
           expect(job).toHaveProperty('job_id');
           expect(job).toHaveProperty('created_at');
           expect(job).toHaveProperty('comment_count');
@@ -143,6 +144,7 @@ describe('/jobs', () => {
           title: 'Test Job',
           body: 'Test job for testing purposes',
           skill_name: 'graphic design',
+          location: 'M1',
         })
         .expect(201)
         .then(({ body: { job } }) => {
@@ -157,6 +159,7 @@ describe('/jobs', () => {
           title: 'Test Job',
           body: 'Test job for testing purposes',
           skill_name: 'graphic design',
+          location: 'M1',
         })
         .expect(201)
         .then(({ body: { job } }) => {
@@ -171,13 +174,14 @@ describe('/jobs', () => {
           title: 'Test Job',
           body: 'Test job for testing purposes',
           skill_name: 'graphic design',
+          location: 'M1',
         })
         .expect(201)
         .then(({ body: { job } }) => {
           expect(job.created_at).toBeTruthy;
         });
     });
-    test('status 400: responds with bad request when passed invalid body', () => {
+    test('status 400: responds with bad request when passed body without username', () => {
       return request(app)
         .post('/api/jobs')
         .send({
@@ -185,6 +189,22 @@ describe('/jobs', () => {
           title: 'Test Job',
           body: 'Test job for testing purposes',
           missing_skill_name: 'not a skill',
+          location: 'M1',
+        })
+        .expect(400)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('bad request');
+        });
+    });
+    test('status 400: responds with bad request when passed invalid location', () => {
+      return request(app)
+        .post('/api/jobs')
+        .send({
+          username: 'gdurdane',
+          title: 'Test Job',
+          body: 'Test job for testing purposes',
+          skill_name: 'translating',
+          not_a_location: 'M1',
         })
         .expect(400)
         .then(({ body: { msg } }) => {
@@ -199,6 +219,7 @@ describe('/jobs', () => {
           title: 'Test Job',
           body: 'Test job for testing purposes',
           skill_name: 'graphic design',
+          location: 'M1',
         })
         .expect(404)
         .then(({ body: { msg } }) => {
@@ -213,6 +234,7 @@ describe('/jobs', () => {
           title: 'Test Job',
           body: 'Test job for testing purposes',
           skill_name: 'not a skill',
+          location: 'M1',
         })
         .expect(404)
         .then(({ body: { msg } }) => {

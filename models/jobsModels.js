@@ -16,7 +16,7 @@ exports.selectJobs = (sort_by, order, skill_name, location) => {
       'jobs.created_at',
       'skill_name',
       'avatar_url',
-      'location'
+      'jobs.location'
     )
     .join('skills', 'jobs.skill_id', '=', 'skills.skill_id')
     .join('users', 'jobs.username', '=', 'users.username')
@@ -26,13 +26,14 @@ exports.selectJobs = (sort_by, order, skill_name, location) => {
       'jobs.job_id',
       'skills.skill_name',
       'users.avatar_url',
-      'users.location'
+      'jobs.location'
     )
     .orderBy(sort_by || 'created_at', order || 'desc')
     .modify(query => {
-      if (skill_name && location) query.where({ skill_name, location });
+      if (skill_name && location)
+        query.where({ skill_name, 'jobs.location': location });
       else if (skill_name) query.where({ skill_name });
-      else if (location) query.where({ location });
+      else if (location) query.where({ 'jobs.location': location });
     });
 };
 
@@ -46,7 +47,7 @@ exports.selectJob = job_id => {
       'jobs.created_at',
       'skill_name',
       'avatar_url',
-      'location'
+      'jobs.location'
     )
     .join('skills', 'jobs.skill_id', '=', 'skills.skill_id')
     .join('users', 'jobs.username', '=', 'users.username')
@@ -56,7 +57,7 @@ exports.selectJob = job_id => {
       'jobs.job_id',
       'skills.skill_name',
       'users.avatar_url',
-      'users.location'
+      'jobs.location'
     )
     .where({ 'jobs.job_id': job_id })
     .then(job => {
@@ -68,8 +69,8 @@ exports.selectJob = job_id => {
     });
 };
 
-exports.insertJob = (username, title, body, skill_name) => {
-  if (!username || !title || !body || !skill_name) {
+exports.insertJob = (username, title, body, skill_name, location) => {
+  if (!username || !title || !body || !skill_name || !location) {
     return Promise.reject({
       status: 400,
       msg: 'bad request',
@@ -84,6 +85,7 @@ exports.insertJob = (username, title, body, skill_name) => {
           username,
           title,
           body,
+          location,
           skill_id: knex('skills').select('skill_id').where({ skill_name }),
         })
         .returning('*')
@@ -96,7 +98,7 @@ exports.insertJob = (username, title, body, skill_name) => {
       'inserted_job.created_at',
       'skill_name',
       'avatar_url',
-      'location'
+      'inserted_job.location'
     )
     .join('skills', 'inserted_job.skill_id', '=', 'skills.skill_id')
     .join('users', 'inserted_job.username', '=', 'users.username')
@@ -110,7 +112,7 @@ exports.insertJob = (username, title, body, skill_name) => {
       'inserted_job.created_at',
       'skills.skill_name',
       'users.avatar_url',
-      'users.location'
+      'inserted_job.location'
     );
 };
 
