@@ -1,7 +1,6 @@
 const knex = require("../db/connection");
 
 exports.selectUsername = (username) => {
-  //console.log("inside select username models");
   return knex("users")
     .select(
       "users.username",
@@ -61,18 +60,39 @@ exports.insertUser = (
       msg: "bad request",
     });
   }
-  return knex("users")
-    .insert({
-      username,
-      first_name,
-      last_name,
-      email,
-      avatar_url,
-      location,
-      bio,
-      charity_name,
-    })
-    .returning("*")
+  return knex("inserted_user")
+    .with(
+      "inserted_user",
+      knex("users")
+        .insert({
+          username,
+          first_name,
+          last_name,
+          email,
+          avatar_url,
+          location,
+          bio,
+          charity_name,
+        })
+        .returning("*")
+    )
+    .select(
+      "inserted_user.username",
+      "first_name",
+      "last_name",
+      "email",
+      "avatar_url",
+      "location",
+      "bio",
+      "charities.charity_name",
+      "charities.charity_logo"
+    )
+    .join(
+      "charities",
+      "inserted_user.charity_name",
+      "=",
+      "charities.charity_name"
+    )
     .then((user) => {
       const usernameSkillObj = skill_name.map((skill) => {
         return {

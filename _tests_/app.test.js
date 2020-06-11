@@ -397,13 +397,10 @@ describe("/users", () => {
           location: "M21",
           bio: "hello, I am Bill.",
           charity_name: "Oxfam",
-          // charity_logo:
-          //   "https://images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200",
           skill_name: ["translating", "DIY"],
         })
         .expect(201)
         .then(({ body: { user } }) => {
-          // console.log(user);
           expect(user).toHaveProperty("username", "madeupusername");
           expect(user).toHaveProperty("first_name", "bill");
           expect(user).toHaveProperty("last_name", "mcbilly");
@@ -414,11 +411,11 @@ describe("/users", () => {
           );
           expect(user).toHaveProperty("location", "M21");
           expect(user).toHaveProperty("bio", "hello, I am Bill.");
+          expect(user).toHaveProperty(
+            "charity_logo",
+            "https://images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200"
+          );
           expect(user).toHaveProperty("charity_name", "Oxfam");
-          // expect(user).toHaveProperty(
-          //   "charity_logo",
-          //   "https://images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200"
-          // );
           expect(user).toHaveProperty("skill_name", ["translating", "DIY"]);
         });
     });

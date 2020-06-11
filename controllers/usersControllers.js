@@ -45,8 +45,6 @@ exports.postUser = (req, res, next) => {
 
   Promise.all(promiseArr)
     .then(([user]) => {
-      console.log("inside controllers");
-      console.log(user);
       res.status(201).send({ user });
     })
     .catch(next);
