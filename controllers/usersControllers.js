@@ -1,10 +1,10 @@
-const { selectUsername, insertUser } = require("../models/usersModels");
-const { selectSkills } = require("../models/skillsModels");
+const { selectUsername, insertUser } = require('../models/usersModels');
+const { selectSkills } = require('../models/skillsModels');
 
 exports.getUsername = (req, res, next) => {
   const { username } = req.params;
   selectUsername(username)
-    .then((user) => {
+    .then(user => {
       res.status(200).send({ user });
     })
     .catch(next);
@@ -38,7 +38,7 @@ exports.postUser = (req, res, next) => {
   ];
 
   if (skill_name) {
-    skill_name.forEach((skill) => {
+    skill_name.forEach(skill => {
       promiseArr.push(selectSkills(skill));
     });
   }

@@ -1,8 +1,8 @@
-const { selectSkills } = require("../models/skillsModels");
+const { selectSkills } = require('../models/skillsModels');
 
 exports.getSkills = (req, res, next) => {
   selectSkills()
-    .then((skills) => {
+    .then(skills => {
       res.send({ skills });
     })
     .catch(next);

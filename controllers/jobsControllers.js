@@ -5,14 +5,14 @@ const {
   deleteJob,
   selectCommentsByJobId,
   insertComment,
-} = require("../models/jobsModels");
-const { selectUsername } = require("../models/usersModels");
-const { selectSkills } = require("../models/skillsModels");
+} = require('../models/jobsModels');
+const { selectUsername } = require('../models/usersModels');
+const { selectSkills } = require('../models/skillsModels');
 
 exports.getJobs = (req, res, next) => {
   const { sort_by, order, skill_name, location } = req.query;
   selectJobs(sort_by, order, skill_name, location)
-    .then((jobs) => {
+    .then(jobs => {
       res.send({ jobs });
     })
     .catch(next);
@@ -21,7 +21,7 @@ exports.getJobs = (req, res, next) => {
 exports.getJob = (req, res, next) => {
   const { job_id } = req.params;
   selectJob(job_id)
-    .then((job) => {
+    .then(job => {
       res.send({ job });
     })
     .catch(next);
@@ -56,10 +56,10 @@ exports.getCommentsByJobId = (req, res, next) => {
   const { job_id } = req.params;
   const { sort_by, order, location, charity_name } = req.query;
   selectCommentsByJobId(job_id, sort_by, order, location, charity_name)
-    .then((comments) => {
+    .then(comments => {
       res.status(200).send({ comments });
     })
-    .catch((err) => {
+    .catch(err => {
       next(err);
     });
 };

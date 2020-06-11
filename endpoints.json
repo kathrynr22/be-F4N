@@ -126,6 +126,7 @@
         "location": "M21",
         "bio": "hello, I am Bill.",
         "charity_name": "Oxfam",
+        "charity_logo": "https://images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200",
         "skill_name": ["translating", "DIY"]
       }
     }
@@ -279,6 +280,28 @@
           "comment_count": "2"
         }
       ]
+    }
+  },
+  "POST /api/jobs": {
+    "description": "serves an object for the posted job",
+    "body": {
+      "username": "gdurdane",
+      "title": "Test Job",
+      "body": "Test job for testing purposes",
+      "skill_name": "graphic design"
+    },
+    "exampleResponse": {
+      "job": {
+        "title": "Test Job",
+        "body": "Test job for testing purposes",
+        "skill_name": "graphic design",
+        "username": "gdurdane",
+        "avatar_url": "https://randomuser.me/api/portraits/men/72.jpg",
+        "location": "M1",
+        "job_id": "",
+        "created_at": "",
+        "comment_count": 0
+      }
     }
   },
   "GET /api/jobs/:job_id": {

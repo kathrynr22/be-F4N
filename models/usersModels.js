@@ -1,32 +1,32 @@
-const knex = require("../db/connection");
+const knex = require('../db/connection');
 
-exports.selectUsername = (username) => {
-  return knex("users")
+exports.selectUsername = username => {
+  return knex('users')
     .select(
-      "users.username",
-      "first_name",
-      "last_name",
-      "email",
-      "avatar_url",
-      "location",
-      "bio",
-      "charities.charity_name",
-      "charities.charity_logo",
-      knex.raw("ARRAY_AGG (skill_name) skill_name")
+      'users.username',
+      'first_name',
+      'last_name',
+      'email',
+      'avatar_url',
+      'location',
+      'bio',
+      'charities.charity_name',
+      'charities.charity_logo',
+      knex.raw('ARRAY_AGG (skill_name) skill_name')
     )
-    .where("users.username", username)
+    .where('users.username', username)
     .join(
-      "users_skills_junction",
-      "users.username",
-      "=",
-      "users_skills_junction.username"
+      'users_skills_junction',
+      'users.username',
+      '=',
+      'users_skills_junction.username'
     )
-    .join("skills", "skills.skill_id", "=", "users_skills_junction.skill_id")
-    .join("charities", "charities.charity_name", "=", "users.charity_name")
-    .groupBy("users.username", "charities.charity_name")
-    .then((user) => {
+    .join('skills', 'skills.skill_id', '=', 'users_skills_junction.skill_id')
+    .join('charities', 'charities.charity_name', '=', 'users.charity_name')
+    .groupBy('users.username', 'charities.charity_name')
+    .then(user => {
       if (user.length === 0)
-        return Promise.reject({ status: 404, msg: "username not found" });
+        return Promise.reject({ status: 404, msg: 'username not found' });
       else {
         return user[0];
       }
@@ -57,13 +57,13 @@ exports.insertUser = (
   ) {
     return Promise.reject({
       status: 400,
-      msg: "bad request",
+      msg: 'bad request',
     });
   }
-  return knex("inserted_user")
+  return knex('inserted_user')
     .with(
-      "inserted_user",
-      knex("users")
+      'inserted_user',
+      knex('users')
         .insert({
           username,
           first_name,
@@ -74,38 +74,38 @@ exports.insertUser = (
           bio,
           charity_name,
         })
-        .returning("*")
+        .returning('*')
     )
     .select(
-      "inserted_user.username",
-      "first_name",
-      "last_name",
-      "email",
-      "avatar_url",
-      "location",
-      "bio",
-      "charities.charity_name",
-      "charities.charity_logo"
+      'inserted_user.username',
+      'first_name',
+      'last_name',
+      'email',
+      'avatar_url',
+      'location',
+      'bio',
+      'charities.charity_name',
+      'charities.charity_logo'
     )
     .join(
-      "charities",
-      "inserted_user.charity_name",
-      "=",
-      "charities.charity_name"
+      'charities',
+      'inserted_user.charity_name',
+      '=',
+      'charities.charity_name'
     )
-    .then((user) => {
-      const usernameSkillObj = skill_name.map((skill) => {
+    .then(user => {
+      const usernameSkillObj = skill_name.map(skill => {
         return {
           username,
-          skill_id: knex("skills")
-            .select("skill_id")
+          skill_id: knex('skills')
+            .select('skill_id')
             .where({ skill_name: skill }),
         };
       });
 
-      return knex("users_skills_junction")
+      return knex('users_skills_junction')
         .insert(usernameSkillObj)
-        .returning("*")
+        .returning('*')
         .then(() => {
           return { ...user[0], skill_name };
         });

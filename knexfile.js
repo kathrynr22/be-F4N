@@ -1,12 +1,12 @@
-const { DB_URL, NODE_ENV = "development" } = process.env;
+const { DB_URL, NODE_ENV = 'development' } = process.env;
 
 const baseConfig = {
-  client: "pg",
+  client: 'pg',
   migrations: {
-    directory: "./db/migrations",
+    directory: './db/migrations',
   },
   seeds: {
-    directory: "./db/seeds",
+    directory: './db/seeds',
   },
 };
 
@@ -21,12 +21,12 @@ const customConfig = {
   },
   development: {
     connection: {
-      database: "f4n",
+      database: 'f4n',
     },
   },
   test: {
     connection: {
-      database: "f4n_test",
+      database: 'f4n_test',
     },
   },
 };

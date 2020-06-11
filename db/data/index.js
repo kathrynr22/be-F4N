@@ -1,7 +1,7 @@
-const { NODE_ENV = "development" } = process.env;
+const { NODE_ENV = 'development' } = process.env;
 
-const devData = require("./development-data");
-const testData = require("./test-data");
+const devData = require('./development-data');
+const testData = require('./test-data');
 
 const data = {
   production: devData,
