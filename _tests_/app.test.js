@@ -588,6 +588,7 @@ describe('/:job_id/comments', () => {
         .get('/api/jobs/5/comments?charity_name=RSPCA')
         .expect(200)
         .then(({ body: { comments } }) => {
+          console.log(comments);
           expect(comments).toHaveLength(1);
           expect(comments[0].charity_name).toBe('RSPCA');
         });

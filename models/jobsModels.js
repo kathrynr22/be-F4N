@@ -158,8 +158,10 @@ exports.selectCommentsByJobId = (
     .where('job_id', job_id)
     .orderBy(sort_by || 'created_at', order || 'desc')
     .modify(query => {
-      if (charity_name && location) query.where({ charity_name, location });
-      else if (charity_name) query.where({ charity_name });
+      if (charity_name && location)
+        query.where({ 'charities.charity_name': charity_name, location });
+      else if (charity_name)
+        query.where({ 'charities.charity_name': charity_name });
       else if (location) query.where({ location });
     })
     .then(comments => {
