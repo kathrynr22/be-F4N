@@ -346,7 +346,7 @@
   },
   "GET /api/jobs/:job_id/comments": {
     "description": "serves an array of comments for the specified article_id",
-    "queries": ["skill_name", "location", "order"],
+    "queries": ["charity_name", "location", "order"],
     "exampleResponse": {
       "comments": [
         {
