@@ -353,8 +353,10 @@
           "comment_id": 6,
           "created_at": "2020-06-03T16:11:00.000Z",
           "username": "stevesmith33",
+          "avatar_url": "https://randomuser.me/api/portraits/men/40.jpg'",
           "body": "Hello, I can pop round tomorrow evening if that suits.",
           "charity_name": "British Heart Foundation",
+          "charity_logo": "https://images.justgiving.com/image/3a5218cb-2d26-431d-83fd-25fb4f69fd9a.png?template=size200x200",
           "location": "M13",
           "job_id": 2
         },

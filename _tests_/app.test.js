@@ -545,7 +545,7 @@ describe('/:job_id/comments', () => {
         });
     });
 
-    test.only('status 200: comment object contains certain properties', () => {
+    test('status 200: comment object contains certain properties', () => {
       return request(app)
         .get('/api/jobs/1/comments')
         .expect(200)

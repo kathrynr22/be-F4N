@@ -146,13 +146,15 @@ exports.selectCommentsByJobId = (
       'created_at',
       'users.username',
       'body',
-      'charity_name',
+      'charities.charity_name',
+      'charities.charity_logo',
       'users.avatar_url',
       'location',
       'job_id'
     )
     .from('comments')
     .join('users', 'comments.username', '=', 'users.username')
+    .join('charities', 'charities.charity_name', '=', 'users.charity_name')
     .where('job_id', job_id)
     .orderBy(sort_by || 'created_at', order || 'desc')
     .modify(query => {
