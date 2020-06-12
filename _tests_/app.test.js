@@ -545,12 +545,13 @@ describe('/:job_id/comments', () => {
         });
     });
 
-    test('status 200: comment object contains certain properties', () => {
+    test.only('status 200: comment object contains certain properties', () => {
       return request(app)
         .get('/api/jobs/1/comments')
         .expect(200)
         .then(({ body: { comments } }) => {
           comments.forEach(comment => {
+            console.log(comment);
             expect(comment).toHaveProperty('comment_id');
             expect(comment).toHaveProperty('username');
             expect(comment).toHaveProperty('created_at');
@@ -558,6 +559,7 @@ describe('/:job_id/comments', () => {
             expect(comment).toHaveProperty('location');
             expect(comment).toHaveProperty('charity_name');
             expect(comment).toHaveProperty('job_id');
+            expect(comment).toHaveProperty('avatar_url');
           });
         });
     });

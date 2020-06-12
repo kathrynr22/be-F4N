@@ -147,6 +147,7 @@ exports.selectCommentsByJobId = (
       'users.username',
       'body',
       'charity_name',
+      'users.avatar_url',
       'location',
       'job_id'
     )
