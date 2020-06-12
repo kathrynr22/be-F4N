@@ -207,12 +207,15 @@ exports.insertComment = (job_id, body, username) => {
       'comment_id',
       'created_at',
       'users.username',
+      'users.avatar_url',
       'body',
-      'charity_name',
+      'charities.charity_name',
+      'charities.charity_logo',
       'location',
       'job_id'
     )
     .join('users', 'inserted_comment.username', '=', 'users.username')
+    .join('charities', 'charities.charity_name', '=', 'users.charity_name')
     .where('job_id', job_id)
     .then(comment => {
       return comment[0];

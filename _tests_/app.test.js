@@ -588,7 +588,6 @@ describe('/:job_id/comments', () => {
         .get('/api/jobs/5/comments?charity_name=RSPCA')
         .expect(200)
         .then(({ body: { comments } }) => {
-          console.log(comments);
           expect(comments).toHaveLength(1);
           expect(comments[0].charity_name).toBe('RSPCA');
         });
@@ -687,6 +686,14 @@ describe('/:job_id/comments', () => {
           );
           expect(comment).toHaveProperty('location', 'M6');
           expect(comment).toHaveProperty('charity_name', 'Oxfam');
+          expect(comment).toHaveProperty(
+            'charity_logo',
+            'https://images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200'
+          );
+          expect(comment).toHaveProperty(
+            'avatar_url',
+            'https://randomuser.me/api/portraits/men/25.jpg'
+          );
         });
     });
     test('status 400: responds with bad request when passed no username', () => {
