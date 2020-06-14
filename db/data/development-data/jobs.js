@@ -122,8 +122,7 @@ module.exports = [
   },
   {
     //job_id 13 generated automatically by db
-    title:
-      'Bought a new wireless headset for my macbook, but I cannot get it to connect - can anyone help please',
+    title: "Wireless headset won't connect can anyone help please",
     body:
       'Hey all, are they any macbook experts who may be able to pop round and help me set up a wireless headset. I need it for a zoom call next week. Thanks in advance!.',
     username: 'vkausche1a',

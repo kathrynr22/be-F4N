@@ -1,7 +1,7 @@
 exports.up = knex => {
   return knex.schema.createTable('jobs', jobsTable => {
     jobsTable.increments('job_id').primary();
-    jobsTable.string('title', 150).notNullable();
+    jobsTable.string('title', 125).notNullable();
     jobsTable.string('body', 500).notNullable();
     jobsTable.string('username').references('users.username');
     jobsTable.string('location', 4).notNullable();
