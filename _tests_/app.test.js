@@ -508,6 +508,7 @@ describe('users/:username', () => {
         .get('/api/users/twebleyf')
         .expect(200)
         .then(({ body: { user } }) => {
+          console.log(user);
           expect(user).toEqual({
             username: 'twebleyf',
             first_name: 'Terrie',
@@ -551,7 +552,6 @@ describe('/:job_id/comments', () => {
         .expect(200)
         .then(({ body: { comments } }) => {
           comments.forEach(comment => {
-            console.log(comment);
             expect(comment).toHaveProperty('comment_id');
             expect(comment).toHaveProperty('username');
             expect(comment).toHaveProperty('created_at');

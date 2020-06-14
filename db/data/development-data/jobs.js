@@ -86,7 +86,7 @@ module.exports = [
     title: 'Lightbulb gone - and so has my back!',
     body:
       "Hi all, I need a lightbulb changing but I have done my back in recently and can't do it. Can anyone help!",
-    username: 'sfantonec',
+    username: 'stevesmith3',
     created_at: '2020-06-05T08:11:00.000Z',
     skill_id: 5,
     location: 'M9',
@@ -105,7 +105,7 @@ module.exports = [
     //job_id 11 generated automatically by db
     title: 'Computerspacebarisstuck',
     body: 'Seetitle',
-    username: 'stevesmith33',
+    username: 'sfantonec3',
     created_at: '2020-06-06T14:11:00.000Z',
     skill_id: 10,
     location: 'M13',
