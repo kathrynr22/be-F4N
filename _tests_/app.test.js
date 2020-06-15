@@ -611,6 +611,17 @@ describe('/:job_id/comments', () => {
           expect(comments[0].charity_name).toBe('RSPCA');
         });
     });
+    test('status 200: accepts a username query that filters comments by username', () => {
+      return request(app)
+        .get('/api/comments?username=dfoxl')
+        .expect(200)
+        .then(({ body: { comments } }) => {
+          console.log('yo');
+          console.log(comments);
+          expect(comments).toHaveLength(1);
+          expect(comments[0].username).toBe('dfoxl');
+        });
+    });
     test('status 404: trying to get comments for a non-existent job_id', () => {
       return request(app)
         .get('/api/jobs/76655/comments')

@@ -233,3 +233,28 @@ exports.insertComment = (job_id, body, username) => {
       return comment[0];
     });
 };
+
+exports.selectCommentsByUsername = username => {
+  return knex
+    .select(
+      'comment_id',
+      'created_at',
+      'users.username',
+      'body',
+      'charities.charity_name',
+      'charities.charity_logo',
+      'users.avatar_url',
+      'location',
+      'job_id'
+    )
+    .from('comments')
+    .join('users', 'comments.username', '=', 'users.username')
+    .join('charities', 'charities.charity_name', '=', 'users.charity_name')
+    .where('users.username', username)
+    .orderBy('created_at', 'desc')
+    .then(comments => {
+      console.log('inside models');
+      console.log(comments);
+      return comments;
+    });
+};
