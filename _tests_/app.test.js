@@ -31,6 +31,7 @@ describe('/jobs', () => {
             expect(job).toHaveProperty('job_id');
             expect(job).toHaveProperty('created_at');
             expect(job).toHaveProperty('comment_count');
+            expect(job).toHaveProperty('job_status');
           });
         });
     });
@@ -81,8 +82,6 @@ describe('/jobs', () => {
         .get('/api/jobs?username=dfoxl')
         .expect(200)
         .then(({ body: { jobs } }) => {
-          console.log('hiii');
-          console.log(jobs);
           expect(jobs).toHaveLength(2);
         });
     });
@@ -141,6 +140,7 @@ describe('/jobs', () => {
         })
         .expect(201)
         .then(({ body: { job } }) => {
+          console.log(job);
           expect(job).toHaveProperty('title', 'Test Job');
           expect(job).toHaveProperty('body', 'Test job for testing purposes');
           expect(job).toHaveProperty('skill_name', 'graphic design');
