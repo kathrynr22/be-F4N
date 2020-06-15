@@ -76,7 +76,7 @@ describe('/jobs', () => {
           expect(jobs).toHaveLength(2);
         });
     });
-    test.only('status 200: accepts a skill_name query that filters the jobs by skill_name', () => {
+    test('status 200: accepts a username query that filters the jobs by skill_name', () => {
       return request(app)
         .get('/api/jobs?username=dfoxl')
         .expect(200)
@@ -86,20 +86,29 @@ describe('/jobs', () => {
           expect(jobs).toHaveLength(2);
         });
     });
-    test('status 200: returns an empty array if skill name does not exist', () => {
+
+    test('status 404: responds with path not found when filtering jobs by non-existent skill_name', () => {
       return request(app)
         .get('/api/jobs?skill_name=cat%20handling')
-        .expect(200)
-        .then(({ body: { jobs } }) => {
-          expect(jobs).toHaveLength(0);
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('path not found');
         });
     });
-    test('status 200: returns an empty array if location does not exist', () => {
+    test('status 404: responds with path not found when filtering jobs by non-existent location', () => {
       return request(app)
         .get('/api/jobs?location=ZZ99')
-        .expect(200)
-        .then(({ body: { jobs } }) => {
-          expect(jobs).toHaveLength(0);
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('path not found');
+        });
+    });
+    test('status 404: responds with username not found when filtering jobs by non-existent username', () => {
+      return request(app)
+        .get('/api/jobs?username=kathryn')
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('path not found');
         });
     });
     test('status 400: trying to sort jobs based on a non-existent column', () => {

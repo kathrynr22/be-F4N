@@ -39,6 +39,13 @@ exports.selectJobs = (sort_by, order, skill_name, location, username) => {
       else if (skill_name) query.where({ skill_name });
       else if (location) query.where({ 'jobs.location': location });
       else if (username) query.where({ 'jobs.username': username });
+    })
+    .then(jobs => {
+      if (jobs.length === 0)
+        return Promise.reject({ status: 404, msg: 'path not found' });
+      else {
+        return jobs;
+      }
     });
 };
 

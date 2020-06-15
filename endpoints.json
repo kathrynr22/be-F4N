@@ -133,7 +133,7 @@
   },
   "GET /api/jobs": {
     "description": "serves an array of all jobs",
-    "queries": ["skill_name", "location", "order"],
+    "queries": ["skill_name", "location", "username", "order"],
     "exampleResponse": {
       "jobs": [
         {
