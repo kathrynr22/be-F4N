@@ -801,3 +801,36 @@ describe('/comments', () => {
     });
   });
 });
+describe('/charities', () => {
+  test('status 200: responds with an array of charities objects', () => {
+    return request(app)
+      .get('/api/charities')
+      .expect(200)
+      .then(({ body: { charities } }) => {
+        console.log('inside test');
+        console.log(charities);
+        expect(Array.isArray(charities)).toBe(true);
+      });
+  });
+  test('status 200: each charity object contains certain properties', () => {
+    return request(app)
+      .get('/api/charities')
+      .expect(200)
+      .then(({ body: { charities } }) => {
+        charities.forEach(charity => {
+          expect(charity).toHaveProperty('charity_name');
+          expect(charity).toHaveProperty('charity_logo');
+          expect(charity).toHaveProperty('charity_description');
+          expect(charity).toHaveProperty('justgiving_link');
+        });
+      });
+  });
+  test('status 200: by default, sorts the charities by the charity_name column and in ascending order', () => {
+    return request(app)
+      .get('/api/charities')
+      .expect(200)
+      .then(({ body: { charities } }) => {
+        expect(charities).toBeSortedBy('charity_name');
+      });
+  });
+});
