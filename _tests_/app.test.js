@@ -76,20 +76,39 @@ describe('/jobs', () => {
           expect(jobs).toHaveLength(2);
         });
     });
-    test('status 200: returns an empty array if skill name does not exist', () => {
+    test('status 200: accepts a username query that filters the jobs by username', () => {
       return request(app)
-        .get('/api/jobs?skill_name=cat%20handling')
+        .get('/api/jobs?username=dfoxl')
         .expect(200)
         .then(({ body: { jobs } }) => {
-          expect(jobs).toHaveLength(0);
+          console.log('hiii');
+          console.log(jobs);
+          expect(jobs).toHaveLength(2);
         });
     });
-    test('status 200: returns an empty array if location does not exist', () => {
+
+    test('status 404: responds with path not found when filtering jobs by non-existent skill_name', () => {
+      return request(app)
+        .get('/api/jobs?skill_name=cat%20handling')
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('path not found');
+        });
+    });
+    test('status 404: responds with path not found when filtering jobs by non-existent location', () => {
       return request(app)
         .get('/api/jobs?location=ZZ99')
-        .expect(200)
-        .then(({ body: { jobs } }) => {
-          expect(jobs).toHaveLength(0);
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('path not found');
+        });
+    });
+    test('status 404: responds with username not found when filtering jobs by non-existent username', () => {
+      return request(app)
+        .get('/api/jobs?username=kathryn')
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('path not found');
         });
     });
     test('status 400: trying to sort jobs based on a non-existent column', () => {
@@ -508,6 +527,7 @@ describe('users/:username', () => {
         .get('/api/users/twebleyf')
         .expect(200)
         .then(({ body: { user } }) => {
+          console.log(user);
           expect(user).toEqual({
             username: 'twebleyf',
             first_name: 'Terrie',
@@ -558,6 +578,7 @@ describe('/:job_id/comments', () => {
             expect(comment).toHaveProperty('location');
             expect(comment).toHaveProperty('charity_name');
             expect(comment).toHaveProperty('job_id');
+            expect(comment).toHaveProperty('avatar_url');
           });
         });
     });
@@ -590,6 +611,7 @@ describe('/:job_id/comments', () => {
           expect(comments[0].charity_name).toBe('RSPCA');
         });
     });
+
     test('status 404: trying to get comments for a non-existent job_id', () => {
       return request(app)
         .get('/api/jobs/76655/comments')
@@ -684,6 +706,14 @@ describe('/:job_id/comments', () => {
           );
           expect(comment).toHaveProperty('location', 'M6');
           expect(comment).toHaveProperty('charity_name', 'Oxfam');
+          expect(comment).toHaveProperty(
+            'charity_logo',
+            'https://images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200'
+          );
+          expect(comment).toHaveProperty(
+            'avatar_url',
+            'https://randomuser.me/api/portraits/men/25.jpg'
+          );
         });
     });
     test('status 400: responds with bad request when passed no username', () => {
@@ -748,5 +778,59 @@ describe('/:job_id/comments', () => {
           expect(msg).toBe('bad request');
         });
     });
+  });
+});
+describe('/comments', () => {
+  describe('GET', () => {
+    test('status 200: accepts a username query that filters comments by username', () => {
+      return request(app)
+        .get('/api/comments?username=dfoxl')
+        .expect(200)
+        .then(({ body: { comments } }) => {
+          expect(comments).toHaveLength(1);
+          expect(comments[0].username).toBe('dfoxl');
+        });
+    });
+    test('status 404: responds with comments not found when filtering comments by nonexistent username', () => {
+      return request(app)
+        .get('/api/comments?username=kathryn')
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('comments not found');
+        });
+    });
+  });
+});
+describe('/charities', () => {
+  test('status 200: responds with an array of charities objects', () => {
+    return request(app)
+      .get('/api/charities')
+      .expect(200)
+      .then(({ body: { charities } }) => {
+        console.log('inside test');
+        console.log(charities);
+        expect(Array.isArray(charities)).toBe(true);
+      });
+  });
+  test('status 200: each charity object contains certain properties', () => {
+    return request(app)
+      .get('/api/charities')
+      .expect(200)
+      .then(({ body: { charities } }) => {
+        charities.forEach(charity => {
+          expect(charity).toHaveProperty('charity_name');
+          expect(charity).toHaveProperty('charity_logo');
+          expect(charity).toHaveProperty('charity_description');
+          expect(charity).toHaveProperty('justgiving_link');
+        });
+      });
+  });
+  test('status 200: by default, sorts the charities by the charity_name column and in ascending order', () => {
+    return request(app)
+      .get('/api/charities')
+      .expect(200)
+      .then(({ body: { charities } }) => {
+        expect(charities).toBeSortedBy('charity_name');
+      });
   });
 });

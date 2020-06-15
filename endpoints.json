@@ -133,7 +133,7 @@
   },
   "GET /api/jobs": {
     "description": "serves an array of all jobs",
-    "queries": ["skill_name", "location", "order"],
+    "queries": ["skill_name", "location", "username", "order"],
     "exampleResponse": {
       "jobs": [
         {
@@ -337,8 +337,10 @@
         "comment_id": 9,
         "created_at": "2020-06-10T15: 55: 46.225Z",
         "username": "hstrowan2m",
+        "avatar_url": "https://randomuser.me/api/portraits/men/25.jpg",
         "body": "Congratulations to your daughter on graduating. I'm free on friday evenings",
         "charity_name": "Oxfam",
+        "charity_logo": "https://images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200",
         "location": "M6",
         "job_id": 1
       }
@@ -346,15 +348,17 @@
   },
   "GET /api/jobs/:job_id/comments": {
     "description": "serves an array of comments for the specified article_id",
-    "queries": ["skill_name", "location", "order"],
+    "queries": ["charity_name", "location", "order"],
     "exampleResponse": {
       "comments": [
         {
           "comment_id": 6,
           "created_at": "2020-06-03T16:11:00.000Z",
           "username": "stevesmith33",
+          "avatar_url": "https://randomuser.me/api/portraits/men/40.jpg'",
           "body": "Hello, I can pop round tomorrow evening if that suits.",
           "charity_name": "British Heart Foundation",
+          "charity_logo": "https://images.justgiving.com/image/3a5218cb-2d26-431d-83fd-25fb4f69fd9a.png?template=size200x200",
           "location": "M13",
           "job_id": 2
         },
@@ -365,6 +369,46 @@
           "body": "Hi there, I am happy to come and take a look. Bit tied up with work until next weekend though.",
           "charity_name": "Cancer research",
           "location": "M3",
+          "job_id": 2
+        }
+      ]
+    }
+  },
+  "GET /api/comments?username": {
+    "description": "serves an array of comments for the specified username",
+    "exampleResponse": {
+      "comments": [
+        {
+          "comment_id": 16,
+          "created_at": "2020-06-08T14:53:00.000Z",
+          "username": "stevesmith33",
+          "body": "Hi there, sounds like it could be a battery issue. I am happy to come and take a look. I am free any evening this weekend.",
+          "charity_name": "British Heart Foundation",
+          "charity_logo": "https://images.justgiving.com/image/3a5218cb-2d26-431d-83fd-25fb4f69fd9a.png?template=size200x200",
+          "avatar_url": "https://randomuser.me/api/portraits/men/40.jpg",
+          "location": "M13",
+          "job_id": 12
+        },
+        {
+          "comment_id": 18,
+          "created_at": "2020-06-05T11:53:00.000Z",
+          "username": "stevesmith33",
+          "body": "Hiya I had a similiar issue with my MacBook Air - I had to buy a new battery in the end! But I know a thing or two about MacBooks so I could come round and do some troubleshooting. Saturday afternoon works for me!",
+          "charity_name": "British Heart Foundation",
+          "charity_logo": "https://images.justgiving.com/image/3a5218cb-2d26-431d-83fd-25fb4f69fd9a.png?template=size200x200",
+          "avatar_url": "https://randomuser.me/api/portraits/men/40.jpg",
+          "location": "M13",
+          "job_id": 12
+        },
+        {
+          "comment_id": 6,
+          "created_at": "2020-06-03T16:11:00.000Z",
+          "username": "stevesmith33",
+          "body": "Hello, I can pop round tomorrow evening if that suits.",
+          "charity_name": "British Heart Foundation",
+          "charity_logo": "https://images.justgiving.com/image/3a5218cb-2d26-431d-83fd-25fb4f69fd9a.png?template=size200x200",
+          "avatar_url": "https://randomuser.me/api/portraits/men/40.jpg",
+          "location": "M13",
           "job_id": 2
         }
       ]

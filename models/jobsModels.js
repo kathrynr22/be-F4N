@@ -1,6 +1,6 @@
 const knex = require('../db/connection');
 
-exports.selectJobs = (sort_by, order, skill_name, location) => {
+exports.selectJobs = (sort_by, order, skill_name, location, username) => {
   if (order !== undefined && order !== 'asc' && order !== 'desc') {
     return Promise.reject({
       status: 400,
@@ -30,10 +30,22 @@ exports.selectJobs = (sort_by, order, skill_name, location) => {
     )
     .orderBy(sort_by || 'created_at', order || 'desc')
     .modify(query => {
-      if (skill_name && location)
-        query.where({ skill_name, 'jobs.location': location });
+      if (skill_name && location && username)
+        query.where({
+          skill_name,
+          'jobs.location': location,
+          'jobs.username': username,
+        });
       else if (skill_name) query.where({ skill_name });
       else if (location) query.where({ 'jobs.location': location });
+      else if (username) query.where({ 'jobs.username': username });
+    })
+    .then(jobs => {
+      if (jobs.length === 0)
+        return Promise.reject({ status: 404, msg: 'path not found' });
+      else {
+        return jobs;
+      }
     });
 };
 
@@ -146,17 +158,22 @@ exports.selectCommentsByJobId = (
       'created_at',
       'users.username',
       'body',
-      'charity_name',
+      'charities.charity_name',
+      'charities.charity_logo',
+      'users.avatar_url',
       'location',
       'job_id'
     )
     .from('comments')
     .join('users', 'comments.username', '=', 'users.username')
+    .join('charities', 'charities.charity_name', '=', 'users.charity_name')
     .where('job_id', job_id)
     .orderBy(sort_by || 'created_at', order || 'desc')
     .modify(query => {
-      if (charity_name && location) query.where({ charity_name, location });
-      else if (charity_name) query.where({ charity_name });
+      if (charity_name && location)
+        query.where({ 'charities.charity_name': charity_name, location });
+      else if (charity_name)
+        query.where({ 'charities.charity_name': charity_name });
       else if (location) query.where({ location });
     })
     .then(comments => {
@@ -202,12 +219,15 @@ exports.insertComment = (job_id, body, username) => {
       'comment_id',
       'created_at',
       'users.username',
+      'users.avatar_url',
       'body',
-      'charity_name',
+      'charities.charity_name',
+      'charities.charity_logo',
       'location',
       'job_id'
     )
     .join('users', 'inserted_comment.username', '=', 'users.username')
+    .join('charities', 'charities.charity_name', '=', 'users.charity_name')
     .where('job_id', job_id)
     .then(comment => {
       return comment[0];
