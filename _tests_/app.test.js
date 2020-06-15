@@ -76,6 +76,16 @@ describe('/jobs', () => {
           expect(jobs).toHaveLength(2);
         });
     });
+    test.only('status 200: accepts a skill_name query that filters the jobs by skill_name', () => {
+      return request(app)
+        .get('/api/jobs?username=dfoxl')
+        .expect(200)
+        .then(({ body: { jobs } }) => {
+          console.log('hiii');
+          console.log(jobs);
+          expect(jobs).toHaveLength(2);
+        });
+    });
     test('status 200: returns an empty array if skill name does not exist', () => {
       return request(app)
         .get('/api/jobs?skill_name=cat%20handling')

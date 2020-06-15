@@ -10,8 +10,8 @@ const { selectUsername } = require('../models/usersModels');
 const { selectSkills } = require('../models/skillsModels');
 
 exports.getJobs = (req, res, next) => {
-  const { sort_by, order, skill_name, location } = req.query;
-  selectJobs(sort_by, order, skill_name, location)
+  const { sort_by, order, skill_name, location, username } = req.query;
+  selectJobs(sort_by, order, skill_name, location, username)
     .then(jobs => {
       res.send({ jobs });
     })
