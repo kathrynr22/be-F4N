@@ -9,6 +9,7 @@ module.exports = [
     created_at: '2020-06-05T11:23:00.000Z',
     skill_id: 11,
     location: 'M10',
+    job_status: 'created',
   },
   {
     //job_id 2 generated automatically by db
@@ -20,6 +21,7 @@ module.exports = [
     created_at: '2020-06-02T11:33:00.000Z',
     skill_id: 1,
     location: 'M21',
+    job_status: 'created',
   },
   {
     //job_id 3 generated automatically by db
@@ -30,6 +32,7 @@ module.exports = [
     created_at: '2020-06-04T16:10:00.000Z',
     skill_id: 12,
     location: 'M3',
+    job_status: 'created',
   },
   {
     //job_id 4 generated automatically by db
@@ -40,6 +43,7 @@ module.exports = [
     created_at: '2020-06-04T09:11:00.000Z',
     skill_id: 7,
     location: 'M4',
+    job_status: 'created',
   },
   {
     //job_id 5 generated automatically by db
@@ -50,6 +54,7 @@ module.exports = [
     created_at: '2020-06-04T10:09:02.000Z',
     skill_id: 6,
     location: 'M5',
+    job_status: 'created',
   },
   {
     //job_id 6 generated automatically by db
@@ -60,6 +65,7 @@ module.exports = [
     created_at: '2020-06-03T11:11:00.000Z',
     skill_id: 4,
     location: 'M7',
+    job_status: 'created',
   },
   {
     //job_id 7 generated automatically by db
@@ -70,6 +76,7 @@ module.exports = [
     created_at: '2020-06-06T11:12:00.000Z',
     skill_id: 9,
     location: 'M6',
+    job_status: 'created',
   },
   {
     //job_id 8 generated automatically by db
@@ -80,6 +87,7 @@ module.exports = [
     created_at: '2020-06-05T07:11:00.000Z',
     skill_id: 8,
     location: 'M22',
+    job_status: 'created',
   },
   {
     //job_id 9 generated automatically by db
@@ -90,6 +98,7 @@ module.exports = [
     created_at: '2020-06-05T08:11:00.000Z',
     skill_id: 5,
     location: 'M9',
+    job_status: 'created',
   },
   {
     //job_id 10 generated automatically by db
@@ -100,6 +109,7 @@ module.exports = [
     created_at: '2020-06-08T08:11:00.000Z',
     skill_id: 10,
     location: 'M11',
+    job_status: 'created',
   },
   {
     //job_id 11 generated automatically by db
@@ -109,6 +119,7 @@ module.exports = [
     created_at: '2020-06-06T14:11:00.000Z',
     skill_id: 10,
     location: 'M13',
+    job_status: 'created',
   },
   {
     //job_id 12 generated automatically by db
@@ -119,6 +130,7 @@ module.exports = [
     created_at: '2020-06-05T09:08:00.000Z',
     skill_id: 10,
     location: 'M25',
+    job_status: 'created',
   },
   {
     //job_id 13 generated automatically by db
@@ -129,5 +141,6 @@ module.exports = [
     created_at: '2020-06-05T09:11:00.000Z',
     skill_id: 10,
     location: 'M4',
+    job_status: 'created',
   },
 ];
