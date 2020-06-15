@@ -105,7 +105,7 @@ module.exports = [
     //job_id 11 generated automatically by db
     title: 'Computerspacebarisstuck',
     body: 'Seetitle',
-    username: 'sfantonec3',
+    username: 'sfantonec',
     created_at: '2020-06-06T14:11:00.000Z',
     skill_id: 10,
     location: 'M13',
