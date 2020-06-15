@@ -58,6 +58,7 @@ exports.selectJob = job_id => {
       'jobs.username',
       'jobs.job_id',
       'jobs.created_at',
+      'jobs.job_status',
       'skill_name',
       'avatar_url',
       'jobs.location'

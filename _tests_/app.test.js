@@ -306,6 +306,7 @@ describe('/jobs', () => {
               '2020-05-02T11:15:00.000Z'
             );
             expect(job).toHaveProperty('comment_count', '1');
+            expect(job).toHaveProperty('job_status', 'created');
           });
       });
       test('status 400: responds with bad request when job_id is invalid', () => {
