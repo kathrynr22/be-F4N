@@ -153,6 +153,7 @@ describe('/jobs', () => {
           expect(job).toHaveProperty('job_id');
           expect(job).toHaveProperty('created_at');
           expect(job).toHaveProperty('comment_count');
+          expect(job).toHaveProperty('job_status', 'created');
         });
     });
     test('status 201: responds with a job_id', () => {

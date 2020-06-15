@@ -28,10 +28,10 @@ exports.getJob = (req, res, next) => {
 };
 
 exports.postJob = (req, res, next) => {
-  const { username, title, body, skill_name, location } = req.body;
+  const { username, title, body, skill_name, location, job_status } = req.body;
 
   const promiseArr = [
-    insertJob(username, title, body, skill_name, location),
+    insertJob(username, title, body, skill_name, location, job_status),
     selectUsername(username),
     selectSkills(skill_name),
   ];
