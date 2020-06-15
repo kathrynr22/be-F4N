@@ -300,6 +300,7 @@
         "avatar_url": "https://randomuser.me/api/portraits/men/72.jpg",
         "location": "M2",
         "job_id": "",
+        "job_status": "created",
         "created_at": "",
         "comment_count": 0
       }
