@@ -791,5 +791,13 @@ describe('/comments', () => {
           expect(comments[0].username).toBe('dfoxl');
         });
     });
+    test('status 404: responds with comments not found when filtering comments by nonexistent username', () => {
+      return request(app)
+        .get('/api/comments?username=kathryn')
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('comments not found');
+        });
+    });
   });
 });
