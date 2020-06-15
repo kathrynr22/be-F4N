@@ -791,7 +791,17 @@ describe('/comments', () => {
           expect(comments[0].username).toBe('dfoxl');
         });
     });
-    test('status 404: responds with comments not found when filtering comments by nonexistent username', () => {
+    // test('status 200: responds with empty array when an username exists but has no comments', () => {
+    //   return request(app)
+    //     .get('/api/comments?username=gdurdane')
+    //     .expect(200)
+    //     .then(({ body: { comments } }) => {
+    //       expect(Array.isArray(comments)).toBe(true);
+    //       expect(comments.length).toBe(0);
+    //       expect(comments).toEqual([]);
+    //     });
+    // });
+    test('status 404: responds with username not found when filtering comments by nonexistent username', () => {
       return request(app)
         .get('/api/comments?username=kathryn')
         .expect(404)
