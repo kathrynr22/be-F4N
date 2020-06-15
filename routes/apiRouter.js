@@ -13,7 +13,7 @@ apiRouter.route('/').get((req, res, next) => {
 
 apiRouter.use('/jobs', checkAuth, jobsRouter);
 apiRouter.use('/skills', skillsRouter);
-apiRouter.use('/users', checkAuth, usersRouter);
+apiRouter.use('/users', usersRouter);
 apiRouter.use('/comments', checkAuth, commentsRouter);
 apiRouter.use('/charities', charitiesRouter);
 
