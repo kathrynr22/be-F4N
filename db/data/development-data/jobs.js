@@ -86,7 +86,7 @@ module.exports = [
     title: 'Lightbulb gone - and so has my back!',
     body:
       "Hi all, I need a lightbulb changing but I have done my back in recently and can't do it. Can anyone help!",
-    username: 'sfantonec',
+    username: 'stevesmith33',
     created_at: '2020-06-05T08:11:00.000Z',
     skill_id: 5,
     location: 'M9',
@@ -105,7 +105,7 @@ module.exports = [
     //job_id 11 generated automatically by db
     title: 'Computerspacebarisstuck',
     body: 'Seetitle',
-    username: 'stevesmith33',
+    username: 'sfantonec',
     created_at: '2020-06-06T14:11:00.000Z',
     skill_id: 10,
     location: 'M13',
@@ -122,8 +122,7 @@ module.exports = [
   },
   {
     //job_id 13 generated automatically by db
-    title:
-      'Bought a new wireless headset for my macbook, but I cannot get it to connect - can anyone help please',
+    title: "Wireless headset won't connect can anyone help please",
     body:
       'Hey all, are they any macbook experts who may be able to pop round and help me set up a wireless headset. I need it for a zoom call next week. Thanks in advance!.',
     username: 'vkausche1a',
