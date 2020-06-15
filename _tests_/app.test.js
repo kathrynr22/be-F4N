@@ -787,8 +787,6 @@ describe('/comments', () => {
         .get('/api/comments?username=dfoxl')
         .expect(200)
         .then(({ body: { comments } }) => {
-          console.log('yo');
-          console.log(comments);
           expect(comments).toHaveLength(1);
           expect(comments[0].username).toBe('dfoxl');
         });
