@@ -6,14 +6,13 @@ const {
   handlePSQLErrors,
   handleCustomErrors,
 } = require('./controllers/errorControllers');
-const { checkAuth } = require('./firebase/firebase');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-app.use('/api', checkAuth, apiRouter);
+app.use('/api', apiRouter);
 
 app.use(handlePSQLErrors);
 app.use(handleCustomErrors);
