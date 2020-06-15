@@ -830,7 +830,7 @@ describe('/charities', () => {
       .get('/api/charities')
       .expect(200)
       .then(({ body: { charities } }) => {
-        expect(charities).toBeSortedBy('charity_name');
+        expect(charities).toBeSortedBy('charity_name', { ascending: true });
       });
   });
 });
