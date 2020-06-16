@@ -612,7 +612,6 @@ describe('users/:username', () => {
         .get('/api/users/twebleyf')
         .expect(200)
         .then(({ body: { user } }) => {
-          console.log(user);
           expect(user).toEqual({
             username: 'twebleyf',
             first_name: 'Terrie',
