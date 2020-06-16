@@ -86,6 +86,34 @@
     }
   },
 
+  "GET /api/users": {
+    "description": "serves an array of users",
+    "queries": ["email"],
+    "exampleResponse": {
+      "users": [
+        {
+          "username": "afawdry0",
+          "first_name": "Audrie",
+          "last_name": "Fawdry",
+          "email": "afawdry0@ox.ac.uk",
+          "avatar_url": "https://randomuser.me/api/portraits/women/4.jpg",
+          "location": "M1",
+          "bio": "Hi I am Audrie, I am a gardener and am happy to help if anyone needs a hand with their garden. I am also a keen baker.",
+          "charity_name": "Oxfam"
+        },
+        {
+          "username": "cocurrigan1t",
+          "first_name": "Codi",
+          "last_name": "O'Currigan",
+          "email": "cocurrigan1t@time.com",
+          "avatar_url": "https://randomuser.me/api/portraits/women/35.jpg",
+          "location": "M23",
+          "bio": "Hi I'm Codi, I'm an expert at reparing macbooks. I'd love to give my time for a good cause. In my spare time I am a photographer, I am hoping to do this professionally one day. I am also pretty good at putting together flat pack furniture!",
+          "charity_name": "Show Racism The Red Card"
+        }
+      ]
+    }
+  },
   "GET /api/users/:username": {
     "description": "serves an object for an user for the specified username",
     "exampleResponse": {

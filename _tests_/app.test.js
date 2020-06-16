@@ -482,8 +482,6 @@ describe('/users', () => {
         .expect(200)
         .then(({ body: { users } }) => {
           users.forEach(user => {
-            console.log('yo');
-            console.log(user);
             expect(user).toHaveProperty('username');
             expect(user).toHaveProperty('first_name');
             expect(user).toHaveProperty('last_name');
@@ -501,6 +499,14 @@ describe('/users', () => {
         .expect(200)
         .then(({ body: { users } }) => {
           expect(users).toHaveLength(1);
+        });
+    });
+    test('status 404: responds with email not found when trying to filter by invalid email', () => {
+      return request(app)
+        .get('/api/users?email=hello@hotmail.com')
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('email not found');
         });
     });
   });

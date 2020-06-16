@@ -118,5 +118,12 @@ exports.selectUsers = email => {
     .orderBy('username')
     .modify(query => {
       if (email) query.where({ email: email });
+    })
+    .then(users => {
+      if (users.length === 0)
+        return Promise.reject({ status: 404, msg: 'email not found' });
+      else {
+        return users;
+      }
     });
 };
