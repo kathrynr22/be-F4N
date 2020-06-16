@@ -111,3 +111,7 @@ exports.insertUser = (
         });
     });
 };
+
+exports.selectUsers = () => {
+  return knex('users').select('*').orderBy('username');
+};

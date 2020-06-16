@@ -347,9 +347,49 @@ describe('/jobs', () => {
           });
       });
     });
+    // describe('PATCH', () => {
+    //   test.only('status 200: responds with the job status updated to accepted', () => {
+    //     return request(app)
+    //       .patch('/api/jobs/1')
+    //       .send({ job_status: 'accepted' })
+    //       .expect(200)
+    //       .then(({ body: { job } }) => {
+    //         expect(job.job_status).toEqual('accepted');
+    //       });
+    //   });
+
+    // test("status 404: trying to patch a non-existent article_id", () => {
+    //   return request(app)
+    //     .patch("/api/articles/76666666")
+    //     .send({ inc_votes: 1 })
+    //     .expect(404)
+    //     .then(({ body: { msg } }) => {
+    //       expect(msg).toBe("article_id not found");
+    //     });
+    // });
+    // test("status 400: trying to patch to an invalid article_id", () => {
+    //   return request(app)
+    //     .patch("/api/articles/notAnInt")
+    //     .send({ inc_votes: 1 })
+    //     .expect(400)
+    //     .then(({ body: { msg } }) => {
+    //       expect(msg).toBe("bad request");
+    //     });
+    // });
+    // test("status 400: trying to patch something invalid ie not incrementing or decrementing a vote", () => {
+    //   return request(app)
+    //     .patch("/api/articles/1")
+    //     .send({ inc_votes: "notAnInt" })
+    //     .expect(400)
+    //     .then(({ body: { msg } }) => {
+    //       expect(msg).toBe("bad request");
+    //     });
+    // });
+    // });
+
     describe('unsupported methods', () => {
       test('status: 405 - responds with method not allowed', () => {
-        const methods = ['post', 'put', 'patch'];
+        const methods = ['post', 'put'];
 
         const requestPromises = methods.map(method => {
           return request(app)
@@ -426,6 +466,35 @@ describe('/users', () => {
         });
     });
     return Promise.all(requests);
+  });
+  describe('GET', () => {
+    test('status 200: responds with an array of users', () => {
+      return request(app)
+        .get('/api/users/')
+        .expect(200)
+        .then(({ body: { users } }) => {
+          expect(Array.isArray(users)).toBe(true);
+        });
+    });
+    test('status: 200 - responds with array of user objects', () => {
+      return request(app)
+        .get('/api/users')
+        .expect(200)
+        .then(({ body: { users } }) => {
+          users.forEach(user => {
+            console.log('yo');
+            console.log(user);
+            expect(user).toHaveProperty('username');
+            expect(user).toHaveProperty('first_name');
+            expect(user).toHaveProperty('last_name');
+            expect(user).toHaveProperty('email');
+            expect(user).toHaveProperty('avatar_url');
+            expect(user).toHaveProperty('location');
+            expect(user).toHaveProperty('bio');
+            expect(user).toHaveProperty('charity_name');
+          });
+        });
+    });
   });
   describe('POST', () => {
     test('status 201: responds with a user object', () => {
