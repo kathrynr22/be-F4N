@@ -357,6 +357,7 @@ describe('/jobs', () => {
     //         expect(job.job_status).toEqual('accepted');
     //       });
     //   });
+    // });
 
     // test("status 404: trying to patch a non-existent article_id", () => {
     //   return request(app)
@@ -490,6 +491,7 @@ describe('/users', () => {
             expect(user).toHaveProperty('location');
             expect(user).toHaveProperty('bio');
             expect(user).toHaveProperty('charity_name');
+            expect(user).toHaveProperty('amount_raised');
           });
         });
     });
@@ -527,6 +529,8 @@ describe('/users', () => {
         })
         .expect(201)
         .then(({ body: { user } }) => {
+          console.log('rrarrr');
+          console.log(user);
           expect(user).toHaveProperty('username', 'madeupusername');
           expect(user).toHaveProperty('first_name', 'bill');
           expect(user).toHaveProperty('last_name', 'mcbilly');
@@ -543,6 +547,7 @@ describe('/users', () => {
           );
           expect(user).toHaveProperty('charity_name', 'Oxfam');
           expect(user).toHaveProperty('skill_name', ['translating', 'DIY']);
+          expect(user).toHaveProperty('amount_raised', '0.00');
         });
     });
     test('status 400: responds with bad request when passed invalid body', () => {
@@ -604,6 +609,7 @@ describe('users/:username', () => {
             charity_logo:
               'https://images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200',
             skill_name: ['DIY'],
+            amount_raised: '20.00',
           });
         });
     });
@@ -625,6 +631,7 @@ describe('users/:username', () => {
             charity_logo:
               'https://images.justgiving.com/image/greenpeace_logo2.gif?template=size200x200',
             skill_name: ['graphic design', 'translating'],
+            amount_raised: '50.00',
           });
         });
     });

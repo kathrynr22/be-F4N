@@ -8,6 +8,7 @@ module.exports = [
     location: 'M1',
     bio: "Hello I'm Godfrey and I work at B&Q and love all things DIY!",
     charity_name: 'Oxfam',
+    amount_raised: 20.0,
   },
   {
     username: 'twebleyf',
@@ -19,6 +20,7 @@ module.exports = [
     bio:
       'Hi I am Terrie and I work in graphic design. I also speak and read fluent German if anyone needs a hand with that.',
     charity_name: 'Greenpeace',
+    amount_raised: 50.0,
   },
   {
     username: 'jhumbell',
@@ -31,6 +33,7 @@ module.exports = [
       "Hi I'm James and I am a window cleaner. Happy to help my neighbours if their windows need a good clean.",
 
     charity_name: 'Cancer research',
+    amount_raised: 10.0,
   },
   {
     username: 'cmarchbankj',
@@ -43,6 +46,7 @@ module.exports = [
       'Hey I am Chuck and I work as a mechanic and love tinkering around with cars in my spare time. When I am not doing that, I am always doing a bit of DIY around the house.',
 
     charity_name: 'Amnesty International',
+    amount_raised: 35.0,
   },
   {
     username: 'dfoxl',
@@ -54,6 +58,7 @@ module.exports = [
     bio:
       "Hey there I'm Dawn, I am a retired secretary. I speak three languages: French, German and Italian so would be happy to help with translating. I am also pretty good with all kinds of DIY!",
     charity_name: 'RSPCA',
+    amount_raised: 70.0,
   },
   {
     username: 'hstrowan2m',
@@ -65,6 +70,7 @@ module.exports = [
     bio:
       "Hey I am Harper, I'm a hair stylist. If anyone needs to look great for an event and also wants to raise some money for a good cause, just let me know.",
     charity_name: 'Oxfam',
+    amount_raised: 80.0,
   },
   {
     username: 'wstallebrass2r',
@@ -76,6 +82,7 @@ module.exports = [
     bio:
       "Hi! Walter here. I'm a window cleaner by trade and am also pretty good with cars. Happy to lend a neighbourly hand to anyone in need.",
     charity_name: 'Greenpeace',
+    amount_raised: 45.0,
   },
   {
     username: 'cgibberd2x',
@@ -87,6 +94,7 @@ module.exports = [
     bio:
       "Hi I'm Catherine and I'm a chimney sweep. If your chimney is in need of a sweep and you want to raise money for charity at the same time, get in touch! I also speak fluent Spanish. ",
     charity_name: 'Cancer research',
+    amount_raised: 1.0,
   },
   {
     username: 'aduncklee32',
@@ -98,6 +106,7 @@ module.exports = [
     bio:
       "Hi all, my name is Alan. I'm a car mechanic by trade. Looking to raise some money for a fab charity so just contact me if you have car trouble and I'll try to help.",
     charity_name: 'Amnesty International',
+    amount_raised: 15.0,
   },
   {
     username: 'fsokale34',
@@ -109,5 +118,6 @@ module.exports = [
     bio:
       'Hello I am a graphic designer. Reach out if you need a favour and help me raise some funds for a charity in need. I am also great at DIY.',
     charity_name: 'RSPCA',
+    amount_raised: 22.22,
   },
 ];

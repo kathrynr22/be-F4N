@@ -83,6 +83,43 @@ exports.selectJob = job_id => {
     });
 };
 
+exports.selectPatchedJob = (job_id, job_status) => {
+  return knex('jobs')
+    .select(
+      'title',
+      'jobs.body',
+      'jobs.username',
+      'jobs.job_id',
+      'jobs.created_at',
+      'jobs.job_status',
+      'skill_name',
+      'avatar_url',
+      'jobs.location'
+    )
+    .join('skills', 'jobs.skill_id', '=', 'skills.skill_id')
+    .join('users', 'jobs.username', '=', 'users.username')
+    .leftJoin('comments', 'jobs.job_id', '=', 'comments.job_id')
+    .count('comments.job_id AS comment_count')
+    .groupBy(
+      'jobs.job_id',
+      'skills.skill_name',
+      'users.avatar_url',
+      'jobs.location'
+    )
+    .where({ 'jobs.job_id': job_id })
+    .update({ 'jobs.job_status': job_status })
+    .returning('*')
+    .then(job => {
+      console.log('inside models');
+      console.log(job);
+      if (job.length === 0)
+        return Promise.reject({ status: 404, msg: 'job not found' });
+      else {
+        return job[0];
+      }
+    });
+};
+
 exports.insertJob = (
   username,
   title,

@@ -10,6 +10,7 @@ exports.selectUsername = username => {
       'avatar_url',
       'location',
       'bio',
+      'amount_raised',
       'charities.charity_name',
       'charities.charity_logo',
       knex.raw('ARRAY_AGG (skill_name) skill_name')
@@ -85,7 +86,8 @@ exports.insertUser = (
       'location',
       'bio',
       'charities.charity_name',
-      'charities.charity_logo'
+      'charities.charity_logo',
+      'amount_raised'
     )
     .join(
       'charities',

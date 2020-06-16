@@ -9,6 +9,7 @@ module.exports = [
     bio:
       'Hi I am Audrie, I am a gardener and am happy to help if anyone needs a hand with their garden. I am also a keen baker.',
     charity_name: 'Oxfam',
+    amount_raised: 20.0,
   },
   {
     username: 'fvanlint1',
@@ -21,6 +22,7 @@ module.exports = [
       'Hi I am Frederica, I work at a garden centre and am an expert on plants. I am also a keen photographer.',
 
     charity_name: 'Greenpeace',
+    amount_raised: 35.0,
   },
   {
     username: 'ghanvey2',
@@ -33,6 +35,7 @@ module.exports = [
       'Hey there, my name is Gabrielle and I am a qualified accountant. I also do caligraphy in my spare time.',
 
     charity_name: 'Cancer research',
+    amount_raised: 45.0,
   },
   {
     username: 'swhordley3',
@@ -45,6 +48,7 @@ module.exports = [
       'Hey there, I am Shane and I work in IT. I would be happy to offer advice if anyone is having computer problems. I also work as a videographer part time.',
 
     charity_name: 'Amnesty International',
+    amount_raised: 125.0,
   },
   {
     username: 'vrylett5',
@@ -57,6 +61,7 @@ module.exports = [
       "Hiya, I'm Vince and I've been a plumber for nearly 30 years. Happy to pop round if my neighbours need some help with plumbing issues. I also have experience as a roofer.",
 
     charity_name: 'RSPCA',
+    amount_raised: 27.5,
   },
   {
     username: 'lwilliams7',
@@ -67,6 +72,7 @@ module.exports = [
     location: 'M6',
     bio: "Howdy, I'm Liam and I'm a qualified electrician.",
     charity_name: 'Friends of the Earth',
+    amount_raised: 200.0,
   },
   {
     username: 'ogreenhall8',
@@ -78,6 +84,7 @@ module.exports = [
     bio:
       "Hi I'm Orin and I'm a part-time painter and decorator. I also teach drawing classes at the community centre and am studying for a phd in art history.",
     charity_name: 'MIND',
+    amount_raised: 55.0,
   },
   {
     username: 'mtiremana',
@@ -90,6 +97,7 @@ module.exports = [
       "Hi I'm Marianne, I'm a painter and decorator and I also love to bake in my spare time. I would be happy to share my skills and raise money for my chosen charity.",
 
     charity_name: 'Water Aid',
+    amount_raised: 175.0,
   },
   {
     username: 'csimmons22',
@@ -101,6 +109,7 @@ module.exports = [
     bio: "Hey there, I'm Carl and I'm a carpenter and Ikea flat-pack expert!",
 
     charity_name: 'NSPCC',
+    amount_raised: 350.0,
   },
   {
     username: 'sfantonec',
@@ -113,6 +122,7 @@ module.exports = [
       "Hi I'm Stanley, I am a retired carpenter and flat pack expert! I now enjoy photography and am happy to share my skills.",
 
     charity_name: 'Age UK',
+    amount_raised: 225.0,
   },
   {
     username: 'jbugbirdy',
@@ -124,6 +134,7 @@ module.exports = [
     bio:
       "Hi I'm Jason and I am a qualified roofer. Got a tile missing? Give me a shout!",
     charity_name: 'RNLI',
+    amount_raised: 45.0,
   },
   {
     username: 'stevesmith33',
@@ -136,6 +147,7 @@ module.exports = [
       "Hello I'm Steve and I'm an accountant. Happy to offer advice on taxes and the like! I am also a bit of a computer geek.",
 
     charity_name: 'British Heart Foundation',
+    amount_raised: 80.0,
   },
   {
     username: 'jackthelad',
@@ -148,6 +160,7 @@ module.exports = [
       "Hi I am Jack and I'm a plumber. I am happy to help if I can, and raise money for a great cause!",
 
     charity_name: 'WWF',
+    amount_raised: 95.0,
   },
   {
     username: 'gcornelius17',
@@ -160,6 +173,7 @@ module.exports = [
       "Hi I'm Gretna, I'm a landscaper. I love to be in the outdoors and would be happy to lend a green finger to any neighbour! I also used to be a secretary so am happy to share those skills.",
 
     charity_name: 'Samaritans',
+    amount_raised: 125.0,
   },
   {
     username: 'okerley19',
@@ -172,6 +186,7 @@ module.exports = [
       'Hey I am Orelee and I work as a tree surgeon and I love gardening generally. I am happy to work for free if people donate to my chosen charity!',
 
     charity_name: 'Dogs Trust',
+    amount_raised: 45.0,
   },
   {
     username: 'vkausche1a',
@@ -184,6 +199,7 @@ module.exports = [
       "Hey there I'm Val, I am a plumber. Looking to raise money for my chosen charity, while helping out my neighbours at the same time! I am also a dab hand at flat pack.",
 
     charity_name: 'Shelter',
+    amount_raised: 33.33,
   },
   {
     username: 'egillie1b',
@@ -196,6 +212,7 @@ module.exports = [
       "Hi there I am Elbertine and I'm a qualified proofreader. I also love to bake in my spare time.",
 
     charity_name: 'UNICEF',
+    amount_raised: 450.0,
   },
   {
     username: 'salsina1c',
@@ -208,6 +225,7 @@ module.exports = [
       "Hi I'm Sammie! I'm a secretary and touch-typist. Happy to type up documents for you in order to raise money for my chosen charity!",
 
     charity_name: 'Scope',
+    amount_raised: 75.0,
   },
   {
     username: 'mbouch1d',
@@ -219,6 +237,7 @@ module.exports = [
     bio:
       "Hi I'm Madelene, I'm a professional cleaner. If your house needs a clean, give me a shout and we can raise money for a good cause! I also love spending time outdoors and in the garden.",
     charity_name: 'Centerpoint',
+    amount_raised: 65.0,
   },
   {
     username: 'tsnowsill1h',
@@ -231,6 +250,7 @@ module.exports = [
       "Hi I'm Tim, I fix computers for a living. Let me know if your PC or Mac is playing up and I'm happy to take a look!",
 
     charity_name: 'Book Trust',
+    amount_raised: 125.0,
   },
   {
     username: 'ematkovic1j',
@@ -242,6 +262,7 @@ module.exports = [
     bio:
       "Hi I'm Eyde, I work in a computer repair shop. I am happy to help a neighbour in need! I also love to spend time gardening and would be happy to help with any gardening jobs.",
     charity_name: 'Terrence Higgins Trust',
+    amount_raised: 250.0,
   },
   {
     username: 'cocurrigan1t',
@@ -254,6 +275,7 @@ module.exports = [
       "Hi I'm Codi, I'm an expert at reparing macbooks. I'd love to give my time for a good cause. In my spare time I am a photographer, I am hoping to do this professionally one day. I am also pretty good at putting together flat pack furniture!",
 
     charity_name: 'Show Racism The Red Card',
+    amount_raised: 300.0,
   },
   {
     username: 'mfreeberne1u',
@@ -266,6 +288,7 @@ module.exports = [
       "Hey there, I'm Minnie and I work with computers. If you need help with anything IT related I am happy to take a look.",
 
     charity_name: 'Movember',
+    amount_raised: 415.0,
   },
   {
     username: 'dmacnish1v',
@@ -278,6 +301,7 @@ module.exports = [
       "Hey there, I'm David, I work for HMRC - if anyone wants their accounts looking over, happy to offer my advice for free in order to raise money for an important cause.",
 
     charity_name: 'SCOPE',
+    amount_raised: 120.0,
   },
   {
     username: 'sstraun1w',
@@ -290,6 +314,7 @@ module.exports = [
       "Hello I'm Seymour, I am a qualified electrician. Looking to raise money for a fantastic charity and to help my community.",
 
     charity_name: 'MS Society',
+    amount_raised: 35.0,
   },
   {
     username: 'mneagle1x',
@@ -302,6 +327,7 @@ module.exports = [
       'Hi there I am Madalyn, I am an electrician and happy to volunteer my time for a worthwhile cause. Give me a buzz (pun intended!)',
 
     charity_name: 'Cats Protection',
+    amount_raised: 10.0,
   },
   {
     username: 'kparnall1y',
@@ -314,6 +340,7 @@ module.exports = [
       'Hi there my name is Kylila. I work as a painter and decorator, my specialism is wallpapering! I also love sewing and baking.',
 
     charity_name: 'RNIB',
+    amount_raised: 50.0,
   },
   {
     username: 'kheasly20',
@@ -326,6 +353,7 @@ module.exports = [
       "Hi I am Kareem and I'm a roofer! I am also good with other kinds of tiles such as kitchen and bathroom tiles!",
 
     charity_name: 'Oxfam',
+    amount_raised: 200.0,
   },
   {
     username: 'cpevie21',
@@ -338,6 +366,7 @@ module.exports = [
       "Hello I'm Christiano, I work as a roofer and I'm happy to help out anyone who has issues with their roof in order to raise money for a charity that's close to my heart.",
 
     charity_name: 'Greenpeace',
+    amount_raised: 75.0,
   },
   {
     username: 'ebarkworth23',
@@ -350,6 +379,7 @@ module.exports = [
       "Hi there, I'm Evelina. I love to clean (strange I know!) but I would love to raise money for my chosen charity while also helping out a neighbour! I am also a qualified make up artist.",
 
     charity_name: 'Cancer research',
+    amount_raised: 60.0,
   },
   {
     username: 'gsher2g',
@@ -362,5 +392,6 @@ module.exports = [
       "Hi there, I'm George, retired plumber. I have also done the tiles in my own bathroom and kitchen and in many friends' houses. Happy to help a neighbour in need!",
 
     charity_name: 'Amnesty International',
+    amount_raised: 55.0,
   },
 ];

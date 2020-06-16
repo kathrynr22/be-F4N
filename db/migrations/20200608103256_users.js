@@ -8,6 +8,7 @@ exports.up = knex => {
     usersTable.string('location', 4).notNullable();
     usersTable.string('bio', 500);
     usersTable.string('charity_name').references('charities.charity_name');
+    usersTable.decimal('amount_raised').defaultTo(0);
   });
 };
 

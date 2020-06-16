@@ -1,6 +1,7 @@
 const {
   selectJobs,
   selectJob,
+  selectPatchedJob,
   insertJob,
   deleteJob,
   selectCommentsByJobId,
@@ -41,6 +42,22 @@ exports.postJob = (req, res, next) => {
       res.status(201).send({ job });
     })
     .catch(next);
+};
+
+exports.patchJob = (req, res, next) => {
+  const { job_status } = req.body;
+  console.log(job_status);
+  const { job_id } = req.params;
+  selectPatchedJob(job_id, job_status)
+    .then(job => {
+      console.log('inside controller');
+      res.status(200).send({ job });
+    })
+    .catch(err => {
+      console.log('inside catch');
+      console.log(err);
+      next(err);
+    });
 };
 
 exports.delJob = (req, res, next) => {
