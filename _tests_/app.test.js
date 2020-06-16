@@ -357,6 +357,24 @@ describe('/jobs', () => {
             expect(job.job_status).toEqual('accepted');
           });
       });
+      test('status 200: responds with the job status updated to accepted', () => {
+        return request(app)
+          .patch('/api/jobs/1')
+          .send({ job_status: 'completed' })
+          .expect(200)
+          .then(({ body: { job } }) => {
+            expect(job.job_status).toEqual('completed');
+          });
+      });
+      test('status 200: responds with the job status updated to accepted', () => {
+        return request(app)
+          .patch('/api/jobs/1')
+          .send({ job_status: 'created' })
+          .expect(200)
+          .then(({ body: { job } }) => {
+            expect(job.job_status).toEqual('created');
+          });
+      });
     });
 
     // test("status 404: trying to patch a non-existent article_id", () => {

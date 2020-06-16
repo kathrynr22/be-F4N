@@ -46,16 +46,12 @@ exports.postJob = (req, res, next) => {
 
 exports.patchJob = (req, res, next) => {
   const { job_status } = req.body;
-  console.log(job_status);
   const { job_id } = req.params;
   selectPatchedJob(job_id, job_status)
     .then(job => {
-      console.log('inside controller');
       res.status(200).send({ job });
     })
     .catch(err => {
-      console.log('inside catch');
-      console.log(err);
       next(err);
     });
 };

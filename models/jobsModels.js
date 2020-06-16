@@ -114,8 +114,6 @@ exports.selectPatchedJob = (job_id, job_status) => {
         .returning('*');
     })
     .then(job => {
-      console.log('inside models');
-      console.log(job);
       if (job.length === 0)
         return Promise.reject({ status: 404, msg: 'job not found' });
       else {

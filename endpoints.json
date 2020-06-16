@@ -364,6 +364,26 @@
       }
     }
   },
+  "PATCH /api/jobs/:job_id": {
+    "description": "serves a job object for the specified job_id with the job_status property updated",
+    "body": {
+      "job_status": "completed"
+    },
+    "exampleResponse": {
+      "job": {
+        "title": "Hair stylist for an important event",
+        "body": "Hi all, it is my daughter's graduation next week and I would love to look my best. But none of the hairdressers are open. Would anyone be willing to come round and fix my hair. I would love to donate to a good cause at the same time!",
+        "username": "gdurdane",
+        "job_id": 1,
+        "created_at": "2020-05-02T11:15:00.000Z",
+        "job_status": "completed",
+        "skill_name": "hair styling",
+        "avatar_url": "https://randomuser.me/api/portraits/men/72.jpg",
+        "location": "M1",
+        "comment_count": "1"
+      }
+    }
+  },
   "DELETE /api/jobs/:job_id": {
     "description": "deletes the given job by job id and responds with 204",
     "queries": [],
