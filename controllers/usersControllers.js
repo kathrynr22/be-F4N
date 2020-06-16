@@ -56,7 +56,6 @@ exports.postUser = (req, res, next) => {
 
 exports.getUsers = (req, res, next) => {
   const { email } = req.query;
-  console.log(email);
   selectUsers(email)
     .then(users => {
       res.send({ users });
