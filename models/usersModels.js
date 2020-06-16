@@ -112,6 +112,11 @@ exports.insertUser = (
     });
 };
 
-exports.selectUsers = () => {
-  return knex('users').select('*').orderBy('username');
+exports.selectUsers = email => {
+  return knex('users')
+    .select('*')
+    .orderBy('username')
+    .modify(query => {
+      if (email) query.where({ email: email });
+    });
 };

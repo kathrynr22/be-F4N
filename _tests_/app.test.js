@@ -495,6 +495,14 @@ describe('/users', () => {
           });
         });
     });
+    test('status 200: accepts an email query that filters the users by email', () => {
+      return request(app)
+        .get('/api/users?email=gdurdane@drupal.org')
+        .expect(200)
+        .then(({ body: { users } }) => {
+          expect(users).toHaveLength(1);
+        });
+    });
   });
   describe('POST', () => {
     test('status 201: responds with a user object', () => {
