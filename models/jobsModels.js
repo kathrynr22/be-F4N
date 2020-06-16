@@ -14,6 +14,7 @@ exports.selectJobs = (sort_by, order, skill_name, location, username) => {
       'jobs.username',
       'jobs.job_id',
       'jobs.created_at',
+      'jobs.job_status',
       'skill_name',
       'avatar_url',
       'jobs.location'
@@ -57,6 +58,7 @@ exports.selectJob = job_id => {
       'jobs.username',
       'jobs.job_id',
       'jobs.created_at',
+      'jobs.job_status',
       'skill_name',
       'avatar_url',
       'jobs.location'
@@ -81,7 +83,14 @@ exports.selectJob = job_id => {
     });
 };
 
-exports.insertJob = (username, title, body, skill_name, location) => {
+exports.insertJob = (
+  username,
+  title,
+  body,
+  skill_name,
+  location,
+  job_status = 'created'
+) => {
   if (!username || !title || !body || !skill_name || !location) {
     return Promise.reject({
       status: 400,
@@ -98,6 +107,7 @@ exports.insertJob = (username, title, body, skill_name, location) => {
           title,
           body,
           location,
+          job_status,
           skill_id: knex('skills').select('skill_id').where({ skill_name }),
         })
         .returning('*')
@@ -108,6 +118,7 @@ exports.insertJob = (username, title, body, skill_name, location) => {
       'inserted_job.username',
       'inserted_job.job_id',
       'inserted_job.created_at',
+      'inserted_job.job_status',
       'skill_name',
       'avatar_url',
       'inserted_job.location'
@@ -122,6 +133,7 @@ exports.insertJob = (username, title, body, skill_name, location) => {
       'inserted_job.username',
       'inserted_job.job_id',
       'inserted_job.created_at',
+      'inserted_job.job_status',
       'skills.skill_name',
       'users.avatar_url',
       'inserted_job.location'

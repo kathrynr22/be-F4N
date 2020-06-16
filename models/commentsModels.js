@@ -19,7 +19,7 @@ exports.selectCommentsByUsername = username => {
     .where('users.username', username)
     .orderBy('created_at', 'desc')
     .then(comments => {
-      if (comments.length === 0)
+      if (username !== undefined && comments.length === 0)
         return Promise.reject({ status: 404, msg: 'comments not found' });
       else {
         return comments;

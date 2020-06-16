@@ -31,6 +31,7 @@ describe('/jobs', () => {
             expect(job).toHaveProperty('job_id');
             expect(job).toHaveProperty('created_at');
             expect(job).toHaveProperty('comment_count');
+            expect(job).toHaveProperty('job_status');
           });
         });
     });
@@ -81,8 +82,6 @@ describe('/jobs', () => {
         .get('/api/jobs?username=dfoxl')
         .expect(200)
         .then(({ body: { jobs } }) => {
-          console.log('hiii');
-          console.log(jobs);
           expect(jobs).toHaveLength(2);
         });
     });
@@ -141,6 +140,7 @@ describe('/jobs', () => {
         })
         .expect(201)
         .then(({ body: { job } }) => {
+          console.log(job);
           expect(job).toHaveProperty('title', 'Test Job');
           expect(job).toHaveProperty('body', 'Test job for testing purposes');
           expect(job).toHaveProperty('skill_name', 'graphic design');
@@ -153,6 +153,7 @@ describe('/jobs', () => {
           expect(job).toHaveProperty('job_id');
           expect(job).toHaveProperty('created_at');
           expect(job).toHaveProperty('comment_count');
+          expect(job).toHaveProperty('job_status', 'created');
         });
     });
     test('status 201: responds with a job_id', () => {
@@ -305,6 +306,7 @@ describe('/jobs', () => {
               '2020-05-02T11:15:00.000Z'
             );
             expect(job).toHaveProperty('comment_count', '1');
+            expect(job).toHaveProperty('job_status', 'created');
           });
       });
       test('status 400: responds with bad request when job_id is invalid', () => {
@@ -345,9 +347,49 @@ describe('/jobs', () => {
           });
       });
     });
+    // describe('PATCH', () => {
+    //   test.only('status 200: responds with the job status updated to accepted', () => {
+    //     return request(app)
+    //       .patch('/api/jobs/1')
+    //       .send({ job_status: 'accepted' })
+    //       .expect(200)
+    //       .then(({ body: { job } }) => {
+    //         expect(job.job_status).toEqual('accepted');
+    //       });
+    //   });
+
+    // test("status 404: trying to patch a non-existent article_id", () => {
+    //   return request(app)
+    //     .patch("/api/articles/76666666")
+    //     .send({ inc_votes: 1 })
+    //     .expect(404)
+    //     .then(({ body: { msg } }) => {
+    //       expect(msg).toBe("article_id not found");
+    //     });
+    // });
+    // test("status 400: trying to patch to an invalid article_id", () => {
+    //   return request(app)
+    //     .patch("/api/articles/notAnInt")
+    //     .send({ inc_votes: 1 })
+    //     .expect(400)
+    //     .then(({ body: { msg } }) => {
+    //       expect(msg).toBe("bad request");
+    //     });
+    // });
+    // test("status 400: trying to patch something invalid ie not incrementing or decrementing a vote", () => {
+    //   return request(app)
+    //     .patch("/api/articles/1")
+    //     .send({ inc_votes: "notAnInt" })
+    //     .expect(400)
+    //     .then(({ body: { msg } }) => {
+    //       expect(msg).toBe("bad request");
+    //     });
+    // });
+    // });
+
     describe('unsupported methods', () => {
       test('status: 405 - responds with method not allowed', () => {
-        const methods = ['post', 'put', 'patch'];
+        const methods = ['post', 'put'];
 
         const requestPromises = methods.map(method => {
           return request(app)
@@ -424,6 +466,49 @@ describe('/users', () => {
         });
     });
     return Promise.all(requests);
+  });
+  describe('GET', () => {
+    test('status 200: responds with an array of users', () => {
+      return request(app)
+        .get('/api/users/')
+        .expect(200)
+        .then(({ body: { users } }) => {
+          expect(Array.isArray(users)).toBe(true);
+        });
+    });
+    test('status: 200 - responds with array of user objects', () => {
+      return request(app)
+        .get('/api/users')
+        .expect(200)
+        .then(({ body: { users } }) => {
+          users.forEach(user => {
+            expect(user).toHaveProperty('username');
+            expect(user).toHaveProperty('first_name');
+            expect(user).toHaveProperty('last_name');
+            expect(user).toHaveProperty('email');
+            expect(user).toHaveProperty('avatar_url');
+            expect(user).toHaveProperty('location');
+            expect(user).toHaveProperty('bio');
+            expect(user).toHaveProperty('charity_name');
+          });
+        });
+    });
+    test('status 200: accepts an email query that filters the users by email', () => {
+      return request(app)
+        .get('/api/users?email=gdurdane@drupal.org')
+        .expect(200)
+        .then(({ body: { users } }) => {
+          expect(users).toHaveLength(1);
+        });
+    });
+    test('status 404: responds with email not found when trying to filter by invalid email', () => {
+      return request(app)
+        .get('/api/users?email=hello@hotmail.com')
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('email not found');
+        });
+    });
   });
   describe('POST', () => {
     test('status 201: responds with a user object', () => {
@@ -791,7 +876,17 @@ describe('/comments', () => {
           expect(comments[0].username).toBe('dfoxl');
         });
     });
-    test('status 404: responds with comments not found when filtering comments by nonexistent username', () => {
+    // test('status 200: responds with empty array when an username exists but has no comments', () => {
+    //   return request(app)
+    //     .get('/api/comments?username=gdurdane')
+    //     .expect(200)
+    //     .then(({ body: { comments } }) => {
+    //       expect(Array.isArray(comments)).toBe(true);
+    //       expect(comments.length).toBe(0);
+    //       expect(comments).toEqual([]);
+    //     });
+    // });
+    test('status 404: responds with username not found when filtering comments by nonexistent username', () => {
       return request(app)
         .get('/api/comments?username=kathryn')
         .expect(404)
@@ -807,8 +902,6 @@ describe('/charities', () => {
       .get('/api/charities')
       .expect(200)
       .then(({ body: { charities } }) => {
-        console.log('inside test');
-        console.log(charities);
         expect(Array.isArray(charities)).toBe(true);
       });
   });
@@ -830,7 +923,7 @@ describe('/charities', () => {
       .get('/api/charities')
       .expect(200)
       .then(({ body: { charities } }) => {
-        expect(charities).toBeSortedBy('charity_name');
+        expect(charities).toBeSortedBy('charity_name', { ascending: true });
       });
   });
 });

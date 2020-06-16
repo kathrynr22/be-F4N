@@ -1,4 +1,8 @@
-const { selectUsername, insertUser } = require('../models/usersModels');
+const {
+  selectUsername,
+  insertUser,
+  selectUsers,
+} = require('../models/usersModels');
 const { selectSkills } = require('../models/skillsModels');
 
 exports.getUsername = (req, res, next) => {
@@ -46,6 +50,16 @@ exports.postUser = (req, res, next) => {
   Promise.all(promiseArr)
     .then(([user]) => {
       res.status(201).send({ user });
+    })
+    .catch(next);
+};
+
+exports.getUsers = (req, res, next) => {
+  const { email } = req.query;
+  console.log(email);
+  selectUsers(email)
+    .then(users => {
+      res.send({ users });
     })
     .catch(next);
 };

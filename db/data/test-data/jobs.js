@@ -8,6 +8,7 @@ module.exports = [
     created_at: '2020-05-02T11:15:00.000Z',
     location: 'M1',
     skill_id: 1,
+    job_status: 'created',
   },
   {
     // job_id 2
@@ -18,6 +19,7 @@ module.exports = [
     created_at: '2020-05-31T11:13:00.000Z',
     location: 'M3',
     skill_id: 3,
+    job_status: 'created',
   },
   {
     // job_id 3
@@ -28,6 +30,7 @@ module.exports = [
     created_at: '2020-06-04T08:45:00.000Z',
     location: 'M4',
     skill_id: 5,
+    job_status: 'created',
   },
   {
     // job_id 4
@@ -38,6 +41,7 @@ module.exports = [
     created_at: '2020-06-02T13:13:00.000Z',
     location: 'M4',
     skill_id: 6,
+    job_status: 'created',
   },
   {
     // job_id 5
@@ -48,6 +52,7 @@ module.exports = [
     created_at: '2020-06-01T14:14:00.000Z',
     location: 'M5',
     skill_id: 4,
+    job_status: 'created',
   },
   {
     // job_id 6
@@ -58,5 +63,6 @@ module.exports = [
     created_at: '2020-04-01T14:14:00.000Z',
     location: 'M1',
     skill_id: 7,
+    job_status: 'created',
   },
 ];
