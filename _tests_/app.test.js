@@ -347,17 +347,17 @@ describe('/jobs', () => {
           });
       });
     });
-    // describe('PATCH', () => {
-    //   test.only('status 200: responds with the job status updated to accepted', () => {
-    //     return request(app)
-    //       .patch('/api/jobs/1')
-    //       .send({ job_status: 'accepted' })
-    //       .expect(200)
-    //       .then(({ body: { job } }) => {
-    //         expect(job.job_status).toEqual('accepted');
-    //       });
-    //   });
-    // });
+    describe('PATCH', () => {
+      test('status 200: responds with the job status updated to accepted', () => {
+        return request(app)
+          .patch('/api/jobs/1')
+          .send({ job_status: 'accepted' })
+          .expect(200)
+          .then(({ body: { job } }) => {
+            expect(job.job_status).toEqual('accepted');
+          });
+      });
+    });
 
     // test("status 404: trying to patch a non-existent article_id", () => {
     //   return request(app)
