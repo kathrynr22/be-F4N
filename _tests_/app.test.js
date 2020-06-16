@@ -902,8 +902,6 @@ describe('/charities', () => {
       .get('/api/charities')
       .expect(200)
       .then(({ body: { charities } }) => {
-        console.log('inside test');
-        console.log(charities);
         expect(Array.isArray(charities)).toBe(true);
       });
   });
