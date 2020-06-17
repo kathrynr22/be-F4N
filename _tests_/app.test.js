@@ -140,7 +140,6 @@ describe('/jobs', () => {
         })
         .expect(201)
         .then(({ body: { job } }) => {
-          console.log(job);
           expect(job).toHaveProperty('title', 'Test Job');
           expect(job).toHaveProperty('body', 'Test job for testing purposes');
           expect(job).toHaveProperty('skill_name', 'graphic design');
@@ -547,8 +546,6 @@ describe('/users', () => {
         })
         .expect(201)
         .then(({ body: { user } }) => {
-          console.log('rrarrr');
-          console.log(user);
           expect(user).toHaveProperty('username', 'madeupusername');
           expect(user).toHaveProperty('first_name', 'bill');
           expect(user).toHaveProperty('last_name', 'mcbilly');
