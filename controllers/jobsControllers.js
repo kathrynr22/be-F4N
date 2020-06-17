@@ -8,6 +8,7 @@ const {
   selectHelpersByJobId,
   insertComment,
   insertHelper,
+  selectPatchedHelper,
 } = require('../models/jobsModels');
 const { selectUsername } = require('../models/usersModels');
 const { selectSkills } = require('../models/skillsModels');
@@ -100,11 +101,9 @@ exports.getHelpersByJobId = (req, res, next) => {
   const { job_id } = req.params;
   selectHelpersByJobId(job_id)
     .then(helpers => {
-      console.log('inside controllers');
       res.status(200).send({ helpers });
     })
     .catch(err => {
-      console.log(err);
       next(err);
     });
 };
@@ -118,7 +117,20 @@ exports.postHelperByJobId = (req, res, next) => {
       res.status(201).send({ helper });
     })
     .catch(err => {
-      console.log(err);
+      next(err);
+    });
+};
+
+exports.patchHelper = (req, res, next) => {
+  const { helper_status } = req.body;
+
+  const { job_id } = req.params;
+
+  selectPatchedHelper(job_id, helper_status)
+    .then(helper => {
+      res.status(200).send({ helper });
+    })
+    .catch(err => {
       next(err);
     });
 };

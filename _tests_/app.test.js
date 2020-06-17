@@ -348,7 +348,7 @@ describe('/jobs', () => {
       });
     });
     describe('PATCH', () => {
-      test('status 200: responds with the job status updated to accepted', () => {
+      test('status 200: responds with the job status updated to helper found', () => {
         return request(app)
           .patch('/api/jobs/1')
           .send({ job_status: 'helper found' })
@@ -357,7 +357,7 @@ describe('/jobs', () => {
             expect(job.job_status).toEqual('helper found');
           });
       });
-      test('status 200: responds with the job status updated to accepted', () => {
+      test('status 200: responds with the job status updated to completed', () => {
         return request(app)
           .patch('/api/jobs/1')
           .send({ job_status: 'completed' })
@@ -366,7 +366,7 @@ describe('/jobs', () => {
             expect(job.job_status).toEqual('completed');
           });
       });
-      test('status 200: responds with the job status updated to accepted', () => {
+      test('status 200: responds with the job status updated to created', () => {
         return request(app)
           .patch('/api/jobs/1')
           .send({ job_status: 'created' })
@@ -497,6 +497,45 @@ describe('/:job_id/helpers', () => {
           expect(helper).toHaveProperty('username', 'gdurdane');
           expect(helper).toHaveProperty('job_id', 5);
           expect(helper).toHaveProperty('helper_status', 'interested');
+        });
+    });
+    // test.only('status 404: responds with username not found when posting with non-existent username', () => {
+    //   return request(app)
+    //     .post('/api/jobs/5/helpers')
+    //     .send({
+    //       username: 'dontexist',
+    //     })
+    //     .expect(404)
+    //     .then(({ body: { msg } }) => {
+    //       expect(msg).toBe('username not found');
+    //     });
+    // });
+    test('status 404: responds with skill not found when posting a job with non-existent skill', () => {
+      return request(app)
+        .post('/api/jobs')
+        .send({
+          username: 'gdurdane',
+          title: 'Test Job',
+          body: 'Test job for testing purposes',
+          skill_name: 'not a skill',
+          location: 'M1',
+        })
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('skill not found');
+        });
+    });
+  });
+  describe('PATCH', () => {
+    test.only('status 200: responds with the job status updated to helper found', () => {
+      return request(app)
+        .patch('/api/jobs/5/helpers')
+        .send({ helper_status: 'helping' })
+        .expect(200)
+        .then(({ body: { helper } }) => {
+          console.log('inside test');
+          console.log(helper);
+          expect(helper.helper_status).toEqual('helping');
         });
     });
   });
@@ -737,6 +776,7 @@ describe('users/:username', () => {
         });
     });
   });
+  describe('PATCH', () => {});
 });
 describe('/:job_id/comments', () => {
   describe('GET', () => {

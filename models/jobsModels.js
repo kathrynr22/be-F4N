@@ -305,19 +305,25 @@ exports.insertHelper = (job_id, username) => {
     })
     .returning('*')
     .then(helper => {
-      console.log('inside models');
-      console.log(helper);
-
       return helper[0];
     });
 };
 
-// .then(([job]) => {
-//   if (job === undefined) {
-//     return Promise.reject({
-//       status: 404,
-//       msg: 'job_id not found',
-//     });
-//   }
-//   return [];
-// });
+exports.selectPatchedHelper = (job_id, helper_status) => {
+  return knex('users_job_junction')
+    .update({ helper_status: helper_status })
+    .then(() => {
+      return knex('users_job_junction')
+        .where({ job_id: job_id })
+        .returning('*');
+    });
+};
+//   })
+//   // .then(helper => {
+//   //   if (helper.length === 0)
+//   //     return Promise.reject({ status: 404, msg: 'job not found' });
+//   //   else {
+//   //     return helper[0];
+//   //   }
+//   // });
+// }
