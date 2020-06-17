@@ -351,10 +351,10 @@ describe('/jobs', () => {
       test('status 200: responds with the job status updated to accepted', () => {
         return request(app)
           .patch('/api/jobs/1')
-          .send({ job_status: 'accepted' })
+          .send({ job_status: 'helper found' })
           .expect(200)
           .then(({ body: { job } }) => {
-            expect(job.job_status).toEqual('accepted');
+            expect(job.job_status).toEqual('helper found');
           });
       });
       test('status 200: responds with the job status updated to accepted', () => {
