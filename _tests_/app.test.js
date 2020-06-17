@@ -527,7 +527,7 @@ describe('/:job_id/helpers', () => {
     });
   });
   describe('PATCH', () => {
-    test.only('status 200: responds with the job status updated to helper found', () => {
+    test('status 200: responds with the job status updated to helper found', () => {
       return request(app)
         .patch('/api/jobs/5/helpers')
         .send({ helper_status: 'helping' })
@@ -536,6 +536,15 @@ describe('/:job_id/helpers', () => {
           console.log('inside test');
           console.log(helper);
           expect(helper.helper_status).toEqual('helping');
+        });
+    });
+    test('status 200: responds with the job status updated to helper found', () => {
+      return request(app)
+        .patch('/api/jobs/5/helpers')
+        .send({ helper_status: 'declined' })
+        .expect(200)
+        .then(({ body: { helper } }) => {
+          expect(helper.helper_status).toEqual('declined');
         });
     });
   });

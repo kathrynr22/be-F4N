@@ -315,7 +315,10 @@ exports.selectPatchedHelper = (job_id, helper_status) => {
     .then(() => {
       return knex('users_job_junction')
         .where({ job_id: job_id })
-        .returning('*');
+        .returning('*')
+        .then(helper => {
+          return helper[0];
+        });
     });
 };
 //   })
