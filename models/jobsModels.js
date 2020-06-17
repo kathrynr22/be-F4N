@@ -302,7 +302,21 @@ exports.selectHelpersByJobId = job_id => {
     .select('*')
     .from('users_job_junction')
     .where('job_id', job_id)
+    .orderBy('username')
     .then(helpers => {
       return helpers;
+    });
+};
+
+exports.insertHelper = (job_id, username) => {
+  return knex('users_job_junction')
+    .where('job_id', job_id)
+    .insert({
+      username: username,
+      job_id: job_id,
+    })
+    .returning('*')
+    .then(helper => {
+      return helper[0];
     });
 };

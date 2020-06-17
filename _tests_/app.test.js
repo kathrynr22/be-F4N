@@ -82,6 +82,7 @@ describe('/jobs', () => {
         .get('/api/jobs?username=dfoxl')
         .expect(200)
         .then(({ body: { jobs } }) => {
+          console.log(jobs);
           expect(jobs).toHaveLength(2);
         });
     });
@@ -431,8 +432,45 @@ describe('/:job_id/helpers', () => {
         .get('/api/jobs/5/helpers')
         .expect(200)
         .then(({ body: { helpers } }) => {
-          console.log(helpers);
           expect(Array.isArray(helpers)).toBe(true);
+        });
+    });
+    test('status 200: each user object contains certain properties', () => {
+      return request(app)
+        .get('/api/jobs/5/helpers')
+        .expect(200)
+        .then(({ body: { helpers } }) => {
+          helpers.forEach(helper => {
+            expect(helper).toHaveProperty('username');
+            expect(helper).toHaveProperty('job_id');
+            expect(helper).toHaveProperty('helper_status');
+          });
+        });
+    });
+    test('status 200: by default, sorts the users by the username column and in ascending order', () => {
+      return request(app)
+        .get('/api/jobs/5/helpers')
+        .expect(200)
+        .then(({ body: { helpers } }) => {
+          expect(helpers).toBeSortedBy('username', {
+            ascending: true,
+          });
+        });
+    });
+  });
+  describe('POST', () => {
+    test('status 201: responds with a user object', () => {
+      return request(app)
+        .post('/api/jobs/5/helpers')
+        .send({
+          username: 'gdurdane',
+        })
+        .expect(201)
+        .then(({ body: { helper } }) => {
+          console.log(helper);
+          expect(helper).toHaveProperty('username', 'gdurdane');
+          expect(helper).toHaveProperty('job_id', 5);
+          expect(helper).toHaveProperty('helper_status', 'interested');
         });
     });
   });

@@ -7,6 +7,7 @@ const {
   selectCommentsByJobId,
   selectHelpersByJobId,
   insertComment,
+  insertHelper,
 } = require('../models/jobsModels');
 const { selectUsername } = require('../models/usersModels');
 const { selectSkills } = require('../models/skillsModels');
@@ -97,7 +98,6 @@ exports.postComment = (req, res, next) => {
 
 exports.getHelpersByJobId = (req, res, next) => {
   const { job_id } = req.params;
-  console.log(job_id);
   selectHelpersByJobId(job_id)
     .then(helpers => {
       console.log('inside controllers');
@@ -105,6 +105,19 @@ exports.getHelpersByJobId = (req, res, next) => {
     })
     .catch(err => {
       console.log(err);
+      next(err);
+    });
+};
+
+exports.postHelperByJobId = (req, res, next) => {
+  const { username } = req.body;
+  const { job_id } = req.params;
+
+  insertHelper(job_id, username)
+    .then(helper => {
+      res.status(201).send({ helper });
+    })
+    .catch(err => {
       next(err);
     });
 };
