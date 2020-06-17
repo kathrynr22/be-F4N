@@ -284,3 +284,25 @@ exports.insertComment = (job_id, body, username) => {
       return comment[0];
     });
 };
+
+// exports.selectHelpersByJobId = job_id => {
+//   return knex
+//     .select('*')
+//     .from('job_comments_junction')
+//     .where('job_id', job_id)
+//     .then(helpers => {
+//       console.log('inside models');
+//       console.log(helpers);
+//       return helpers[0];
+//     });
+// };
+
+exports.selectHelpersByJobId = job_id => {
+  return knex
+    .select('*')
+    .from('users_job_junction')
+    .where('job_id', job_id)
+    .then(helpers => {
+      return helpers;
+    });
+};

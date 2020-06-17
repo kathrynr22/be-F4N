@@ -4,3 +4,4 @@ exports.jobs = require('./jobs');
 exports.skills = require('./skills');
 exports.users = require('./users');
 exports.usersSkills = require('./users-skills');
+exports.usersJobs = require('./users-jobs');

@@ -424,6 +424,20 @@ describe('/jobs', () => {
   });
 });
 
+describe('/:job_id/helpers', () => {
+  describe('GET', () => {
+    test('status 200: responds with an array of user objects', () => {
+      return request(app)
+        .get('/api/jobs/5/helpers')
+        .expect(200)
+        .then(({ body: { helpers } }) => {
+          console.log(helpers);
+          expect(Array.isArray(helpers)).toBe(true);
+        });
+    });
+  });
+});
+
 describe('/skills', () => {
   describe('GET', () => {
     test('status 200: responds with an array of skills objects', () => {

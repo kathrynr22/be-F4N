@@ -156,14 +156,7 @@ module.exports = [
     body:
       "Nightmare! No bother mate. I can pop over and sort that in a jiffy. Let's raise some money for a great cause too.",
   },
-  {
-    //comment_id added automatically by database
-    username: 'stevesmith33',
-    job_id: 12, //Computer won't turn on
-    created_at: '2020-06-08T14:53:00.000Z',
-    body:
-      'Hi there, sounds like it could be a battery issue. I am happy to come and take a look. I am free any evening this weekend.',
-  },
+
   {
     //comment_id added automatically by database
     username: 'swhordley3',

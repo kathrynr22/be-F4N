@@ -6,6 +6,7 @@ const {
   delJob,
   patchJob,
   getCommentsByJobId,
+  getHelpersByJobId,
   postComment,
 } = require('../controllers/jobsControllers');
 const { handle405s } = require('../controllers/errorControllers');
@@ -22,5 +23,7 @@ jobsRouter
   .get(getCommentsByJobId)
   .post(postComment)
   .all(handle405s);
+
+jobsRouter.route('/:job_id/helpers').get(getHelpersByJobId);
 
 module.exports = jobsRouter;

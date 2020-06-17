@@ -5,6 +5,7 @@ const {
   skills,
   users,
   usersSkills,
+  usersJobs,
 } = require('../data/index.js');
 
 exports.seed = knex => {
@@ -28,5 +29,8 @@ exports.seed = knex => {
     })
     .then(() => {
       return knex('comments').insert(comments);
+    })
+    .then(() => {
+      return knex('users_job_junction').insert(usersJobs);
     });
 };

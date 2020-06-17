@@ -1,7 +1,10 @@
 exports.up = knex => {
   return knex.schema.createTable('users_job_junction', junctionTable => {
     junctionTable.string('username').references('users.username');
-    junctionTable.integer('job_id').references('jobs.job_id');
+    junctionTable
+      .integer('job_id')
+      .references('jobs.job_id')
+      .onDelete('CASCADE');
     junctionTable.string('helper_status');
   });
 };
