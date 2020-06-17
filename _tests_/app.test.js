@@ -447,6 +447,33 @@ describe('/:job_id/helpers', () => {
           });
         });
     });
+    test('status 200: responds with empty array when an job exists but has no helpers', () => {
+      return request(app)
+        .get('/api/jobs/6/helpers')
+        .expect(200)
+        .then(({ body: { helpers } }) => {
+          expect(Array.isArray(helpers)).toBe(true);
+          expect(helpers.length).toBe(0);
+          expect(helpers).toEqual([]);
+        });
+    });
+    test('status 400: responds with bad request when trying to get helpers for an invalid job id', () => {
+      return request(app)
+        .get('/api/jobs/notanint/helpers')
+        .expect(400)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('bad request');
+        });
+    });
+    // test.only('status 404: responds with job_id does not exist when trying to get helpers for a non-existent job_id', () => {
+    //   return request(app)
+    //     .get('/api/jobs/6/helpers')
+    //     .expect(404)
+    //     .then(({ body: { msg } }) => {
+    //       expect(msg).toBe('job_id does not exist');
+    //     });
+    // });
+
     test('status 200: by default, sorts the users by the username column and in ascending order', () => {
       return request(app)
         .get('/api/jobs/5/helpers')
@@ -467,7 +494,6 @@ describe('/:job_id/helpers', () => {
         })
         .expect(201)
         .then(({ body: { helper } }) => {
-          console.log(helper);
           expect(helper).toHaveProperty('username', 'gdurdane');
           expect(helper).toHaveProperty('job_id', 5);
           expect(helper).toHaveProperty('helper_status', 'interested');

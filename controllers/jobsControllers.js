@@ -118,6 +118,7 @@ exports.postHelperByJobId = (req, res, next) => {
       res.status(201).send({ helper });
     })
     .catch(err => {
+      console.log(err);
       next(err);
     });
 };

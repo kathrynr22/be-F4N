@@ -285,18 +285,6 @@ exports.insertComment = (job_id, body, username) => {
     });
 };
 
-// exports.selectHelpersByJobId = job_id => {
-//   return knex
-//     .select('*')
-//     .from('job_comments_junction')
-//     .where('job_id', job_id)
-//     .then(helpers => {
-//       console.log('inside models');
-//       console.log(helpers);
-//       return helpers[0];
-//     });
-// };
-
 exports.selectHelpersByJobId = job_id => {
   return knex
     .select('*')
@@ -317,6 +305,19 @@ exports.insertHelper = (job_id, username) => {
     })
     .returning('*')
     .then(helper => {
+      console.log('inside models');
+      console.log(helper);
+
       return helper[0];
     });
 };
+
+// .then(([job]) => {
+//   if (job === undefined) {
+//     return Promise.reject({
+//       status: 404,
+//       msg: 'job_id not found',
+//     });
+//   }
+//   return [];
+// });
