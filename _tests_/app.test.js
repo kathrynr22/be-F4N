@@ -32,6 +32,7 @@ describe('/jobs', () => {
             expect(job).toHaveProperty('created_at');
             expect(job).toHaveProperty('comment_count');
             expect(job).toHaveProperty('job_status');
+            expect(job).toHaveProperty('job_image');
           });
         });
     });
@@ -140,6 +141,7 @@ describe('/jobs', () => {
         })
         .expect(201)
         .then(({ body: { job } }) => {
+          console.log('boo', job);
           expect(job).toHaveProperty('title', 'Test Job');
           expect(job).toHaveProperty('body', 'Test job for testing purposes');
           expect(job).toHaveProperty('skill_name', 'graphic design');
@@ -153,6 +155,10 @@ describe('/jobs', () => {
           expect(job).toHaveProperty('created_at');
           expect(job).toHaveProperty('comment_count');
           expect(job).toHaveProperty('job_status', 'created');
+          expect(job).toHaveProperty(
+            'job_image',
+            'http://www.4motiondarlington.org/wp-content/uploads/2013/06/No-image-found.jpg'
+          );
         });
     });
     test('status 201: responds with a job_id', () => {
@@ -401,11 +407,33 @@ describe('/jobs', () => {
           })
           .expect(200)
           .then(({ body: { job } }) => {
-            console.log('patch job image test');
-            console.log(job);
             expect(job.job_image).toEqual(
               'https://firebasestorage.googleapis.com/v0/b/f-4-n-a30d4.appspot.com/o/users%2FhhOD7zIV6vXlCAWAWx1ppCZMWo83%2Fprofile.jpg?alt=media&token=59efad58-1d02-4394-b96d-5553b408baf6'
             );
+          });
+      });
+      test('status 400: responds with bad request when job_id is invalid', () => {
+        return request(app)
+          .patch('/api/jobs/cats')
+          .send({
+            job_image:
+              'https://firebasestorage.googleapis.com/v0/b/f-4-n-a30d4.appspot.com/o/users%2FhhOD7zIV6vXlCAWAWx1ppCZMWo83%2Fprofile.jpg?alt=media&token=59efad58-1d02-4394-b96d-5553b408baf6',
+          })
+          .expect(400)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe('bad request');
+          });
+      });
+      test('status 404: responds with job not found when job_id does not exist', () => {
+        return request(app)
+          .patch('/api/jobs/999')
+          .send({
+            job_image:
+              'https://firebasestorage.googleapis.com/v0/b/f-4-n-a30d4.appspot.com/o/users%2FhhOD7zIV6vXlCAWAWx1ppCZMWo83%2Fprofile.jpg?alt=media&token=59efad58-1d02-4394-b96d-5553b408baf6',
+          })
+          .expect(404)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe('job not found');
           });
       });
     });

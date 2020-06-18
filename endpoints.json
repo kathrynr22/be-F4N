@@ -167,7 +167,7 @@
       }
     }
   },
-  "PATCH /api/jobs/:job_id": {
+  "PATCH /api/jobs/:job_id - patching by job status": {
     "description": "serves a job object for the specified job_id with the job_status property updated",
     "body": {
       "job_status": "completed"
@@ -180,6 +180,27 @@
         "job_id": 1,
         "created_at": "2020-05-02T11:15:00.000Z",
         "job_status": "completed",
+        "skill_name": "hair styling",
+        "avatar_url": "https://randomuser.me/api/portraits/men/72.jpg",
+        "location": "M1",
+        "comment_count": "1"
+      }
+    }
+  },
+  "PATCH /api/jobs/:job_id - patching by job_image": {
+    "description": "serves a job object for the specified job_id with the job_image property updated",
+    "body": {
+      "job_image": "https://firebasestorage.googleapis.com/v0/b/f-4-n-a30d4.appspot.com/o/users%2FhhOD7zIV6vXlCAWAWx1ppCZMWo83%2Fprofile.jpg?alt=media&token=59efad58-1d02-4394-b96d-5553b408baf6"
+    },
+    "exampleResponse": {
+      "job": {
+        "title": "Hair stylist for an important event",
+        "body": "Hi all, it is my daughter's graduation next week and I would love to look my best. But none of the hairdressers are open. Would anyone be willing to come round and fix my hair. I would love to donate to a good cause at the same time!",
+        "username": "gdurdane",
+        "job_id": 1,
+        "created_at": "2020-05-02T11:15:00.000Z",
+        "job_status": "created",
+        "job_image": "https://firebasestorage.googleapis.com/v0/b/f-4-n-a30d4.appspot.com/o/users%2FhhOD7zIV6vXlCAWAWx1ppCZMWo83%2Fprofile.jpg?alt=media&token=59efad58-1d02-4394-b96d-5553b408baf6",
         "skill_name": "hair styling",
         "avatar_url": "https://randomuser.me/api/portraits/men/72.jpg",
         "location": "M1",

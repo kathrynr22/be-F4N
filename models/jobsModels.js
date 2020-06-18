@@ -15,6 +15,7 @@ exports.selectJobs = (sort_by, order, skill_name, location, username) => {
       'jobs.job_id',
       'jobs.created_at',
       'jobs.job_status',
+      'jobs.job_image',
       'skill_name',
       'avatar_url',
       'jobs.location'
@@ -159,6 +160,7 @@ exports.insertJob = (
       'inserted_job.job_id',
       'inserted_job.created_at',
       'inserted_job.job_status',
+      'inserted_job.job_image',
       'skill_name',
       'avatar_url',
       'inserted_job.location'
@@ -176,7 +178,8 @@ exports.insertJob = (
       'inserted_job.job_status',
       'skills.skill_name',
       'users.avatar_url',
-      'inserted_job.location'
+      'inserted_job.location',
+      'inserted_job.job_image'
     );
 };
 
