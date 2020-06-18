@@ -659,7 +659,6 @@ describe('/users', () => {
           first_name: 'bill',
           last_name: 'mcbilly',
           email: 'fakeemail@hotmail.co.uk',
-          // avatar_url: 'https://randomuser.me/api/portraits/men/84.jpg',
           location: 'M21',
           bio: 'hello, I am Bill.',
           charity_name: 'Oxfam',
@@ -671,13 +670,9 @@ describe('/users', () => {
           expect(user).toHaveProperty('first_name', 'bill');
           expect(user).toHaveProperty('last_name', 'mcbilly');
           expect(user).toHaveProperty('email', 'fakeemail@hotmail.co.uk');
-          // expect(user).toHaveProperty(
-          //   'avatar_url',
-          //   'https://randomuser.me/api/portraits/men/84.jpg'
-          // );
           expect(user).toHaveProperty(
             'avatar_url',
-            'https://i.stack.imgur.com/l60Hf.png'
+            'https://firebasestorage.googleapis.com/v0/b/f-4-n-a30d4.appspot.com/o/users%2Fdefault%2Fl60Hf.png?alt=media&token=54af9b55-5829-498a-aa0c-c5d9fc7d6237'
           );
           expect(user).toHaveProperty('location', 'M21');
           expect(user).toHaveProperty('bio', 'hello, I am Bill.');
@@ -794,6 +789,7 @@ describe('users/:username', () => {
         })
         .expect(200)
         .then(({ body: { user } }) => {
+          console.log(user);
           expect(user.avatar_url).toEqual(
             'https://firebasestorage.googleapis.com/v0/b/f-4-n-a30d4.appspot.com/o/users%2FhhOD7zIV6vXlCAWAWx1ppCZMWo83%2Fprofile.jpg?alt=media&token=59efad58-1d02-4394-b96d-5553b408baf6'
           );

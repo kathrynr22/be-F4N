@@ -6,7 +6,9 @@ exports.up = knex => {
     usersTable.string('email', 50).notNullable();
     usersTable
       .string('avatar_url')
-      .defaultsTo('https://i.stack.imgur.com/l60Hf.png');
+      .defaultsTo(
+        'https://firebasestorage.googleapis.com/v0/b/f-4-n-a30d4.appspot.com/o/users%2Fdefault%2Fl60Hf.png\\?alt=media&token=54af9b55-5829-498a-aa0c-c5d9fc7d6237'
+      );
     usersTable.string('location', 4).notNullable();
     usersTable.string('bio', 500);
     usersTable.string('charity_name').references('charities.charity_name');
