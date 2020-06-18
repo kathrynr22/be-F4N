@@ -1065,7 +1065,7 @@ describe('/comments', () => {
         .get('/api/comments?username=kathryn')
         .expect(404)
         .then(({ body: { msg } }) => {
-          expect(msg).toBe('comments not found');
+          expect(msg).toBe('username not found');
         });
     });
   });
