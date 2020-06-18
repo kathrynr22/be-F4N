@@ -8,6 +8,7 @@ exports.up = knex => {
     jobsTable.string('job_status');
     jobsTable.timestamp('created_at').defaultTo(knex.fn.now());
     jobsTable.integer('skill_id').references('skills.skill_id');
+    jobsTable.string('job_image');
   });
 };
 

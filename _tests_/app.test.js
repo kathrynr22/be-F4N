@@ -392,6 +392,22 @@ describe('/jobs', () => {
             expect(msg).toBe('job not found');
           });
       });
+      test('status 200: responds with the job image updated', () => {
+        return request(app)
+          .patch('/api/jobs/1')
+          .send({
+            job_image:
+              'https://firebasestorage.googleapis.com/v0/b/f-4-n-a30d4.appspot.com/o/users%2FhhOD7zIV6vXlCAWAWx1ppCZMWo83%2Fprofile.jpg?alt=media&token=59efad58-1d02-4394-b96d-5553b408baf6',
+          })
+          .expect(200)
+          .then(({ body: { job } }) => {
+            console.log('patch job image test');
+            console.log(job);
+            expect(job.job_image).toEqual(
+              'https://firebasestorage.googleapis.com/v0/b/f-4-n-a30d4.appspot.com/o/users%2FhhOD7zIV6vXlCAWAWx1ppCZMWo83%2Fprofile.jpg?alt=media&token=59efad58-1d02-4394-b96d-5553b408baf6'
+            );
+          });
+      });
     });
 
     describe('unsupported methods', () => {

@@ -10,6 +10,7 @@ module.exports = [
     skill_id: 11,
     location: 'M10',
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
   {
     //job_id 2 generated automatically by db
@@ -22,6 +23,7 @@ module.exports = [
     skill_id: 1,
     location: 'M21',
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
   {
     //job_id 3 generated automatically by db
@@ -33,6 +35,7 @@ module.exports = [
     skill_id: 12,
     location: 'M3',
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
   {
     //job_id 4 generated automatically by db
@@ -44,6 +47,7 @@ module.exports = [
     skill_id: 7,
     location: 'M4',
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
   {
     //job_id 5 generated automatically by db
@@ -55,6 +59,7 @@ module.exports = [
     skill_id: 6,
     location: 'M5',
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
   {
     //job_id 6 generated automatically by db
@@ -66,6 +71,7 @@ module.exports = [
     skill_id: 4,
     location: 'M7',
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
   {
     //job_id 7 generated automatically by db
@@ -77,6 +83,7 @@ module.exports = [
     skill_id: 9,
     location: 'M6',
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
   {
     //job_id 8 generated automatically by db
@@ -88,6 +95,7 @@ module.exports = [
     skill_id: 8,
     location: 'M22',
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
   {
     //job_id 9 generated automatically by db
@@ -99,6 +107,7 @@ module.exports = [
     skill_id: 5,
     location: 'M9',
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
   {
     //job_id 10 generated automatically by db
@@ -110,6 +119,7 @@ module.exports = [
     skill_id: 10,
     location: 'M11',
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
   {
     //job_id 11 generated automatically by db
@@ -120,6 +130,7 @@ module.exports = [
     skill_id: 10,
     location: 'M13',
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
   {
     //job_id 12 generated automatically by db
@@ -131,6 +142,7 @@ module.exports = [
     skill_id: 10,
     location: 'M25',
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
   {
     //job_id 13 generated automatically by db
@@ -142,5 +154,6 @@ module.exports = [
     skill_id: 10,
     location: 'M4',
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
 ];

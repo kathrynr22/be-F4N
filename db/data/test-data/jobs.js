@@ -9,6 +9,7 @@ module.exports = [
     location: 'M1',
     skill_id: 1,
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
   {
     // job_id 2
@@ -20,6 +21,7 @@ module.exports = [
     location: 'M3',
     skill_id: 3,
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
   {
     // job_id 3
@@ -31,6 +33,7 @@ module.exports = [
     location: 'M4',
     skill_id: 5,
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
   {
     // job_id 4
@@ -42,6 +45,7 @@ module.exports = [
     location: 'M4',
     skill_id: 6,
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
   {
     // job_id 5
@@ -53,6 +57,7 @@ module.exports = [
     location: 'M5',
     skill_id: 4,
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
   {
     // job_id 6
@@ -64,5 +69,6 @@ module.exports = [
     location: 'M1',
     skill_id: 7,
     job_status: 'created',
+    job_image: 'www.myfakejobimage.com',
   },
 ];

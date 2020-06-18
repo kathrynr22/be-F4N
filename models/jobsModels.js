@@ -83,9 +83,9 @@ exports.selectJob = job_id => {
     });
 };
 
-exports.selectPatchedJob = (job_id, job_status) => {
+exports.selectPatchedJob = (job_id, job_status, job_image) => {
   return knex('jobs')
-    .update({ job_status: job_status })
+    .update({ job_status: job_status, job_image: job_image })
     .then(() => {
       return knex('jobs')
         .select(
@@ -95,6 +95,7 @@ exports.selectPatchedJob = (job_id, job_status) => {
           'jobs.job_id',
           'jobs.created_at',
           'jobs.job_status',
+          'jobs.job_image',
           'skill_name',
           'avatar_url',
           'jobs.location'

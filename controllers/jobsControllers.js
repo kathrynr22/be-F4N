@@ -48,9 +48,9 @@ exports.postJob = (req, res, next) => {
 };
 
 exports.patchJob = (req, res, next) => {
-  const { job_status } = req.body;
+  const { job_status, job_image } = req.body;
   const { job_id } = req.params;
-  selectPatchedJob(job_id, job_status)
+  selectPatchedJob(job_id, job_status, job_image)
     .then(job => {
       res.status(200).send({ job });
     })
