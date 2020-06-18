@@ -114,6 +114,7 @@
           "avatar_url": "https://randomuser.me/api/portraits/men/5.jpg",
           "location": "M12",
           "job_status": "created",
+          "pledged_amount": 15.0,
           "job_image": "www.myfakejobimage.com",
           "comment_count": "0"
         }
@@ -127,7 +128,8 @@
       "title": "Test Job",
       "body": "Test job for testing purposes",
       "skill_name": "graphic design",
-      "location": "M2"
+      "location": "M2",
+      "pledged_amount": 20.0
     },
     "exampleResponse": {
       "job": {
@@ -139,6 +141,7 @@
         "location": "M2",
         "job_id": "",
         "job_status": "created",
+        "pledged_amount": "20.00",
         "job_image": "null",
         "created_at": "",
         "comment_count": 0
@@ -154,6 +157,7 @@
         "username": "ebarkworth23",
         "job_id": 1,
         "job_status": "created",
+        "pledged_amount": 15.0,
         "job_image": "www.myfakejobimage.com",
         "created_at": "2020-06-05T11:23:00.000Z",
         "skill_name": "gardening",
