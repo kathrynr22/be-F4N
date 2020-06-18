@@ -141,7 +141,6 @@ describe('/jobs', () => {
         })
         .expect(201)
         .then(({ body: { job } }) => {
-          console.log('boo', job);
           expect(job).toHaveProperty('title', 'Test Job');
           expect(job).toHaveProperty('body', 'Test job for testing purposes');
           expect(job).toHaveProperty('skill_name', 'graphic design');
@@ -155,10 +154,7 @@ describe('/jobs', () => {
           expect(job).toHaveProperty('created_at');
           expect(job).toHaveProperty('comment_count');
           expect(job).toHaveProperty('job_status', 'created');
-          expect(job).toHaveProperty(
-            'job_image',
-            'http://www.4motiondarlington.org/wp-content/uploads/2013/06/No-image-found.jpg'
-          );
+          expect(job).toHaveProperty('job_image', null);
         });
     });
     test('status 201: responds with a job_id', () => {
@@ -312,6 +308,7 @@ describe('/jobs', () => {
             );
             expect(job).toHaveProperty('comment_count', '1');
             expect(job).toHaveProperty('job_status', 'created');
+            expect(job).toHaveProperty('job_image', 'www.myfakejobimage.com');
           });
       });
       test('status 400: responds with bad request when job_id is invalid', () => {

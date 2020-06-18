@@ -121,6 +121,7 @@
           "avatar_url": "https://randomuser.me/api/portraits/men/5.jpg",
           "location": "M12",
           "job_status": "created",
+          "job_image": "www.myfakejobimage.com",
           "comment_count": "0"
         }
       ]
@@ -145,6 +146,7 @@
         "location": "M2",
         "job_id": "",
         "job_status": "created",
+        "job_image": "null",
         "created_at": "",
         "comment_count": 0
       }
@@ -159,6 +161,7 @@
         "username": "ebarkworth23",
         "job_id": 1,
         "job_status": "created",
+        "job_image": "www.myfakejobimage.com",
         "created_at": "2020-06-05T11:23:00.000Z",
         "skill_name": "gardening",
         "avatar_url": "https://randomuser.me/api/portraits/women/11.jpg",

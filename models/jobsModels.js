@@ -62,7 +62,8 @@ exports.selectJob = job_id => {
       'jobs.job_status',
       'skill_name',
       'avatar_url',
-      'jobs.location'
+      'jobs.location',
+      'jobs.job_image'
     )
     .join('skills', 'jobs.skill_id', '=', 'skills.skill_id')
     .join('users', 'jobs.username', '=', 'users.username')
