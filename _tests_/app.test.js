@@ -789,7 +789,6 @@ describe('users/:username', () => {
         })
         .expect(200)
         .then(({ body: { user } }) => {
-          console.log(user);
           expect(user.avatar_url).toEqual(
             'https://firebasestorage.googleapis.com/v0/b/f-4-n-a30d4.appspot.com/o/users%2FhhOD7zIV6vXlCAWAWx1ppCZMWo83%2Fprofile.jpg?alt=media&token=59efad58-1d02-4394-b96d-5553b408baf6'
           );
