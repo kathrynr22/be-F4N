@@ -1,5 +1,6 @@
 const {
   selectUsername,
+  selectPatchedUsername,
   insertUser,
   selectUsers,
 } = require('../models/usersModels');
@@ -61,4 +62,18 @@ exports.getUsers = (req, res, next) => {
       res.send({ users });
     })
     .catch(next);
+};
+
+exports.patchUsername = (req, res, next) => {
+  const { avatar_url } = req.body;
+
+  const { username } = req.params;
+
+  selectPatchedUsername(username, avatar_url)
+    .then(user => {
+      res.status(200).send({ user });
+    })
+    .catch(err => {
+      next(err);
+    });
 };

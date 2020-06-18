@@ -788,7 +788,24 @@ describe('users/:username', () => {
         });
     });
   });
-  describe('PATCH', () => {});
+  describe('PATCH', () => {
+    test('status 200: responds with the avatar_url updated', () => {
+      return request(app)
+        .patch('/api/users/gdurdane')
+        .send({
+          avatar_url:
+            'https://firebasestorage.googleapis.com/v0/b/f-4-n-a30d4.appspot.com/o/users%2FhhOD7zIV6vXlCAWAWx1ppCZMWo83%2Fprofile.jpg?alt=media&token=59efad58-1d02-4394-b96d-5553b408baf6',
+        })
+        .expect(200)
+        .then(({ body: { user } }) => {
+          console.log('test yo');
+          console.log(user);
+          expect(user.avatar_url).toEqual(
+            'https://firebasestorage.googleapis.com/v0/b/f-4-n-a30d4.appspot.com/o/users%2FhhOD7zIV6vXlCAWAWx1ppCZMWo83%2Fprofile.jpg?alt=media&token=59efad58-1d02-4394-b96d-5553b408baf6'
+          );
+        });
+    });
+  });
 });
 describe('/:job_id/comments', () => {
   describe('GET', () => {
