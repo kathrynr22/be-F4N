@@ -82,7 +82,6 @@ describe('/jobs', () => {
         .get('/api/jobs?username=dfoxl')
         .expect(200)
         .then(({ body: { jobs } }) => {
-          console.log(jobs);
           expect(jobs).toHaveLength(2);
         });
     });
@@ -533,8 +532,6 @@ describe('/:job_id/helpers', () => {
         .send({ helper_status: 'helping' })
         .expect(200)
         .then(({ body: { helper } }) => {
-          console.log('inside test');
-          console.log(helper);
           expect(helper.helper_status).toEqual('helping');
         });
     });
@@ -600,7 +597,7 @@ describe('/skills', () => {
 
 describe('/users', () => {
   test('status 405: invalid methods', () => {
-    const invalidMethods = ['patch', 'delete'];
+    const invalidMethods = ['delete'];
     const requests = invalidMethods.map(method => {
       return request(app)
         [method]('/api/users/gdurdane')
@@ -664,7 +661,7 @@ describe('/users', () => {
           first_name: 'bill',
           last_name: 'mcbilly',
           email: 'fakeemail@hotmail.co.uk',
-          avatar_url: 'https://randomuser.me/api/portraits/men/84.jpg',
+          // avatar_url: 'https://randomuser.me/api/portraits/men/84.jpg',
           location: 'M21',
           bio: 'hello, I am Bill.',
           charity_name: 'Oxfam',
@@ -672,13 +669,19 @@ describe('/users', () => {
         })
         .expect(201)
         .then(({ body: { user } }) => {
+          console.log('inside test');
+          console.log(user);
           expect(user).toHaveProperty('username', 'madeupusername');
           expect(user).toHaveProperty('first_name', 'bill');
           expect(user).toHaveProperty('last_name', 'mcbilly');
           expect(user).toHaveProperty('email', 'fakeemail@hotmail.co.uk');
+          // expect(user).toHaveProperty(
+          //   'avatar_url',
+          //   'https://randomuser.me/api/portraits/men/84.jpg'
+          // );
           expect(user).toHaveProperty(
             'avatar_url',
-            'https://randomuser.me/api/portraits/men/84.jpg'
+            'https://i.stack.imgur.com/l60Hf.png'
           );
           expect(user).toHaveProperty('location', 'M21');
           expect(user).toHaveProperty('bio', 'hello, I am Bill.');

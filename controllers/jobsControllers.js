@@ -123,7 +123,6 @@ exports.postHelperByJobId = (req, res, next) => {
 
 exports.patchHelper = (req, res, next) => {
   const { helper_status } = req.body;
-
   const { job_id } = req.params;
 
   selectPatchedHelper(job_id, helper_status)

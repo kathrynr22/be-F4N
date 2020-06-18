@@ -4,7 +4,9 @@ exports.up = knex => {
     usersTable.string('first_name', 20).notNullable();
     usersTable.string('last_name', 20).notNullable();
     usersTable.string('email', 50).notNullable();
-    usersTable.string('avatar_url');
+    usersTable
+      .string('avatar_url')
+      .defaultsTo('https://i.stack.imgur.com/l60Hf.png');
     usersTable.string('location', 4).notNullable();
     usersTable.string('bio', 500);
     usersTable.string('charity_name').references('charities.charity_name');

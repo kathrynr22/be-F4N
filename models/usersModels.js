@@ -50,7 +50,7 @@ exports.insertUser = (
     !first_name ||
     !last_name ||
     !email ||
-    !avatar_url ||
+    // !avatar_url ||
     !location ||
     !bio ||
     !charity_name ||
