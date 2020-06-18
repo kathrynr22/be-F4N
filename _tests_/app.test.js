@@ -374,36 +374,25 @@ describe('/jobs', () => {
             expect(job.job_status).toEqual('created');
           });
       });
+      test('status 400: responds with bad request when job_id is invalid', () => {
+        return request(app)
+          .patch('/api/jobs/cats')
+          .send({ job_status: 'created' })
+          .expect(400)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe('bad request');
+          });
+      });
+      test('status 404: responds with job not found when job_id does not exist', () => {
+        return request(app)
+          .patch('/api/jobs/999')
+          .send({ job_status: 'created' })
+          .expect(404)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe('job not found');
+          });
+      });
     });
-
-    // test("status 404: trying to patch a non-existent article_id", () => {
-    //   return request(app)
-    //     .patch("/api/articles/76666666")
-    //     .send({ inc_votes: 1 })
-    //     .expect(404)
-    //     .then(({ body: { msg } }) => {
-    //       expect(msg).toBe("article_id not found");
-    //     });
-    // });
-    // test("status 400: trying to patch to an invalid article_id", () => {
-    //   return request(app)
-    //     .patch("/api/articles/notAnInt")
-    //     .send({ inc_votes: 1 })
-    //     .expect(400)
-    //     .then(({ body: { msg } }) => {
-    //       expect(msg).toBe("bad request");
-    //     });
-    // });
-    // test("status 400: trying to patch something invalid ie not incrementing or decrementing a vote", () => {
-    //   return request(app)
-    //     .patch("/api/articles/1")
-    //     .send({ inc_votes: "notAnInt" })
-    //     .expect(400)
-    //     .then(({ body: { msg } }) => {
-    //       expect(msg).toBe("bad request");
-    //     });
-    // });
-    // });
 
     describe('unsupported methods', () => {
       test('status: 405 - responds with method not allowed', () => {
@@ -544,6 +533,15 @@ describe('/:job_id/helpers', () => {
           expect(helper.helper_status).toEqual('declined');
         });
     });
+    test('status 400: responds with bad request when job_id is invalid', () => {
+      return request(app)
+        .patch('/api/jobs/cats/helpers')
+        .send({ helper_status: 'declined' })
+        .expect(400)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('bad request');
+        });
+    });
   });
 });
 
@@ -669,8 +667,6 @@ describe('/users', () => {
         })
         .expect(201)
         .then(({ body: { user } }) => {
-          console.log('inside test');
-          console.log(user);
           expect(user).toHaveProperty('username', 'madeupusername');
           expect(user).toHaveProperty('first_name', 'bill');
           expect(user).toHaveProperty('last_name', 'mcbilly');
@@ -779,7 +775,7 @@ describe('users/:username', () => {
           });
         });
     });
-    test('status 404: non-existent username', () => {
+    test('status 404: responds with username not found when trying to get a non-existent username', () => {
       return request(app)
         .get('/api/users/kathryn')
         .expect(404)
@@ -798,11 +794,21 @@ describe('users/:username', () => {
         })
         .expect(200)
         .then(({ body: { user } }) => {
-          console.log('test yo');
-          console.log(user);
           expect(user.avatar_url).toEqual(
             'https://firebasestorage.googleapis.com/v0/b/f-4-n-a30d4.appspot.com/o/users%2FhhOD7zIV6vXlCAWAWx1ppCZMWo83%2Fprofile.jpg?alt=media&token=59efad58-1d02-4394-b96d-5553b408baf6'
           );
+        });
+    });
+    test('status 404: responds with username not found when trying to patch an non-existent username', () => {
+      return request(app)
+        .patch('/api/users/kathryn')
+        .send({
+          avatar_url:
+            'https://firebasestorage.googleapis.com/v0/b/f-4-n-a30d4.appspot.com/o/users%2FhhOD7zIV6vXlCAWAWx1ppCZMWo83%2Fprofile.jpg?alt=media&token=59efad58-1d02-4394-b96d-5553b408baf6',
+        })
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('username not found');
         });
     });
   });
