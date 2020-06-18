@@ -10,6 +10,7 @@ module.exports = [
     skill_id: 1,
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 50.0,
   },
   {
     // job_id 2
@@ -22,6 +23,7 @@ module.exports = [
     skill_id: 3,
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 20.0,
   },
   {
     // job_id 3
@@ -34,6 +36,7 @@ module.exports = [
     skill_id: 5,
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 15.0,
   },
   {
     // job_id 4
@@ -46,6 +49,7 @@ module.exports = [
     skill_id: 6,
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 35.0,
   },
   {
     // job_id 5
@@ -58,6 +62,7 @@ module.exports = [
     skill_id: 4,
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 22.22,
   },
   {
     // job_id 6
@@ -70,5 +75,6 @@ module.exports = [
     skill_id: 7,
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 40.0,
   },
 ];

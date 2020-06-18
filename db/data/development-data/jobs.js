@@ -11,6 +11,7 @@ module.exports = [
     location: 'M10',
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 15.0,
   },
   {
     //job_id 2 generated automatically by db
@@ -24,6 +25,7 @@ module.exports = [
     location: 'M21',
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 15.0,
   },
   {
     //job_id 3 generated automatically by db
@@ -36,6 +38,7 @@ module.exports = [
     location: 'M3',
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 20.0,
   },
   {
     //job_id 4 generated automatically by db
@@ -48,6 +51,7 @@ module.exports = [
     location: 'M4',
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 25.0,
   },
   {
     //job_id 5 generated automatically by db
@@ -60,6 +64,7 @@ module.exports = [
     location: 'M5',
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 15.0,
   },
   {
     //job_id 6 generated automatically by db
@@ -72,6 +77,7 @@ module.exports = [
     location: 'M7',
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 35.0,
   },
   {
     //job_id 7 generated automatically by db
@@ -84,6 +90,7 @@ module.exports = [
     location: 'M6',
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 20.0,
   },
   {
     //job_id 8 generated automatically by db
@@ -96,6 +103,7 @@ module.exports = [
     location: 'M22',
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 15.0,
   },
   {
     //job_id 9 generated automatically by db
@@ -108,6 +116,7 @@ module.exports = [
     location: 'M9',
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 10.0,
   },
   {
     //job_id 10 generated automatically by db
@@ -120,6 +129,7 @@ module.exports = [
     location: 'M11',
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 15.0,
   },
   {
     //job_id 11 generated automatically by db
@@ -131,6 +141,7 @@ module.exports = [
     location: 'M13',
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 15.0,
   },
   {
     //job_id 12 generated automatically by db
@@ -143,6 +154,7 @@ module.exports = [
     location: 'M25',
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 15.0,
   },
   {
     //job_id 13 generated automatically by db
@@ -155,5 +167,6 @@ module.exports = [
     location: 'M4',
     job_status: 'created',
     job_image: 'www.myfakejobimage.com',
+    pledged_amount: 15.0,
   },
 ];

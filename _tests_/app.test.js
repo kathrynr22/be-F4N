@@ -33,6 +33,7 @@ describe('/jobs', () => {
             expect(job).toHaveProperty('comment_count');
             expect(job).toHaveProperty('job_status');
             expect(job).toHaveProperty('job_image');
+            expect(job).toHaveProperty('pledged_amount');
           });
         });
     });
@@ -138,6 +139,7 @@ describe('/jobs', () => {
           body: 'Test job for testing purposes',
           skill_name: 'graphic design',
           location: 'M2',
+          pledged_amount: 20.0,
         })
         .expect(201)
         .then(({ body: { job } }) => {
@@ -155,6 +157,7 @@ describe('/jobs', () => {
           expect(job).toHaveProperty('comment_count');
           expect(job).toHaveProperty('job_status', 'created');
           expect(job).toHaveProperty('job_image', null);
+          expect(job).toHaveProperty('pledged_amount', '20.00');
         });
     });
     test('status 201: responds with a job_id', () => {
@@ -309,6 +312,7 @@ describe('/jobs', () => {
             expect(job).toHaveProperty('comment_count', '1');
             expect(job).toHaveProperty('job_status', 'created');
             expect(job).toHaveProperty('job_image', 'www.myfakejobimage.com');
+            expect(job).toHaveProperty('pledged_amount', '50.00');
           });
       });
       test('status 400: responds with bad request when job_id is invalid', () => {

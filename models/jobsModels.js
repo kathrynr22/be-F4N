@@ -18,7 +18,8 @@ exports.selectJobs = (sort_by, order, skill_name, location, username) => {
       'jobs.job_image',
       'skill_name',
       'avatar_url',
-      'jobs.location'
+      'jobs.location',
+      'jobs.pledged_amount'
     )
     .join('skills', 'jobs.skill_id', '=', 'skills.skill_id')
     .join('users', 'jobs.username', '=', 'users.username')
@@ -63,7 +64,8 @@ exports.selectJob = job_id => {
       'skill_name',
       'avatar_url',
       'jobs.location',
-      'jobs.job_image'
+      'jobs.job_image',
+      'jobs.pledged_amount'
     )
     .join('skills', 'jobs.skill_id', '=', 'skills.skill_id')
     .join('users', 'jobs.username', '=', 'users.username')
@@ -131,7 +133,7 @@ exports.insertJob = (
   body,
   skill_name,
   location,
-  job_status = 'created'
+  pledged_amount
 ) => {
   if (!username || !title || !body || !skill_name || !location) {
     return Promise.reject({
@@ -149,7 +151,7 @@ exports.insertJob = (
           title,
           body,
           location,
-          job_status,
+          pledged_amount,
           skill_id: knex('skills').select('skill_id').where({ skill_name }),
         })
         .returning('*')
@@ -164,7 +166,8 @@ exports.insertJob = (
       'inserted_job.job_image',
       'skill_name',
       'avatar_url',
-      'inserted_job.location'
+      'inserted_job.location',
+      'inserted_job.pledged_amount'
     )
     .join('skills', 'inserted_job.skill_id', '=', 'skills.skill_id')
     .join('users', 'inserted_job.username', '=', 'users.username')
@@ -180,7 +183,8 @@ exports.insertJob = (
       'skills.skill_name',
       'users.avatar_url',
       'inserted_job.location',
-      'inserted_job.job_image'
+      'inserted_job.job_image',
+      'inserted_job.pledged_amount'
     );
 };
 
