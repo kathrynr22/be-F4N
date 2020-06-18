@@ -19,24 +19,17 @@
     "exampleResponse": {
       "users": [
         {
-          "username": "afawdry0",
-          "first_name": "Audrie",
-          "last_name": "Fawdry",
-          "email": "afawdry0@ox.ac.uk",
-          "avatar_url": "https://randomuser.me/api/portraits/women/4.jpg",
-          "location": "M1",
-          "bio": "Hi I am Audrie, I am a gardener and am happy to help if anyone needs a hand with their garden. I am also a keen baker.",
-          "charity_name": "Oxfam"
-        },
-        {
-          "username": "cocurrigan1t",
-          "first_name": "Codi",
-          "last_name": "O'Currigan",
-          "email": "cocurrigan1t@time.com",
-          "avatar_url": "https://randomuser.me/api/portraits/women/35.jpg",
-          "location": "M23",
-          "bio": "Hi I'm Codi, I'm an expert at reparing macbooks. I'd love to give my time for a good cause. In my spare time I am a photographer, I am hoping to do this professionally one day. I am also pretty good at putting together flat pack furniture!",
-          "charity_name": "Show Racism The Red Card"
+          "username": "aduncklee32",
+          "first_name": "Alan",
+          "last_name": "Duncklee",
+          "email": "aduncklee32@jalbum.net",
+          "avatar_url": "https: //randomuser.me/api/portraits/men/48.jpg",
+          "location": "M9",
+          "bio": "Hi all, my name is Alan. I'm a car mechanic by trade. Looking to raise some money for a fab charity so just contact me if you have car trouble and I'll try to help.",
+          "amount_raised": "15.00",
+          "charity_name": "Amnesty International",
+          "charity_logo": "https: //images.justgiving.com/image/84fa6542-583e-4d18-b92d-3ffca591f05c.jpg?template=size200x200",
+          "skill_name": ["car mechanics"]
         }
       ]
     }

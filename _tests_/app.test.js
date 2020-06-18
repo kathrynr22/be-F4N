@@ -656,7 +656,7 @@ describe('/users', () => {
           expect(Array.isArray(users)).toBe(true);
         });
     });
-    test('status: 200 - responds with array of user objects', () => {
+    test('status: 200 - each user object has certain properties', () => {
       return request(app)
         .get('/api/users')
         .expect(200)
@@ -671,6 +671,8 @@ describe('/users', () => {
             expect(user).toHaveProperty('bio');
             expect(user).toHaveProperty('charity_name');
             expect(user).toHaveProperty('amount_raised');
+            expect(user).toHaveProperty('charity_logo');
+            expect(user).toHaveProperty('skill_name');
           });
         });
     });

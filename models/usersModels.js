@@ -116,8 +116,29 @@ exports.insertUser = (
 
 exports.selectUsers = email => {
   return knex('users')
-    .select('*')
+    .select(
+      'users.username',
+      'first_name',
+      'last_name',
+      'email',
+      'avatar_url',
+      'location',
+      'bio',
+      'amount_raised',
+      'charities.charity_name',
+      'charities.charity_logo',
+      knex.raw('ARRAY_AGG (skill_name) skill_name')
+    )
     .orderBy('username')
+    .join(
+      'users_skills_junction',
+      'users.username',
+      '=',
+      'users_skills_junction.username'
+    )
+    .join('skills', 'skills.skill_id', '=', 'users_skills_junction.skill_id')
+    .join('charities', 'charities.charity_name', '=', 'users.charity_name')
+    .groupBy('users.username', 'charities.charity_name')
     .modify(query => {
       if (email) query.where({ email: email });
     })
