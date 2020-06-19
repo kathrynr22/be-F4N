@@ -32,17 +32,21 @@ exports.insertNotification = (username, body) => {
 };
 
 exports.selectPatchedNotification = (notification_id, status) => {
+  console.log('inside patch notification model');
+  console.log(notification_id);
+  console.log(status);
   return knex('notifications')
-    .where({ 'notifications.notification_id': notification_id })
+    .where({ notification_id: notification_id })
     .update({ status: status })
 
     .then(() => {
       return (
         knex('notifications')
           .select('*')
-          .where({ 'notifications.notification_id': notification_id })
+          .where({ notification_id: notification_id })
           // .returning('*')
           .then(notification => {
+            console.log(notification);
             if (notification.length === 0)
               return Promise.reject({
                 status: 404,

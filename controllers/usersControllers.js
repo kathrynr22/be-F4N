@@ -65,10 +65,10 @@ exports.getUsers = (req, res, next) => {
 };
 
 exports.patchUsername = (req, res, next) => {
-  const { avatar_url } = req.body;
+  const { avatar_url, amount_raised } = req.body;
   const { username } = req.params;
 
-  selectPatchedUsername(username, avatar_url)
+  selectPatchedUsername(username, avatar_url, amount_raised)
     .then(user => {
       res.status(200).send({ user });
     })

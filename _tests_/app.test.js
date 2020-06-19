@@ -853,6 +853,28 @@ describe('users/:username', () => {
           expect(msg).toBe('username not found');
         });
     });
+    test('status 200: responds with the amount raised updated', () => {
+      return request(app)
+        .patch('/api/users/gdurdane')
+        .send({
+          amount_raised: 50.0,
+        })
+        .expect(200)
+        .then(({ body: { user } }) => {
+          expect(user.amount_raised).toEqual('70.00');
+        });
+    });
+    test('status 404: responds with username not found when trying to patch an non-existent username', () => {
+      return request(app)
+        .patch('/api/users/kathryn')
+        .send({
+          amount_raised: 50.0,
+        })
+        .expect(404)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('username not found');
+        });
+    });
   });
 });
 describe('/users/:username/notifications', () => {
@@ -907,6 +929,7 @@ describe('/users/:username/notifications', () => {
 //         .then(({ body: { notification } }) => {
 //           console.log(notification);
 //           expect(notification.status).toEqual('read');
+//           expect(notification.notification_id).toEqual(1);
 //         });
 //     });
 //   });

@@ -151,9 +151,10 @@ exports.selectUsers = email => {
     });
 };
 
-exports.selectPatchedUsername = (username, avatar_url) => {
+exports.selectPatchedUsername = (username, avatar_url, amount_raised) => {
   return knex('users')
     .update({ avatar_url: avatar_url })
+    .increment('amount_raised', amount_raised)
     .where({ 'users.username': username })
     .then(() => {
       return (

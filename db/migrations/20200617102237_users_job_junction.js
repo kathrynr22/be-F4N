@@ -12,5 +12,3 @@ exports.up = knex => {
 exports.down = knex => {
   return knex.schema.dropTable('users_job_junction');
 };
-
-// junctionTable.string('username').references('users.username');

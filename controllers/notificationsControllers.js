@@ -28,6 +28,7 @@ exports.postNotification = (req, res, next) => {
 };
 
 exports.patchNotification = (req, res, next) => {
+  console.log('inside controller');
   const { status } = req.body;
   console.log(status);
 
