@@ -4,6 +4,7 @@ const skillsRouter = require('./skillsRouter');
 const usersRouter = require('./usersRouter');
 const commentsRouter = require('./commentsRouter');
 const charitiesRouter = require('./charitiesRouter');
+
 const endpoints = require('../endpoints.json');
 const { checkAuth } = require('../firebase/firebase');
 

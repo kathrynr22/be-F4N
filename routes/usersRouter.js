@@ -4,10 +4,12 @@ const {
   patchUsername,
   getUsers,
   postUser,
+} = require('../controllers/usersControllers');
+const {
   getNotifications,
   postNotification,
   patchNotification,
-} = require('../controllers/usersControllers');
+} = require('../controllers/notificationsControllers');
 const { handle405s } = require('../controllers/errorControllers');
 const { checkAuth } = require('../firebase/firebase');
 
