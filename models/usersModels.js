@@ -227,8 +227,33 @@ exports.insertNotification = (username, body) => {
       username: username,
       body: body,
     })
+
     .returning('*')
     .then(notification => {
       return notification[0];
+    });
+};
+
+exports.selectPatchedNotification = (notification_id, status) => {
+  return knex('notifications')
+    .update({ staus: status })
+    .where({ 'notifications.notification_id': notification_id })
+    .then(() => {
+      return (
+        knex('notifications')
+          .select('*')
+          .where({ notification_id: notification_id })
+          // .returning('*')
+          .then(notification => {
+            if (notification.length === 0)
+              return Promise.reject({
+                status: 404,
+                msg: 'notification_id not found',
+              });
+            else {
+              return notification[0];
+            }
+          })
+      );
     });
 };

@@ -5,6 +5,7 @@ const {
   selectUsers,
   selectNotifications,
   insertNotification,
+  selectPatchedNotification,
 } = require('../models/usersModels');
 const { selectSkills } = require('../models/skillsModels');
 
@@ -68,7 +69,6 @@ exports.getUsers = (req, res, next) => {
 
 exports.patchUsername = (req, res, next) => {
   const { avatar_url } = req.body;
-
   const { username } = req.params;
 
   selectPatchedUsername(username, avatar_url)
@@ -92,13 +92,27 @@ exports.getNotifications = (req, res, next) => {
 };
 
 exports.postNotification = (req, res, next) => {
-  const { username, body } = req.body;
+  const { body, username } = req.body;
   insertNotification(username, body)
     .then(notification => {
       res.status(201).send({ notification });
     })
     .catch(err => {
       console.log(err);
+      next(err);
+    });
+};
+
+exports.patchNotification = (req, res, next) => {
+  const { status } = req.body;
+
+  const { notification_id } = req.params;
+
+  selectPatchedNotification(status, notification_id)
+    .then(notification => {
+      res.status(200).send({ notification });
+    })
+    .catch(err => {
       next(err);
     });
 };

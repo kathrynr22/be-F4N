@@ -874,6 +874,7 @@ describe('/users/:username/notifications', () => {
             expect(notification).toHaveProperty('username');
             expect(notification).toHaveProperty('body');
             expect(notification).toHaveProperty('status');
+            expect(notification).toHaveProperty('notification_id');
           });
         });
     });
@@ -891,10 +892,24 @@ describe('/users/:username/notifications', () => {
           expect(notification).toHaveProperty('username', 'gdurdane');
           expect(notification).toHaveProperty('body', 'hello');
           expect(notification).toHaveProperty('status', 'unread');
+          expect(notification).toHaveProperty('notification_id');
         });
     });
   });
 });
+// describe('/users/:username/notifications/:notification_id', () => {
+//   describe('PATCH', () => {
+//     test('status 200: responds with the status updated to read', () => {
+//       return request(app)
+//         .get('/api/users/gdurdane/notifications/1')
+//         .send({ status: 'read' })
+//         .expect(200)
+//         .then(({ body: { notification } }) => {
+//           expect(notification.status).toEqual('read');
+//         });
+//     });
+//   });
+// });
 describe('/:job_id/comments', () => {
   describe('GET', () => {
     test('status 200: responds with an array of comment objects', () => {
