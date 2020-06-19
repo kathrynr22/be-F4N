@@ -236,13 +236,13 @@ exports.insertNotification = (username, body) => {
 
 exports.selectPatchedNotification = (notification_id, status) => {
   return knex('notifications')
-    .update({ staus: status })
+    .update({ status: status })
     .where({ 'notifications.notification_id': notification_id })
     .then(() => {
       return (
         knex('notifications')
           .select('*')
-          .where({ notification_id: notification_id })
+          .where({ 'notifications.notification_id': notification_id })
           // .returning('*')
           .then(notification => {
             if (notification.length === 0)

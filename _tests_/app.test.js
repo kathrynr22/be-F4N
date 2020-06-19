@@ -899,12 +899,13 @@ describe('/users/:username/notifications', () => {
 });
 // describe('/users/:username/notifications/:notification_id', () => {
 //   describe('PATCH', () => {
-//     test('status 200: responds with the status updated to read', () => {
+//     test.only('status 200: responds with the status updated to read', () => {
 //       return request(app)
-//         .get('/api/users/gdurdane/notifications/1')
+//         .patch('/api/users/gdurdane/notifications/1')
 //         .send({ status: 'read' })
 //         .expect(200)
 //         .then(({ body: { notification } }) => {
+//           console.log(notification);
 //           expect(notification.status).toEqual('read');
 //         });
 //     });
