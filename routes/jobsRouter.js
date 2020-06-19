@@ -30,6 +30,7 @@ jobsRouter
   .route('/:job_id/helpers')
   .get(getHelpersByJobId)
   .post(postHelperByJobId)
-  .patch(patchHelper);
+  .patch(patchHelper)
+  .all(handle405s);
 
 module.exports = jobsRouter;

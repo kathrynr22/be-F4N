@@ -136,7 +136,14 @@ exports.insertJob = (
   location,
   pledged_amount
 ) => {
-  if (!username || !title || !body || !skill_name || !location) {
+  if (
+    !username ||
+    !title ||
+    !body ||
+    !skill_name ||
+    !location ||
+    !pledged_amount
+  ) {
     return Promise.reject({
       status: 400,
       msg: 'bad request',

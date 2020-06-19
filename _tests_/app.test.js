@@ -169,6 +169,7 @@ describe('/jobs', () => {
           body: 'Test job for testing purposes',
           skill_name: 'graphic design',
           location: 'M1',
+          pledged_amount: 20.0,
         })
         .expect(201)
         .then(({ body: { job } }) => {
@@ -184,6 +185,7 @@ describe('/jobs', () => {
           body: 'Test job for testing purposes',
           skill_name: 'graphic design',
           location: 'M1',
+          pledged_amount: 20.0,
         })
         .expect(201)
         .then(({ body: { job } }) => {
@@ -199,13 +201,14 @@ describe('/jobs', () => {
           body: 'Test job for testing purposes',
           skill_name: 'graphic design',
           location: 'M1',
+          pledged_amount: 20.0,
         })
         .expect(201)
         .then(({ body: { job } }) => {
           expect(job.created_at).toBeTruthy;
         });
     });
-    test('status 400: responds with bad request when passed body without username', () => {
+    test('status 400: responds with bad request when passed no skill_name', () => {
       return request(app)
         .post('/api/jobs')
         .send({
@@ -214,13 +217,14 @@ describe('/jobs', () => {
           body: 'Test job for testing purposes',
           missing_skill_name: 'not a skill',
           location: 'M1',
+          pledged_amount: 20.0,
         })
         .expect(400)
         .then(({ body: { msg } }) => {
           expect(msg).toBe('bad request');
         });
     });
-    test('status 400: responds with bad request when passed invalid location', () => {
+    test('status 400: responds with bad request when passed no location', () => {
       return request(app)
         .post('/api/jobs')
         .send({
@@ -229,6 +233,23 @@ describe('/jobs', () => {
           body: 'Test job for testing purposes',
           skill_name: 'translating',
           not_a_location: 'M1',
+          pledged_amount: 20.0,
+        })
+        .expect(400)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('bad request');
+        });
+    });
+    test('status 400: responds with bad request when passed no pledged amount', () => {
+      return request(app)
+        .post('/api/jobs')
+        .send({
+          username: 'gdurdane',
+          title: 'Test Job',
+          body: 'Test job for testing purposes',
+          skill_name: 'translating',
+          location: 'M1',
+          not_a_pledged_amount: 20.0,
         })
         .expect(400)
         .then(({ body: { msg } }) => {
@@ -244,6 +265,7 @@ describe('/jobs', () => {
           body: 'Test job for testing purposes',
           skill_name: 'graphic design',
           location: 'M1',
+          pledged_amount: 20,
         })
         .expect(404)
         .then(({ body: { msg } }) => {
@@ -259,6 +281,7 @@ describe('/jobs', () => {
           body: 'Test job for testing purposes',
           skill_name: 'not a skill',
           location: 'M1',
+          pledged_amount: 20,
         })
         .expect(404)
         .then(({ body: { msg } }) => {
@@ -269,7 +292,6 @@ describe('/jobs', () => {
   describe('unsupported methods', () => {
     test('status: 405 - responds with method not allowed', () => {
       const methods = ['put', 'delete', 'patch'];
-
       const requestPromises = methods.map(method => {
         return request(app)
           [method]('/api/jobs')
@@ -459,6 +481,21 @@ describe('/jobs', () => {
 });
 
 describe('/:job_id/helpers', () => {
+  describe('unsupported methods', () => {
+    test('status: 405 - responds with method not allowed', () => {
+      const methods = ['put', 'delete'];
+      const requestPromises = methods.map(method => {
+        return request(app)
+          [method]('/api/jobs/5/helpers')
+          .expect(405)
+          .then(({ body }) => {
+            expect(body.msg).toBe('method not allowed');
+          });
+      });
+
+      return Promise.all(requestPromises);
+    });
+  });
   describe('GET', () => {
     test('status 200: responds with an array of user objects', () => {
       return request(app)
@@ -532,30 +569,27 @@ describe('/:job_id/helpers', () => {
           expect(helper).toHaveProperty('helper_status', 'interested');
         });
     });
-    // test.only('status 404: responds with username not found when posting with non-existent username', () => {
-    //   return request(app)
-    //     .post('/api/jobs/5/helpers')
-    //     .send({
-    //       username: 'dontexist',
-    //     })
-    //     .expect(404)
-    //     .then(({ body: { msg } }) => {
-    //       expect(msg).toBe('username not found');
-    //     });
-    // });
-    test('status 404: responds with skill not found when posting a job with non-existent skill', () => {
+
+    test('status 400: responds with bad request when passed a string instead of integer', () => {
       return request(app)
-        .post('/api/jobs')
+        .post('/api/jobs/notainteger/helpers')
         .send({
           username: 'gdurdane',
-          title: 'Test Job',
-          body: 'Test job for testing purposes',
-          skill_name: 'not a skill',
-          location: 'M1',
         })
-        .expect(404)
+        .expect(400)
         .then(({ body: { msg } }) => {
-          expect(msg).toBe('skill not found');
+          expect(msg).toBe('bad request');
+        });
+    });
+    test('status 400: responds with bad request when endpoint job_id is not existent', () => {
+      return request(app)
+        .post('/api/jobs/999/helpers')
+        .send({
+          username: 'hstrowan2m',
+        })
+        .expect(400)
+        .then(({ body: { msg } }) => {
+          expect(msg).toBe('bad request');
         });
     });
   });

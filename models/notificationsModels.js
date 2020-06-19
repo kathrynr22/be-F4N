@@ -5,17 +5,8 @@ exports.selectNotifications = username => {
     .select('*')
     .where({ 'notifications.username': username })
     .then(notifications => {
-      console.log(notifications);
       return notifications;
     });
-  // .orderBy('skill_id')
-  // .then(notifications => {
-  //   if (notifications.length === 0)
-  //     return Promise.reject({ status: 404, msg: 'no notifications found' });
-  //   else {
-  //     return notifications;
-  //   }
-  // })
 };
 
 exports.insertNotification = (username, body) => {
