@@ -855,6 +855,47 @@ describe('users/:username', () => {
     });
   });
 });
+describe('/users/:username/notifications', () => {
+  describe('GET', () => {
+    test('status 200: responds with an array of notification objects', () => {
+      return request(app)
+        .get('/api/users/gdurdane/notifications')
+        .expect(200)
+        .then(({ body: { notifications } }) => {
+          expect(Array.isArray(notifications)).toBe(true);
+        });
+    });
+    test('status: 200 - each user object has certain properties', () => {
+      return request(app)
+        .get('/api/users/gdurdane/notifications')
+        .expect(200)
+        .then(({ body: { notifications } }) => {
+          notifications.forEach(notification => {
+            expect(notification).toHaveProperty('username');
+            expect(notification).toHaveProperty('body');
+            expect(notification).toHaveProperty('status');
+          });
+        });
+    });
+  });
+  //   describe('POST', () => {
+  //     test('status 201: responds with a user object', () => {
+  //       return request(app)
+  //         .post('/api/users/gdurdane/notifications')
+  //         .send({
+  //           username: 'madeupusername',
+  //           body: 'hello',
+  //         })
+  //         .expect(201)
+  //         .then(({ body: { notification } }) => {
+  //           expect(notification).toHaveProperty('username', 'madeupusername');
+  //           expect(notification).toHaveProperty('body', 'hello');
+  //           expect(notification).toHaveProperty(
+  //             'status', 'created');
+  //         });
+  //     });
+  //   })
+});
 describe('/:job_id/comments', () => {
   describe('GET', () => {
     test('status 200: responds with an array of comment objects', () => {

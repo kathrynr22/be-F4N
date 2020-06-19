@@ -6,6 +6,7 @@ const {
   users,
   usersSkills,
   usersJobs,
+  notifications,
 } = require('../data/index.js');
 
 exports.seed = knex => {
@@ -32,5 +33,8 @@ exports.seed = knex => {
     })
     .then(() => {
       return knex('users_job_junction').insert(usersJobs);
+    })
+    .then(() => {
+      return knex('notifications').insert(notifications);
     });
 };

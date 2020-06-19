@@ -3,6 +3,7 @@ const {
   selectPatchedUsername,
   insertUser,
   selectUsers,
+  selectNotifications,
 } = require('../models/usersModels');
 const { selectSkills } = require('../models/skillsModels');
 
@@ -74,6 +75,19 @@ exports.patchUsername = (req, res, next) => {
       res.status(200).send({ user });
     })
     .catch(err => {
+      next(err);
+    });
+};
+
+exports.getNotifications = (req, res, next) => {
+  const { username } = req.params;
+  console.log(username);
+  selectNotifications(username)
+    .then(notifications => {
+      res.status(200).send({ notifications });
+    })
+    .catch(err => {
+      console.log(err);
       next(err);
     });
 };
