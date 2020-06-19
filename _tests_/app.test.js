@@ -7,6 +7,20 @@ beforeEach(() => connection.seed.run());
 afterAll(() => connection.destroy());
 
 describe('/jobs', () => {
+  describe('unsupported methods', () => {
+    test('status: 405 - responds with method not allowed', () => {
+      const methods = ['put', 'delete', 'patch'];
+      const requestPromises = methods.map(method => {
+        return request(app)
+          [method]('/api/jobs')
+          .expect(405)
+          .then(({ body }) => {
+            expect(body.msg).toBe('method not allowed');
+          });
+      });
+      return Promise.all(requestPromises);
+    });
+  });
   describe('GET', () => {
     test('status 200: responds with an array of job objects', () => {
       return request(app)
@@ -289,22 +303,22 @@ describe('/jobs', () => {
         });
     });
   });
-  describe('unsupported methods', () => {
-    test('status: 405 - responds with method not allowed', () => {
-      const methods = ['put', 'delete', 'patch'];
-      const requestPromises = methods.map(method => {
-        return request(app)
-          [method]('/api/jobs')
-          .expect(405)
-          .then(({ body }) => {
-            expect(body.msg).toBe('method not allowed');
-          });
-      });
 
-      return Promise.all(requestPromises);
-    });
-  });
   describe('/:job_id', () => {
+    describe('unsupported methods', () => {
+      test('status: 405 - responds with method not allowed', () => {
+        const methods = ['post', 'put'];
+        const requestPromises = methods.map(method => {
+          return request(app)
+            [method]('/api/jobs/1')
+            .expect(405)
+            .then(({ body }) => {
+              expect(body.msg).toBe('method not allowed');
+            });
+        });
+        return Promise.all(requestPromises);
+      });
+    });
     describe('GET', () => {
       test('status 200: responds with a job object which contains certain properties', () => {
         return request(app)
@@ -458,23 +472,6 @@ describe('/jobs', () => {
           .then(({ body: { msg } }) => {
             expect(msg).toBe('job not found');
           });
-      });
-    });
-
-    describe('unsupported methods', () => {
-      test('status: 405 - responds with method not allowed', () => {
-        const methods = ['post', 'put'];
-
-        const requestPromises = methods.map(method => {
-          return request(app)
-            [method]('/api/jobs/1')
-            .expect(405)
-            .then(({ body }) => {
-              expect(body.msg).toBe('method not allowed');
-            });
-        });
-
-        return Promise.all(requestPromises);
       });
     });
   });
@@ -673,17 +670,19 @@ describe('/skills', () => {
 });
 
 describe('/users', () => {
-  test('status 405: invalid methods', () => {
-    const invalidMethods = ['delete'];
-    const requests = invalidMethods.map(method => {
-      return request(app)
-        [method]('/api/users/gdurdane')
-        .expect(405)
-        .then(({ body: { msg } }) => {
-          expect(msg).toBe('method not allowed');
-        });
+  describe('unsupported methods', () => {
+    test('status 405 responds with method not allowed', () => {
+      const invalidMethods = ['delete', 'put', 'patch'];
+      const requests = invalidMethods.map(method => {
+        return request(app)
+          [method]('/api/users/')
+          .expect(405)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe('method not allowed');
+          });
+      });
+      return Promise.all(requests);
     });
-    return Promise.all(requests);
   });
   describe('GET', () => {
     test('status 200: responds with an array of users', () => {
@@ -806,7 +805,22 @@ describe('/users', () => {
     });
   });
 });
+
 describe('users/:username', () => {
+  describe('unsupported methods', () => {
+    test('status 405 responds with method not allowed', () => {
+      const invalidMethods = ['delete', 'put'];
+      const requests = invalidMethods.map(method => {
+        return request(app)
+          [method]('/api/users/gdurdane')
+          .expect(405)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe('method not allowed');
+          });
+      });
+      return Promise.all(requests);
+    });
+  });
   describe('GET', () => {
     test('status 200: responds with the requested username object - user with only one skill', () => {
       return request(app)
@@ -912,6 +926,20 @@ describe('users/:username', () => {
   });
 });
 describe('/users/:username/notifications', () => {
+  describe('unsupported methods', () => {
+    test('status 405 responds with method not allowed', () => {
+      const invalidMethods = ['delete', 'put', 'patch'];
+      const requests = invalidMethods.map(method => {
+        return request(app)
+          [method]('/api/users/gdurdane/notifications')
+          .expect(405)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe('method not allowed');
+          });
+      });
+      return Promise.all(requests);
+    });
+  });
   describe('GET', () => {
     test('status 200: responds with an array of notification objects', () => {
       return request(app)
@@ -954,6 +982,20 @@ describe('/users/:username/notifications', () => {
   });
 });
 describe('/users/:username/notifications/:notification_id', () => {
+  describe('unsupported methods', () => {
+    test('status 405 responds with method not allowed', () => {
+      const invalidMethods = ['delete', 'put', 'post', 'get'];
+      const requests = invalidMethods.map(method => {
+        return request(app)
+          [method]('/api/users/gdurdane/notifications/1')
+          .expect(405)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe('method not allowed');
+          });
+      });
+      return Promise.all(requests);
+    });
+  });
   describe('PATCH', () => {
     test('status 200: responds with the status updated to read', () => {
       return request(app)
@@ -968,6 +1010,20 @@ describe('/users/:username/notifications/:notification_id', () => {
   });
 });
 describe('/:job_id/comments', () => {
+  describe('unsupported methods', () => {
+    test('status 405 responds with method not allowed', () => {
+      const invalidMethods = ['delete', 'put', 'patch'];
+      const requests = invalidMethods.map(method => {
+        return request(app)
+          [method]('/api/jobs/1/comments')
+          .expect(405)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe('method not allowed');
+          });
+      });
+      return Promise.all(requests);
+    });
+  });
   describe('GET', () => {
     test('status 200: responds with an array of comment objects', () => {
       return request(app)
@@ -1194,6 +1250,20 @@ describe('/:job_id/comments', () => {
   });
 });
 describe('/comments', () => {
+  describe('unsupported methods', () => {
+    test('status 405 responds with method not allowed', () => {
+      const invalidMethods = ['delete', 'put', 'patch', 'post'];
+      const requests = invalidMethods.map(method => {
+        return request(app)
+          [method]('/api/comments?username=dfoxl')
+          .expect(405)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe('method not allowed');
+          });
+      });
+      return Promise.all(requests);
+    });
+  });
   describe('GET', () => {
     test('status 200: accepts a username query that filters comments by username', () => {
       return request(app)
@@ -1225,33 +1295,49 @@ describe('/comments', () => {
   });
 });
 describe('/charities', () => {
-  test('status 200: responds with an array of charities objects', () => {
-    return request(app)
-      .get('/api/charities')
-      .expect(200)
-      .then(({ body: { charities } }) => {
-        expect(Array.isArray(charities)).toBe(true);
+  describe('unsupported methods', () => {
+    test('status 405 responds with method not allowed', () => {
+      const invalidMethods = ['delete', 'put', 'patch', 'post'];
+      const requests = invalidMethods.map(method => {
+        return request(app)
+          [method]('/api/charities')
+          .expect(405)
+          .then(({ body: { msg } }) => {
+            expect(msg).toBe('method not allowed');
+          });
       });
+      return Promise.all(requests);
+    });
   });
-  test('status 200: each charity object contains certain properties', () => {
-    return request(app)
-      .get('/api/charities')
-      .expect(200)
-      .then(({ body: { charities } }) => {
-        charities.forEach(charity => {
-          expect(charity).toHaveProperty('charity_name');
-          expect(charity).toHaveProperty('charity_logo');
-          expect(charity).toHaveProperty('charity_description');
-          expect(charity).toHaveProperty('justgiving_link');
+  describe('GET', () => {
+    test('status 200: responds with an array of charities objects', () => {
+      return request(app)
+        .get('/api/charities')
+        .expect(200)
+        .then(({ body: { charities } }) => {
+          expect(Array.isArray(charities)).toBe(true);
         });
-      });
-  });
-  test('status 200: by default, sorts the charities by the charity_name column and in ascending order', () => {
-    return request(app)
-      .get('/api/charities')
-      .expect(200)
-      .then(({ body: { charities } }) => {
-        expect(charities).toBeSortedBy('charity_name', { ascending: true });
-      });
+    });
+    test('status 200: each charity object contains certain properties', () => {
+      return request(app)
+        .get('/api/charities')
+        .expect(200)
+        .then(({ body: { charities } }) => {
+          charities.forEach(charity => {
+            expect(charity).toHaveProperty('charity_name');
+            expect(charity).toHaveProperty('charity_logo');
+            expect(charity).toHaveProperty('charity_description');
+            expect(charity).toHaveProperty('justgiving_link');
+          });
+        });
+    });
+    test('status 200: by default, sorts the charities by the charity_name column and in ascending order', () => {
+      return request(app)
+        .get('/api/charities')
+        .expect(200)
+        .then(({ body: { charities } }) => {
+          expect(charities).toBeSortedBy('charity_name', { ascending: true });
+        });
+    });
   });
 });

@@ -22,10 +22,12 @@ usersRouter.route('/').post(postUser).get(checkAuth, getUsers).all(handle405s);
 usersRouter
   .route('/:username/notifications')
   .get(getNotifications)
-  .post(postNotification);
+  .post(postNotification)
+  .all(handle405s);
 
 usersRouter
   .route('/:username/notifications/:notification_id')
-  .patch(patchNotification);
+  .patch(patchNotification)
+  .all(handle405s);
 
 module.exports = usersRouter;
