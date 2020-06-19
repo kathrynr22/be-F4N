@@ -919,21 +919,20 @@ describe('/users/:username/notifications', () => {
     });
   });
 });
-// describe('/users/:username/notifications/:notification_id', () => {
-//   describe('PATCH', () => {
-//     test.only('status 200: responds with the status updated to read', () => {
-//       return request(app)
-//         .patch('/api/users/gdurdane/notifications/1')
-//         .send({ status: 'read' })
-//         .expect(200)
-//         .then(({ body: { notification } }) => {
-//           console.log(notification);
-//           expect(notification.status).toEqual('read');
-//           expect(notification.notification_id).toEqual(1);
-//         });
-//     });
-//   });
-// });
+describe('/users/:username/notifications/:notification_id', () => {
+  describe('PATCH', () => {
+    test('status 200: responds with the status updated to read', () => {
+      return request(app)
+        .patch('/api/users/gdurdane/notifications/1')
+        .send({ status: 'read' })
+        .expect(200)
+        .then(({ body: { notification } }) => {
+          expect(notification.status).toEqual('read');
+          expect(notification.notification_id).toEqual(1);
+        });
+    });
+  });
+});
 describe('/:job_id/comments', () => {
   describe('GET', () => {
     test('status 200: responds with an array of comment objects', () => {

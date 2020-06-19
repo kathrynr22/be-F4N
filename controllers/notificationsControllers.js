@@ -28,20 +28,14 @@ exports.postNotification = (req, res, next) => {
 };
 
 exports.patchNotification = (req, res, next) => {
-  console.log('inside controller');
   const { status } = req.body;
-  console.log(status);
-
   const { notification_id } = req.params;
-  console.log(notification_id);
 
   selectPatchedNotification(status, notification_id)
     .then(notification => {
-      console.log(notification);
       res.status(200).send({ notification });
     })
     .catch(err => {
-      console.log(err);
       next(err);
     });
 };

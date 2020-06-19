@@ -31,31 +31,24 @@ exports.insertNotification = (username, body) => {
     });
 };
 
-exports.selectPatchedNotification = (notification_id, status) => {
-  console.log('inside patch notification model');
-  console.log(notification_id);
-  console.log(status);
+exports.selectPatchedNotification = (status, notification_id) => {
   return knex('notifications')
     .where({ notification_id: notification_id })
     .update({ status: status })
 
     .then(() => {
-      return (
-        knex('notifications')
-          .select('*')
-          .where({ notification_id: notification_id })
-          // .returning('*')
-          .then(notification => {
-            console.log(notification);
-            if (notification.length === 0)
-              return Promise.reject({
-                status: 404,
-                msg: 'notification_id not found',
-              });
-            else {
-              return notification[0];
-            }
-          })
-      );
+      return knex('notifications')
+        .select('*')
+        .where({ notification_id: notification_id })
+        .then(notification => {
+          if (notification.length === 0)
+            return Promise.reject({
+              status: 404,
+              msg: 'notification_id not found',
+            });
+          else {
+            return notification[0];
+          }
+        });
     });
 };
