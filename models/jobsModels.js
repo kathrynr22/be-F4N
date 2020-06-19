@@ -90,6 +90,7 @@ exports.selectJob = job_id => {
 exports.selectPatchedJob = (job_id, job_status, job_image) => {
   return knex('jobs')
     .update({ job_status: job_status, job_image: job_image })
+    .where({ 'jobs.job_id': job_id })
     .then(() => {
       return knex('jobs')
         .select(

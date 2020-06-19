@@ -154,6 +154,7 @@ exports.selectUsers = email => {
 exports.selectPatchedUsername = (username, avatar_url) => {
   return knex('users')
     .update({ avatar_url: avatar_url })
+    .where({ 'users.username': username })
     .then(() => {
       return (
         knex('users')
