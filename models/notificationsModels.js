@@ -33,8 +33,9 @@ exports.insertNotification = (username, body) => {
 
 exports.selectPatchedNotification = (notification_id, status) => {
   return knex('notifications')
-    .update({ status: status })
     .where({ 'notifications.notification_id': notification_id })
+    .update({ status: status })
+
     .then(() => {
       return (
         knex('notifications')
