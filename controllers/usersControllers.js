@@ -4,6 +4,7 @@ const {
   insertUser,
   selectUsers,
   selectNotifications,
+  insertNotification,
 } = require('../models/usersModels');
 const { selectSkills } = require('../models/skillsModels');
 
@@ -81,10 +82,20 @@ exports.patchUsername = (req, res, next) => {
 
 exports.getNotifications = (req, res, next) => {
   const { username } = req.params;
-  console.log(username);
   selectNotifications(username)
     .then(notifications => {
       res.status(200).send({ notifications });
+    })
+    .catch(err => {
+      next(err);
+    });
+};
+
+exports.postNotification = (req, res, next) => {
+  const { username, body } = req.body;
+  insertNotification(username, body)
+    .then(notification => {
+      res.status(201).send({ notification });
     })
     .catch(err => {
       console.log(err);

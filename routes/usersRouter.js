@@ -5,6 +5,7 @@ const {
   getUsers,
   postUser,
   getNotifications,
+  postNotification,
 } = require('../controllers/usersControllers');
 const { handle405s } = require('../controllers/errorControllers');
 const { checkAuth } = require('../firebase/firebase');
@@ -15,6 +16,9 @@ usersRouter
   .patch(patchUsername)
   .all(handle405s);
 usersRouter.route('/').post(postUser).get(checkAuth, getUsers).all(handle405s);
-usersRouter.route('/:username/notifications').get(getNotifications);
+usersRouter
+  .route('/:username/notifications')
+  .get(getNotifications)
+  .post(postNotification);
 
 module.exports = usersRouter;

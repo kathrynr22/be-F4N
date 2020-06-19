@@ -878,23 +878,22 @@ describe('/users/:username/notifications', () => {
         });
     });
   });
-  //   describe('POST', () => {
-  //     test('status 201: responds with a user object', () => {
-  //       return request(app)
-  //         .post('/api/users/gdurdane/notifications')
-  //         .send({
-  //           username: 'madeupusername',
-  //           body: 'hello',
-  //         })
-  //         .expect(201)
-  //         .then(({ body: { notification } }) => {
-  //           expect(notification).toHaveProperty('username', 'madeupusername');
-  //           expect(notification).toHaveProperty('body', 'hello');
-  //           expect(notification).toHaveProperty(
-  //             'status', 'created');
-  //         });
-  //     });
-  //   })
+  describe('POST', () => {
+    test('status 201: responds with a user object', () => {
+      return request(app)
+        .post('/api/users/gdurdane/notifications')
+        .send({
+          username: 'gdurdane',
+          body: 'hello',
+        })
+        .expect(201)
+        .then(({ body: { notification } }) => {
+          expect(notification).toHaveProperty('username', 'gdurdane');
+          expect(notification).toHaveProperty('body', 'hello');
+          expect(notification).toHaveProperty('status', 'unread');
+        });
+    });
+  });
 });
 describe('/:job_id/comments', () => {
   describe('GET', () => {

@@ -220,3 +220,15 @@ exports.selectNotifications = username => {
   //   }
   // })
 };
+
+exports.insertNotification = (username, body) => {
+  return knex('notifications')
+    .insert({
+      username: username,
+      body: body,
+    })
+    .returning('*')
+    .then(notification => {
+      return notification[0];
+    });
+};
