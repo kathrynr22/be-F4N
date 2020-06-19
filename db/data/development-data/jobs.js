@@ -81,7 +81,7 @@ module.exports = [
   },
   {
     //job_id 7 generated automatically by db
-    title: 'Tired of wallpaper bubbles - please help!',
+    title: 'Tired of wallpaper bubbles. Please help!',
     body:
       'Hey guys, if anyone is free to help me with some wallpapering, I would be eternally grateful!',
     username: 'swhordley3',
@@ -158,7 +158,7 @@ module.exports = [
   },
   {
     //job_id 13 generated automatically by db
-    title: "Wireless headset won't connect can anyone help please",
+    title: "Wireless headset won't connect",
     body:
       'Hey all, are they any macbook experts who may be able to pop round and help me set up a wireless headset. I need it for a zoom call next week. Thanks in advance!.',
     username: 'vkausche1a',
