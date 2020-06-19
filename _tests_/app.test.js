@@ -101,6 +101,24 @@ describe('/jobs', () => {
           expect(jobs).toHaveLength(2);
         });
     });
+    // test.only('status 200: returns an empty array if skill name does not exist', () => {
+    //   return request(app)
+    //     .get('/api/jobs?skill_name=cat%20handling')
+    //     .expect(200)
+    //     .then(({ body: { jobs, msg } }) => {
+    //       expect(jobs).toHaveLength(0);
+    //       expect(msg).toBe('no jobs exist at this path');
+    //     });
+    // });
+    // test('status 200: returns an empty array if location does not exist', () => {
+    //   return request(app)
+    //     .get('/api/jobs?location=ZZ99')
+    //     .expect(200)
+    //     .then(({ body: { jobs, msg } }) => {
+    //       expect(jobs).toHaveLength(0);
+    //       expect(msg).toBe('no jobs exist at this path');
+    //     });
+    // });
 
     test('status 404: responds with path not found when filtering jobs by non-existent skill_name', () => {
       return request(app)
