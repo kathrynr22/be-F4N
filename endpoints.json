@@ -78,7 +78,7 @@
       }
     }
   },
-  "PATCH /api/users/:username": {
+  "PATCH /api/users/:username - patch of avatar url": {
     "description": "patches the avatar_url of a username object",
     "body": {
       "avatar_url": "https: //firebasestorage.googleapis.com/v0/b/f-4-n-a30d4.appspot.com/o/users%2FhhOD7zIV6vXlCAWAWx1ppCZMWo83%2Fprofile.jpg?alt=media&token=59efad58-1d02-4394-b96d-5553b408baf6"
@@ -96,6 +96,75 @@
         "charity_name": "Oxfam",
         "charity_logo": "https: //images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200",
         "skill_name": ["DIY"]
+      }
+    }
+  },
+  "PATCH /api/users/:username - patch of amount raised": {
+    "description": "patches the amount raised of a username object",
+    "body": {
+      "amount_raised": 50.0
+    },
+    "exampleResponse": {
+      "user": {
+        "username": "gdurdane",
+        "first_name": "Godfrey",
+        "last_name": "Durdan",
+        "email": "gdurdane@drupal.org",
+        "avatar_url": "https: //firebasestorage.googleapis.com/v0/b/f-4-n-a30d4.appspot.com/o/users%2FhhOD7zIV6vXlCAWAWx1ppCZMWo83%2Fprofile.jpg?alt=media&token=59efad58-1d02-4394-b96d-5553b408baf6",
+        "location": "M1",
+        "bio": "Hello I'm Godfrey and I work at B&Q and love all things DIY!",
+        "amount_raised": "70.00",
+        "charity_name": "Oxfam",
+        "charity_logo": "https: //images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200",
+        "skill_name": ["DIY"]
+      }
+    }
+  },
+  "GET /api/users/:username/notifications": {
+    "description": "serves an array of notification objects",
+    "exampleResponse": {
+      "notifications": [
+        {
+          "notification_id": 1,
+          "username": "gdurdane",
+          "body": "You have received a comment on your job",
+          "status": "unread"
+        },
+        {
+          "notification_id": 2,
+          "username": "gdurdane",
+          "body": "You have received a comment on your job",
+          "status": "unread"
+        }
+      ]
+    }
+  },
+  "POST /api/users/:username/notifications": {
+    "description": "serves an object for the posted notification",
+    "body": {
+      "username": "gdurdane",
+      "body": "You have received a comment on your job"
+    },
+    "exampleResponse": {
+      "notification": {
+        "notification_id": 8,
+        "username": "gdurdane",
+        "body": "You have received a comment on your job",
+        "status": "unread"
+      }
+    }
+  },
+  "PATCH /api/users/:username/notifications/:notification_id": {
+    "description": "patches the status of a notification object",
+    "body": {
+      "notification": "read"
+    },
+    "exampleResponse": {
+      "notification": {
+        "notification_id": 1,
+        "username": "gdurdane",
+        "body": "You have received a comment on your job",
+        "status": "read"
       }
     }
   },

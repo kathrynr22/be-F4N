@@ -1159,18 +1159,6 @@ describe('/:job_id/comments', () => {
     });
   });
 });
-// describe('/:job_id/notifications', () => {
-//   describe('GET', () => {
-//     test('status 200: responds with an array of notification objects', () => {
-//       return request(app)
-//         .get('/api/jobs/1')
-//         .expect(200)
-//         .then(({ body: { comments } }) => {
-//           expect(Array.isArray(comments)).toBe(true);
-//         });
-//     });
-//   });
-// });
 describe('/comments', () => {
   describe('GET', () => {
     test('status 200: accepts a username query that filters comments by username', () => {
