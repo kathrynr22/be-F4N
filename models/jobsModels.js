@@ -329,6 +329,7 @@ exports.insertHelper = (job_id, username) => {
 exports.selectPatchedHelper = (job_id, helper_status) => {
   return knex('users_job_junction')
     .update({ helper_status: helper_status })
+    .where({ job_id: job_id })
     .then(() => {
       return knex('users_job_junction')
         .where({ job_id: job_id })

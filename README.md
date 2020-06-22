@@ -86,7 +86,7 @@ The tests cover both "happy path" scenarios as well as various "unhappy path" sc
 
 **Team F4N**
 
-Kathryn Roberts https://github.com/kathrynr22
-James Oliver https://github.com/J-R-Oliver
-Rob Sidebotham https://github.com/robsidebotham
-Seb Smith https://github.com/Sewb21
+- Kathryn Roberts https://github.com/kathrynr22
+- James Oliver https://github.com/J-R-Oliver
+- Rob Sidebotham https://github.com/robsidebotham
+- Seb Smith https://github.com/Sewb21
