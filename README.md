@@ -1,14 +1,14 @@
 # F4N Favour 4 a Neighbour Backend Project
 
+**Introduction**
+
 F4N is a mobile application that is designed to make it easy for communities to help each other with tasks, whilst also raising money for charity.
 
 All users of the app have a specific charity registered to their account.
 
 A user who requires assistance with a job will write a post to a jobs page which will include a description of the job, location, skills required and a picture, if necessary. When posting a job, a user should also pledge an amount that they will donate to the chosen charity of whoever they choose to do the job for them.
 
-Other users can then post comments underneath the job, expressing their willingness to help and can also press a button which alerts the job-poster that they are willing to help.
-
-The person who posted the job will then receive a notification of offers of help and can then select whoever they want to help.
+Other users can then post comments underneath the job, expressing their willingness to help and can also press a button which alerts the job-poster. The person who posted the job will then receive a notification of offers of help and can then select whoever they want to help.
 
 The project has been built using the following:
 
@@ -18,6 +18,7 @@ The project has been built using the following:
 - Jest: a testing framework
 - Jest Sorted: which makes it easier to test if an array has been correctly sorted.
 - Supertest: for testing HTTP assertions
+- Firebase: To allow us to build authentication into the app.
 
 The project is supplied with a test and a development database.
 
