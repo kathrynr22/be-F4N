@@ -326,13 +326,13 @@ exports.insertHelper = (job_id, username) => {
     });
 };
 
-exports.selectPatchedHelper = (job_id, helper_status) => {
+exports.selectPatchedHelper = (job_id, helper_status, username) => {
   return knex('users_job_junction')
     .update({ helper_status: helper_status })
-    .where({ job_id: job_id })
+    .where({ job_id: job_id, username: username })
     .then(() => {
       return knex('users_job_junction')
-        .where({ job_id: job_id })
+        .where({ job_id: job_id, username: username })
         .returning('*')
         .then(helper => {
           return helper[0];

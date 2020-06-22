@@ -137,10 +137,10 @@ exports.postHelperByJobId = (req, res, next) => {
 };
 
 exports.patchHelper = (req, res, next) => {
-  const { helper_status } = req.body;
+  const { helper_status, username } = req.body;
   const { job_id } = req.params;
 
-  selectPatchedHelper(job_id, helper_status)
+  selectPatchedHelper(job_id, helper_status, username)
     .then(helper => {
       res.status(200).send({ helper });
     })

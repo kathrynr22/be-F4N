@@ -612,25 +612,27 @@ describe('/:job_id/helpers', () => {
     test('status 200: responds with the job status updated to helper found', () => {
       return request(app)
         .patch('/api/jobs/5/helpers')
-        .send({ helper_status: 'helping' })
+        .send({ username: 'twebleyf', helper_status: 'helping' })
         .expect(200)
         .then(({ body: { helper } }) => {
           expect(helper.helper_status).toEqual('helping');
+          expect(helper.username).toEqual('twebleyf');
         });
     });
     test('status 200: responds with the job status updated to helper found', () => {
       return request(app)
         .patch('/api/jobs/5/helpers')
-        .send({ helper_status: 'declined' })
+        .send({ username: 'twebleyf', helper_status: 'declined' })
         .expect(200)
         .then(({ body: { helper } }) => {
           expect(helper.helper_status).toEqual('declined');
+          expect(helper.username).toEqual('twebleyf');
         });
     });
     test('status 400: responds with bad request when job_id is invalid', () => {
       return request(app)
         .patch('/api/jobs/cats/helpers')
-        .send({ helper_status: 'declined' })
+        .send({ username: 'twebleyf', helper_status: 'declined' })
         .expect(400)
         .then(({ body: { msg } }) => {
           expect(msg).toBe('bad request');
