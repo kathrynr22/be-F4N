@@ -1,9 +1,4 @@
 node_modules
-test
-testdatainfo
-devdatainfo
 .env
 knexfile.js
-firebase.js
-eslintrc.json
-prettierrc.json
+.DS_Store

@@ -77,4 +77,17 @@ module.exports = [
     job_image: 'www.myfakejobimage.com',
     pledged_amount: 40.0,
   },
+  {
+    // job_id
+    title: 'I need help with hanging a pciture',
+    body:
+      'Could anyone with a step ladder help me hang a painting I bought whilst on holiday',
+    username: 'dfoxl',
+    created_at: '2020-04-01T14:14:00.000Z',
+    location: 'M1',
+    skill_id: 7,
+    job_status: 'complete',
+    job_image: 'www.myfakejobimage.com',
+    pledged_amount: 40.0,
+  },
 ];

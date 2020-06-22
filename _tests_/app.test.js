@@ -51,6 +51,16 @@ describe('/jobs', () => {
           });
         });
     });
+    test('status 200: does not return jobs with job_status equal to complete ', () => {
+      return request(app)
+        .get('/api/jobs')
+        .expect(200)
+        .then(({ body: { jobs } }) => {
+          jobs.forEach(job => {
+            expect(job).not.toHaveProperty('job_status', 'complete');
+          });
+        });
+    });
     test('status 200: by default, sorts the jobs by the created_at column and in descending order', () => {
       return request(app)
         .get('/api/jobs')
@@ -205,7 +215,7 @@ describe('/jobs', () => {
         })
         .expect(201)
         .then(({ body: { job } }) => {
-          expect(job).toHaveProperty('job_id', 7);
+          expect(job).toHaveProperty('job_id', 8);
         });
     });
     test('status 201: responds with a comment_count defaulted to 0', () => {
@@ -609,7 +619,7 @@ describe('/:job_id/helpers', () => {
     });
   });
   describe('PATCH', () => {
-    test('status 200: responds with the job status updated to helper found', () => {
+    test('status 200: responds with the helper status updated to helping', () => {
       return request(app)
         .patch('/api/jobs/5/helpers')
         .send({ username: 'twebleyf', helper_status: 'helping' })
@@ -619,7 +629,7 @@ describe('/:job_id/helpers', () => {
           expect(helper.username).toEqual('twebleyf');
         });
     });
-    test('status 200: responds with the job status updated to helper found', () => {
+    test('status 200: responds with the helper status updated to declined', () => {
       return request(app)
         .patch('/api/jobs/5/helpers')
         .send({ username: 'twebleyf', helper_status: 'declined' })

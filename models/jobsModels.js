@@ -32,6 +32,7 @@ exports.selectJobs = (sort_by, order, skill_name, location, username) => {
       'jobs.location'
     )
     .orderBy(sort_by || 'created_at', order || 'desc')
+    .whereNot('job_status', 'complete')
     .modify(query => {
       if (skill_name && location && username)
         query.where({
@@ -43,6 +44,7 @@ exports.selectJobs = (sort_by, order, skill_name, location, username) => {
       else if (location) query.where({ 'jobs.location': location });
       else if (username) query.where({ 'jobs.username': username });
     })
+
     .then(jobs => {
       if (jobs.length === 0)
         return Promise.reject({ status: 404, msg: 'path not found' });
