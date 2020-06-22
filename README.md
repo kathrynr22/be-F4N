@@ -22,7 +22,7 @@ The project has been built using the following:
 
 The project is supplied with a test and a development database.
 
-The API has been hosted on Heroku and can be found here: https://github.com/kathrynr22/be-F4N
+The API has been hosted on Heroku and can be found here: https://f4n.herokuapp.com/api
 
 **Front-End**
 
