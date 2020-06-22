@@ -61,26 +61,26 @@ To test the API:
 
 ## What endpoints are being tested?
 
-`GET /api/skills` - Serves an array of user's skills.
-`GET /api/users` - Serves an array of users.
-`POST /api/users` - Responds with a new user object.
-`GET /api/users/:username` - Responds with a user object for a specified username.
-`PATCH /api/users/:username` - Allows users to patch their avatar_url and also allows for their total amount raised to be altered.
-`GET /api/users/:username/notifications` - Serves an array of notification objects.
-`POST /api/users/:username/notifications` - Serves an object for the posted notification.
-`PATCH /api/users/:username/notifications/:notification_id` - Patches the status of a notification object.
-`GET /api/jobs` Serves an array of all jobs.
-`POST /api/jobs` - Serves an object for the posted job.
-`GET /api/jobs/:job_id` - Serves a job object for the specified job_id.
-`PATCH /api/jobs/:job_id` - Allows for a job_status and job_image to be altered.
-`DELETE /api/jobs/:job_id` - Deletes the given job by job id.
-`GET /api/jobs/:job_id/helpers` - Serves up an array of helper objects for a particular job_id.
-`POST /api/jobs/:job_id/helpers` - Serves a helper object for the posted helper.
-`PATCH /api/jobs/:job_id/helpers` - Patches the job_status of a helper object.
-`POST /api/jobs/:job_id/comments` - Sserves an object of the posted comment for the specified job_id.
-`GET /api/jobs/:job_id/comments` - Serves an array of comments for the specified article_id.
-`GET /api/comments?username` - Serves an array of comments for the specified username.
-`GET /api/charities` - Serves an array of all charities.
+- `GET /api/skills` - Serves an array of user's skills.
+- `GET /api/users` - Serves an array of users.
+- `POST /api/users` - Responds with a new user object.
+- `GET /api/users/:username` - Responds with a user object for a specified username.
+- `PATCH /api/users/:username` - Allows users to patch their avatar_url and also allows for their total amount raised to be altered.
+- `GET /api/users/:username/notifications` - Serves an array of notification objects.
+- `POST /api/users/:username/notifications` - Serves an object for the posted notification.
+- `PATCH /api/users/:username/notifications/:notification_id` - Patches the status of a notification object.
+- `GET /api/jobs` Serves an array of all jobs.
+- `POST /api/jobs` - Serves an object for the posted job.
+- `GET /api/jobs/:job_id` - Serves a job object for the specified job_id.
+- `PATCH /api/jobs/:job_id` - Allows for a job_status and job_image to be altered.
+- `DELETE /api/jobs/:job_id` - Deletes the given job by job id.
+- `GET /api/jobs/:job_id/helpers` - Serves up an array of helper objects for a particular job_id.
+- `POST /api/jobs/:job_id/helpers` - Serves a helper object for the posted helper.
+- `PATCH /api/jobs/:job_id/helpers` - Patches the job_status of a helper object.
+- `POST /api/jobs/:job_id/comments` - Sserves an object of the posted comment for the specified job_id.
+- `GET /api/jobs/:job_id/comments` - Serves an array of comments for the specified article_id.
+- `GET /api/comments?username` - Serves an array of comments for the specified username.
+- `GET /api/charities` - Serves an array of all charities.
 
 The tests cover both "happy path" scenarios as well as various "unhappy path" scenarios.
 

@@ -22,7 +22,6 @@ exports.postNotification = (req, res, next) => {
       res.status(201).send({ notification });
     })
     .catch(err => {
-      console.log(err);
       next(err);
     });
 };
