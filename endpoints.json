@@ -292,6 +292,7 @@
     }
   },
   "POST /api/jobs/:job_id/helpers": {
+    "description": "serves an object for the posted helper",
     "body": {
       "username": "gdurdane"
     },

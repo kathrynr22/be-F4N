@@ -1,272 +1,91 @@
-# be-F4N
+# F4N Favour 4 a Neighbour Backend Project
 
-# Favour4aNeighbour API
+F4N is a mobile application that is designed to make it easy for communities to help each other with tasks, whilst also raising money for charity.
 
-### Migrations
+All users of the app have a specific charity registered to their account.
 
-This is where you will set up the schema for each table in your database.
+A user who requires assistance with a job will write a post to a jobs page which will include a description of the job, location, skills required and a picture, if necessary. When posting a job, a user should also pledge an amount that they will donate to the chosen charity of whoever they choose to do the job for them.
 
-You should have separate tables for `charities`, `skills`, `users` `jobs`, and `comments`.
+Other users can then post comments underneath the job, expressing their willingness to help and can also press a button which alerts the job-poster that they are willing to help.
 
-//Charity should come first, because the users table and the comments table needs to refer to it
+The person who posted the job will then receive a notification of offers of help and can then select whoever they want to help.
 
-Each charity should have:
+The project has been built using the following:
 
-- `charity_name` which is a unique string that acts as the table's primary key
-- `charity_logo`
-- `charity_description` string limit characters.
-- `justgiving_link` https://www.justgiving.com/oxfam
+- Express: a web application framework for Node.js.
+- PostgreSQL: an open source relational database
+- Knex: an SQL query builder for relational databases
+- Jest: a testing framework
+- Jest Sorted: which makes it easier to test if an array has been correctly sorted.
+- Supertest: for testing HTTP assertions
 
-//Skill should come second as the users table, jobs table and comments table need to refer to it
+The project is supplied with a test and a development database.
 
-Each skill should have:
+The API has been hosted on Heroku and can be found here: https://github.com/kathrynr22/be-F4N
 
-- `skill_id` primary key
-- `skill_name` string
+**Front-End**
 
-//Users should come third as the jobs and comments tables reference usernames
+The hosted version of the front-end project: tbc
+The repository for the front-end project: tbc
 
-Each user should have:
+## Getting Started
 
-- `username` which is the primary key & unique
-- `first_name` string limit on characters
-- `last_name` string limit on characters
-- `email` ?
-  //they need some method of communicating with each other - they can communicate in comments section, but people would not want to give out their contact details on a comment. Would they be happy giving their email address and phone number on profile page..I guess so. Ideally we could implement some private chat functionality but not MVP.
-- `avatar_url`
-- `location` Postcode eg M21 ??
-- `bio` limit amount of characters
-- `charity_name` which references the charity table
+### **Installation**
 
-users-skills junction table:
+1. Fork and clone this repository
 
-- `skill_id`
-- `username`
+`git clone https://github.com/kathrynr22/be-F4N`
 
-Each job should have:
+2. cd into the repository
 
-- `job_id` which is the primary key
-- `title` string limit characters
-- `body` string limit characters
-- `location` eg M21
-- `username` field that references a user's primary key (username)
-- `created_at` defaults to the current timestamp
+`cd be-F4N`
 
-//comments should come last as they reference job id, usernames, and charity info.
+3. install the dependencies
 
-Each comment should have:
+`npm install`
 
-- `comment_id` which is the primary key
-- `username` field that references a user's primary key (username)
-- `job_id` field that references an job's primary key
-- `created_at` defaults to the current timestamp
-- `body` string - limit characters
+4. Set up and seed the databases
 
-* **NOTE:** psql expects `Timestamp` types to be in a specific date format - **not a unix timestamp** as they are in our data! However, you can easily **re-format a unix timestamp into something compatible with our database using JS - you will be doing this in your utility function**... [JavaScript Date object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+`npm run create-db`
 
-### Routes
+`npm run seed-dev`
 
-```http
-GET /api/ shows all end points etc - useful for developing front end
+### Running the tests
 
-GET /api/skills - DONE
+We have followed TDD (Test Driven Development) best practice when building this application and it is built on the basis of RESTful endpoints.
 
-GET /api/users/:username - KR - DONE
-POST /api/users - KR DONE
+To test the API:
 
-GET /api/jobs - DONE
-POST /api/jobs - DONE
+`npm test app`
 
-GET /api/jobs/:job_id -  DONE
-DELETE /api/jobs: job_id - DONE
+## What endpoints are being tested?
 
-GET /api/jobs/:job_id/comments - KR DONE
-POST /api/jobs/:job_id/comments - KR DONE
+`GET /api/skills` - Serves an array of user's skills.
+`GET /api/users` - Serves an array of users.
+`POST /api/users` - Responds with a new user object.
+`GET /api/users/:username` - Responds with a user object for a specified username.
+`PATCH /api/users/:username` - Allows users to patch their avatar_url and also allows for their total amount raised to be altered.
+`GET /api/users/:username/notifications` - Serves an array of notification objects.
+`POST /api/users/:username/notifications` - Serves an object for the posted notification.
+`PATCH /api/users/:username/notifications/:notification_id` - Patches the status of a notification object.
+`GET /api/jobs` Serves an array of all jobs.
+`POST /api/jobs` - Serves an object for the posted job.
+`GET /api/jobs/:job_id` - Serves a job object for the specified job_id.
+`PATCH /api/jobs/:job_id` - Allows for a job_status and job_image to be altered.
+`DELETE /api/jobs/:job_id` - Deletes the given job by job id.
+`GET /api/jobs/:job_id/helpers` - Serves up an array of helper objects for a particular job_id.
+`POST /api/jobs/:job_id/helpers` - Serves a helper object for the posted helper.
+`PATCH /api/jobs/:job_id/helpers` - Patches the job_status of a helper object.
+`POST /api/jobs/:job_id/comments` - Sserves an object of the posted comment for the specified job_id.
+`GET /api/jobs/:job_id/comments` - Serves an array of comments for the specified article_id.
+`GET /api/comments?username` - Serves an array of comments for the specified username.
+`GET /api/charities` - Serves an array of all charities.
 
-OTHER nice to haves - if time
+The tests cover both "happy path" scenarios as well as various "unhappy path" scenarios.
 
-DELETE /api/jobs/:job_id/comments
-PATCH /api/users
-POST users - tests for invalid location
+**Team F4N**
 
-
-
-```
-
----
-
-### Route Requirements
-
-_**All of your endpoints should send the below responses in an object, with a key name of what it is that being sent. E.g.**_
-
-```json
-{
-  "userObject": [
-    {
-      "username": "fsokale34",
-      "first_name": "Finn",
-      "last_name": "Sokale",
-      "email": "fsokale34@salon.com",
-      "avatar_url": "tbc",
-      "location": "M1",
-      "bio": "Hello I am a graphic designer. Reach out if you need a favour and help me raise some funds for a charity in need. I am also great at DIY.",
-      "charity_name": "Oxfam",
-      "charity_logo": "https://images.justgiving.com/image/ebc6a2ca-1c7f-4aa5-9e1a-bfb982397bc4.jpg?template=size200x200",
-      "skill_name": "graphic design"
-    }
-  ]
-}
-```
-
-GET /api/skills
-
-#### Responds with
-
-- an array of skill objects, ordered by `skill_id` each of which should have the following properties:
-  - `skill_id`
-  - `skill_name`
-
----
-
----
-
-```http
-GET /api/users/:username
-```
-
-#### Responds with
-
-- a user object which should have the following properties:
-  - `username`
-  - `first_name`
-  - `last_name`
-  - `number`
-  - `email`
-  - `avatar_url`
-  - `skills`
-  - `location` tbc if eg Chorlton or M21
-  - `bio`
-- `charity_id`
-- `charity_name`
-- `charity_logo` from charity table
-- `justgivingurl`
-
----
-
-```http
-GET /api/jobs
-```
-
-#### Responds with
-
-- an `jobs` array of job objects, each of which should have the following properties:
-  - `title`
-  - `body`
-  - `skill_name`
-  - `username`
-  - `avatar_url`
-  - `location`
-  - `job_id`
-  - `created_at`
-  - `comment_count` which is the total count of all the comments with this job_id - you should make use of knex queries in order to achieve this
-
-#### Should accept queries
-
-- `sort_by`, which sorts the jobs by location or skills (defaults to date)
-
-- `order`, which sets the `sort_by` order (defaults to descending)
-
-- `skill_name`, which filters the jobs by skill
-
-- `location`, which filters the jobs by location
-
-```http
-POST /api/jobs/
-```
-
-On front end when posting user should be able to select certain skills from either a drop down or type and suggestions appear...in which case does GET /api/skills need to be linked in somehow
-
-#### Request body accepts
-
-- an object with the following properties:
-  - `username`
-  - `title`
-  - `skills_name`
-  - `body`
-
-#### Responds with
-
-- the posted job including job_id and created_at
-
-```http
-GET /api/jobs/:job_id
-```
-
-#### Responds with
-
-- an job object, which should have the following properties:
-
-* `title`
-* `job_id`
-* `body`
-* `skills_required`
-* `username` from the users table
-* `avatar_url`
-* `location`
-* `created_at`
-* `comment_count` which is the total count of all the comments with this job_id - you should make use of knex queries in order to achieve this
-
----
-
-```http
-POST /api/jobs/:job_id/comments
-```
-
-#### Request body accepts
-
-- an object with the following properties:
-  - `username`
-  - `body`
-
-#### Responds with
-
-- the posted comment including comment_id and created_at - can we also get it to display user location, user avatar_url and user charity name by default when they post a comment? Without them having to manually enter that into an input box.
-
----
-
-```http
-GET /api/jobs/:job_id/comments
-
-
-```
-
-#### Responds with
-
-- an array of comments for the given `job_id` of which each comment should have the following properties:
-  - `comment_id`
-  - `created_at`
-  - `username` front end would includes hyperlink that takes you to /api/users/:user_id
-  - `avatar_url`
-  - `location`
-  - `charity_name` from charity table
-  - `charity_id` not sure if we need this
-  - `charity_logo` from charity table
-  - `body`
-
-#### Should accept queries
-
-- filter which sorts the comments by charity or location (defaults to date)
-
-```http
-DELETE /api/jobs/:job_id
-```
-
-#### Should
-
-- delete the given job by `job_id`
-
-#### Responds with
-
-- status 204 and no content
-
----
+Kathryn Roberts https://github.com/kathrynr22
+James Oliver https://github.com/J-R-Oliver
+Rob Sidebotham https://github.com/robsidebotham
+Seb Smith https://github.com/Sewb21
