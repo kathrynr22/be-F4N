@@ -24,8 +24,8 @@ The project is supplied with a test and a development database.
 
 **Front-End**
 
-The hosted version of the front-end project: tbc
 The repository for the front-end project: tbc
+Here is a link to a demo of the project:
 
 ## Getting Started
 
